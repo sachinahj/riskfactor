@@ -7693,3 +7693,175 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+h1, h2, h3, h4, h5, h6, p, span {
+  margin: 0; }
+
+.row, .row + .row {
+  padding: 0;
+  margin: 0; }
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.flex-center {
+  /* Legacy */
+  display: -moz-box !important;
+  display: -webkit-box !important;
+  /* Hybrid */
+  display: -ms-flexbox !important;
+  /* Modern */
+  display: -webkit-flex !important;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+
+.flex-start {
+  /* Legacy */
+  display: -moz-box !important;
+  display: -webkit-box !important;
+  /* Hybrid */
+  display: -ms-flexbox !important;
+  /* Modern */
+  display: -webkit-flex !important;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start; }
+
+.flex-end {
+  /* Legacy */
+  display: -moz-box !important;
+  display: -webkit-box !important;
+  /* Hybrid */
+  display: -ms-flexbox !important;
+  /* Modern */
+  display: -webkit-flex !important;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end; }
+
+.flex-column-center {
+  /* Legacy */
+  display: -moz-box !important;
+  display: -webkit-box !important;
+  /* Hybrid */
+  display: -ms-flexbox !important;
+  /* Modern */
+  display: -webkit-flex !important;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+
+.flex-column-start {
+  /* Legacy */
+  display: -moz-box !important;
+  display: -webkit-box !important;
+  /* Hybrid */
+  display: -ms-flexbox !important;
+  /* Modern */
+  display: -webkit-flex !important;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-justify-content: center;
+  justify-content: center; }
+
+.flex-column-end {
+  /* Legacy */
+  display: -moz-box !important;
+  display: -webkit-box !important;
+  /* Hybrid */
+  display: -ms-flexbox !important;
+  /* Modern */
+  display: -webkit-flex !important;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+  -webkit-justify-content: center;
+  justify-content: center; }
+
+.splash-btn {
+  background-color: transparent;
+  border-radius: 20px;
+  border: 2px solid #000000;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-align: center; }
+
+input.auth-input {
+  background-color: transparent;
+  border: 2px solid #000000;
+  text-align: center;
+  width: 80%; }
+
+#splash h5 {
+  margin-top: 15%;
+  text-align: center; }
+#splash img {
+  max-width: 100%;
+  height: auto; }
+#splash .splash-btn.about {
+  margin-top: 20px; }
+
+#login h3 {
+  margin-top: 15%;
+  text-align: center; }
+#login .auth-input {
+  margin-top: 10px; }
+#login .splash-btn.login-btn {
+  margin-top: 10px; }
+#login .registration-btn-row {
+  position: absolute;
+  bottom: 30px; }
+
+#registration h3.title {
+  margin-top: 15%;
+  text-align: center; }
+#registration .auth-input {
+  margin-top: 10px; }
+#registration .age-row, #registration .gender-row, #registration .location-row {
+  display: table;
+  margin-top: 10px; }
+  #registration .age-row h4, #registration .gender-row h4, #registration .location-row h4 {
+    margin-left: 10%;
+    float: left; }
+#registration .age-row select, #registration .location-row select {
+  float: right;
+  margin-right: 10%;
+  width: calc(70% - 55px); }
+#registration .gender-row .gender-input-wrapper {
+  float: right;
+  margin-right: 10%;
+  width: calc(70% - 50px); }
+  #registration .gender-row .gender-input-wrapper label {
+    float: right; }
+    #registration .gender-row .gender-input-wrapper label input {
+      float: right;
+      margin: 0 10px; }
+#registration .splash-btn.registation-btn {
+  margin-top: 10px; }
+#registration .login-btn-row {
+  position: absolute;
+  bottom: 30px; }

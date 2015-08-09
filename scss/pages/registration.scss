@@ -1,0 +1,48 @@
+#registration {
+  h3.title {
+    margin-top: 15%;
+    text-align: center;
+  }
+  .auth-input {
+    margin-top: 10px;
+  }
+  .age-row,
+  .gender-row,
+  .location-row {
+    display: table;
+    margin-top: 10px;
+    h4 {
+      margin-left: 10%;
+      float: left;
+    }
+  }
+  .age-row,
+  .location-row {
+    select {
+      float: right;
+      margin-right: 10%;
+      width: calc(70% - 55px);
+    }
+  }
+  .gender-row {
+    .gender-input-wrapper {
+      float: right;
+      margin-right: 10%;
+      width: calc(70% - 50px);
+      label {
+        float: right;
+        input {
+          float: right;
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+  .splash-btn.registation-btn {
+    margin-top: 10px;
+  }
+  .login-btn-row {
+    position: absolute;
+    bottom: 30px;
+  }
+}

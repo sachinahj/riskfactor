@@ -1,0 +1,46 @@
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex-center {
+  @include flex-center
+}
+
+.flex-start {
+  @include flex-start
+}
+
+.flex-end {
+  @include flex-end
+}
+
+.flex-column-center {
+  @include flex-column-center
+}
+
+.flex-column-start {
+  @include flex-column-start
+}
+
+.flex-column-end {
+  @include flex-column-end
+}
+
+.splash-btn {
+  background-color: transparent;
+  border-radius: 20px;
+  border: 2px solid $black;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+input.auth-input {
+  background-color: transparent;
+  border: 2px solid $black;
+  text-align: center;
+  width: 80%;
+}

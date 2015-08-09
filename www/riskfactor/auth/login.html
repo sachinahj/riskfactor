@@ -1,0 +1,29 @@
+<ion-view view-title="Login" id="login">
+  <ion-content class="super-fill" scroll="false">
+
+    <h3>Login</h3>
+
+    <form>
+      <div class="row flex-center">
+        <input type="text" class="auth-input" placeholder="Email" ng-model="user.email"></input>
+      </div>
+
+      <div class="row flex-center">
+        <input type="password" class="auth-input" placeholder="Password" ng-model="user.password"></input>
+      </div>
+
+      <div class="row flex-center">
+        <button class="splash-btn login-btn" ng-click="login()">Login</button>
+      </div>
+    </form>
+
+    <div class="row flex-center">
+      <h5 ng-class="scope.feedback.type">{{feedback.message}}</h5>
+    </div>
+
+    <div class="row flex-center registration-btn-row">
+      <button class="splash-btn registration-btn" ng-click="goToRegistration()">Sign Up</button>
+    </div>
+
+  </ion-content>
+</ion-view>

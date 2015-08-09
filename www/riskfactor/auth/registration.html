@@ -1,0 +1,59 @@
+<ion-view view-title="Login" id="registration">
+  <ion-content class="super-fill" scroll="false">
+
+    <h3 class="title">Registration</h3>
+
+    <form>
+
+      <div class="row flex-center">
+        <input type="text" class="auth-input" placeholder="Email" ng-model="newUser.email"></input>
+      </div>
+
+      <div class="row flex-center">
+        <input type="password" class="auth-input" placeholder="Password" ng-model="newUser.password"></input>
+      </div>
+
+      <div class="row flex-center">
+        <input type="password" class="auth-input" placeholder="Password Again" ng-model="newUser.passwordagain"></input>
+      </div>
+
+      <div class="row age-row">
+        <h4>Age:</h4>
+        <select ng-model="newUser.age" ng-options="age as age for age in ageOptions" dir="rtl"></select>
+      </div>
+
+      <div class="row gender-row">
+        <h4>Gender:</h4>
+        <div class="gender-input-wrapper">
+          <label for="female">Female
+            <input type="radio" name="gender" ng-model="newUser.gender" value="female"></input>
+          </label>
+          <label for="male">Male
+            <input type="radio" name="gender" ng-model="newUser.gender" value="male"></input>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="row location-row">
+        <h4>Location:</h4>
+        <select ng-model="newUser.location" ng-options="location as location for location in locationOptions" dir="rtl"></select>
+      </div>
+
+
+
+      <div class="row flex-center">
+        <button class="splash-btn registation-btn" ng-click="register()">Sign Up!</button>
+      </div>
+    </form>
+
+    <div class="row flex-center">
+      <h5 ng-class="scope.feedback.type">{{feedback.message}}</h5>
+    </div>
+
+    <div class="row flex-center login-btn-row">
+      <button class="splash-btn login-btn" ng-click="goToLogin()">Go back to login</button>
+    </div>
+
+  </ion-content>
+</ion-view>

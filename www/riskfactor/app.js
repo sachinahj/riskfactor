@@ -15,8 +15,13 @@ var riskfactorApp = angular.module('riskfactor', ['ionic'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    // $state.go('registration');
+    $state.go('login');
+    // $state.go('splash');
   });
 
-
-  $state.go('splash');
 })
+
+
+.constant('firebaseNamespace', "uthoughttoday");
