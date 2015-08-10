@@ -20,7 +20,6 @@ riskfactorApp.controller('RegistrationController', function ($scope, $state, $ti
   };
 
   $scope.register = function () {
-    console.log("register newUser", $scope.newUser);
     if (!$scope.newUser.email) {
       return setErrorMssage("Please make sure you entered an email address");
     }
@@ -54,8 +53,7 @@ riskfactorApp.controller('RegistrationController', function ($scope, $state, $ti
           if (error) {
             return setErrorMssage(error);
           }
-          console.log("userAuthData", userAuthData);
-          alert('logged in!');
+          $state.go('questions');
         });
       });
 

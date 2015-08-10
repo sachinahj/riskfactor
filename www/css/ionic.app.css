@@ -7700,6 +7700,10 @@ h1, h2, h3, h4, h5, h6, p, span {
   padding: 0;
   margin: 0; }
 
+.col {
+  padding: 0;
+  margin-bottom: -5px; }
+
 .row-eq-height {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7802,13 +7806,14 @@ h1, h2, h3, h4, h5, h6, p, span {
   -webkit-justify-content: center;
   justify-content: center; }
 
-.splash-btn {
+.riskfactor-btn {
   background-color: transparent;
   border-radius: 20px;
   border: 2px solid #000000;
   font-weight: bold;
   padding: 10px 20px;
-  text-align: center; }
+  text-align: center;
+  text-transform: uppercase; }
 
 input.auth-input {
   background-color: transparent;
@@ -7822,7 +7827,7 @@ input.auth-input {
 #splash img {
   max-width: 100%;
   height: auto; }
-#splash .splash-btn.about {
+#splash .riskfactor-btn.about {
   margin-top: 20px; }
 
 #login h3 {
@@ -7830,7 +7835,7 @@ input.auth-input {
   text-align: center; }
 #login .auth-input {
   margin-top: 10px; }
-#login .splash-btn.login-btn {
+#login .riskfactor-btn.login-btn {
   margin-top: 10px; }
 #login .registration-btn-row {
   position: absolute;
@@ -7860,8 +7865,223 @@ input.auth-input {
     #registration .gender-row .gender-input-wrapper label input {
       float: right;
       margin: 0 10px; }
-#registration .splash-btn.registation-btn {
+#registration .riskfactor-btn.registation-btn {
   margin-top: 10px; }
 #registration .login-btn-row {
   position: absolute;
   bottom: 30px; }
+
+#questions .questions-background {
+  background: #0B5164;
+  background: -moz-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #0B5164), color-stop(77%, #0B5164), color-stop(100%, #000000));
+  background: -webkit-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+  background: -o-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+  background: -ms-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+  background: linear-gradient(to bottom, #0B5164 0%, #0B5164 77%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #questions .questions-background.environmental {
+    background: #0B5164;
+    background: -moz-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #0B5164), color-stop(77%, #0B5164), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+    background: -o-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+    background: linear-gradient(to bottom, #0B5164 0%, #0B5164 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #questions .questions-background.ethical {
+    background: #51DED3;
+    background: -moz-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #51DED3), color-stop(77%, #51DED3), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
+    background: -o-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
+    background: linear-gradient(to bottom, #51DED3 0%, #51DED3 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #questions .questions-background.financial {
+    background: #4BAF3C;
+    background: -moz-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #4BAF3C), color-stop(77%, #4BAF3C), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
+    background: -o-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
+    background: linear-gradient(to bottom, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #questions .questions-background.healthandsafety {
+    background: #AFEB00;
+    background: -moz-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #AFEB00), color-stop(77%, #AFEB00), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
+    background: -o-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
+    background: linear-gradient(to bottom, #AFEB00 0%, #AFEB00 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #questions .questions-background.recreational {
+    background: #FFC800;
+    background: -moz-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #FFC800), color-stop(77%, #FFC800), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
+    background: -o-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
+    background: linear-gradient(to bottom, #FFC800 0%, #FFC800 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #questions .questions-background.socialandpolitical {
+    background: #F54B32;
+    background: -moz-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #F54B32), color-stop(77%, #F54B32), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
+    background: -o-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
+    background: linear-gradient(to bottom, #F54B32 0%, #F54B32 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+#questions .header-row {
+  display: table;
+  position: relative;
+  margin-bottom: 150px; }
+  #questions .header-row .category-cloud-img {
+    position: absolute;
+    top: -10px;
+    width: 45%; }
+  #questions .header-row .header-cloud-img {
+    position: absolute;
+    right: 0;
+    top: -20px;
+    width: 60%; }
+#questions .category {
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase; }
+#questions .sub-title {
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase; }
+#questions .question {
+  color: #ffffff;
+  margin-top: 50px;
+  padding: 0 10px;
+  text-align: center; }
+#questions .answers-row {
+  margin-top: 50px; }
+  #questions .answers-row .riskfactor-btn {
+    border-color: #ffffff;
+    color: #ffffff;
+    margin: 0 auto; }
+    #questions .answers-row .riskfactor-btn:first-child {
+      margin-right: 20px; }
+    #questions .answers-row .riskfactor-btn:last-child {
+      margin-left: 20px; }
+#questions .countdown-timer {
+  color: white;
+  text-align: center; }
+
+#results .questions-background {
+  background: #0B5164;
+  background: -moz-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #0B5164), color-stop(77%, #0B5164), color-stop(100%, #000000));
+  background: -webkit-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+  background: -o-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+  background: -ms-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+  background: linear-gradient(to bottom, #0B5164 0%, #0B5164 77%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #results .questions-background.environmental {
+    background: #0B5164;
+    background: -moz-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #0B5164), color-stop(77%, #0B5164), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+    background: -o-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
+    background: linear-gradient(to bottom, #0B5164 0%, #0B5164 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #results .questions-background.ethical {
+    background: #51DED3;
+    background: -moz-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #51DED3), color-stop(77%, #51DED3), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
+    background: -o-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
+    background: linear-gradient(to bottom, #51DED3 0%, #51DED3 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #results .questions-background.financial {
+    background: #4BAF3C;
+    background: -moz-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #4BAF3C), color-stop(77%, #4BAF3C), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
+    background: -o-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
+    background: linear-gradient(to bottom, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #results .questions-background.healthandsafety {
+    background: #AFEB00;
+    background: -moz-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #AFEB00), color-stop(77%, #AFEB00), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
+    background: -o-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
+    background: linear-gradient(to bottom, #AFEB00 0%, #AFEB00 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #results .questions-background.recreational {
+    background: #FFC800;
+    background: -moz-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #FFC800), color-stop(77%, #FFC800), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
+    background: -o-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
+    background: linear-gradient(to bottom, #FFC800 0%, #FFC800 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #results .questions-background.socialandpolitical {
+    background: #F54B32;
+    background: -moz-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #F54B32), color-stop(77%, #F54B32), color-stop(100%, #000000));
+    background: -webkit-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
+    background: -o-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
+    background: -ms-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
+    background: linear-gradient(to bottom, #F54B32 0%, #F54B32 77%, #000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+#results .header-row {
+  display: table;
+  position: relative;
+  background: #000000;
+  background: -moz-linear-gradient(top, #000000 0%, #000000 77%, #000000 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #000000), color-stop(77%, #000000), color-stop(100%, #000000));
+  background: -webkit-linear-gradient(top, #000000 0%, #000000 77%, #000000 100%);
+  background: -o-linear-gradient(top, #000000 0%, #000000 77%, #000000 100%);
+  background: -ms-linear-gradient(top, #000000 0%, #000000 77%, #000000 100%);
+  background: linear-gradient(to bottom, #000000 0%, #000000 77%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  #results .header-row h5 {
+    position: absolute;
+    color: #ffffff; }
+    #results .header-row h5.left {
+      top: 50px;
+      left: 15px; }
+    #results .header-row h5.right {
+      top: 50px;
+      right: 15px; }
+  #results .header-row img {
+    display: block;
+    margin: 0 auto;
+    margin-top: -10px;
+    padding-bottom: 10px;
+    width: 40%; }
+#results .category-row {
+  display: table; }
+  #results .category-row .col {
+    float: left;
+    width: 16.666%; }
+  #results .category-row img {
+    width: 100%;
+    height: auto; }
+#results .result {
+  padding: 0 30px; }
+  #results .result h4, #results .result h5 {
+    color: #ffffff; }
+  #results .result .question {
+    border-bottom: 2px solid #ffffff;
+    padding: 30px 30px; }
+    #results .result .question h4 {
+      text-align: center; }
+  #results .result .you-thought, #results .result .uthought {
+    margin-top: 10px; }
+  #results .result .did-you-know {
+    margin-top: 20px; }

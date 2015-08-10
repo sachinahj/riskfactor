@@ -1,0 +1,39 @@
+<ion-view view-title="Results" id="results">
+  <ion-content scroll="false" class="questions-background" ng-class="currentQuestion.category" on-swipe-left="leftSwipe()" on-swipe-right="rightSwipe()">
+
+    <div class="row header-row">
+      <h5 class="left">Swipe left/right</h5>
+      <img src="img/clouds/home-cloud.png"/>
+      <h5 class="right">Contact Us&nbsp;<i class="fa fa-envelope-o"></i></h5>
+    </div>
+
+    <div class="row category-row">
+      <div class="col" ng-repeat="(index, question) in questions" ng-click="goToQuestion(index)">
+        <img ng-src="img/squares/{{question.category}}-square.png">
+      </div>
+    </div>
+
+    <div class="result">
+      <div class="row question">
+        <h4>{{currentQuestion.question}}</h4>
+      </div>
+
+      <div class="row you-thought">
+        <h5>You thought: <b>{{currentAnswer || "No Answer"}}</b></h5>
+      </div>
+
+      <div class="row uthought">
+        <h5>Percentage of uThought users who also answered {{currentAnswer || currentQuestion.answers[0]}}: <b>{{currentQuestion.responses[currentAnswer] /  currentQuestion.responses.total || currentQuestion.responses[currentQuestion.answers[0]] / currentQuestion.responses.total}}%</b></h5>
+      </div>
+
+      <div class="row did-you-know">
+        <h5>{{currentQuestion.result.stat}}</h5>
+      </div>
+
+
+
+    </div>
+
+
+  </ion-content>
+</ion-view>

@@ -18,6 +18,16 @@ riskfactorApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigP
       url: '/registration',
       templateUrl: 'riskfactor/auth/registration.html',
       controller: 'RegistrationController'
+    })
+    .state('questions', {
+      url: '/questions',
+      templateUrl: 'riskfactor/questions/questions.html',
+      controller: 'QuestionsController'
+    })
+    .state('results', {
+      url: '/results',
+      templateUrl: 'riskfactor/results/results.html',
+      controller: 'ResultsController'
     });
 
 });

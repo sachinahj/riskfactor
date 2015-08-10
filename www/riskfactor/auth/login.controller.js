@@ -3,7 +3,7 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
   $scope.feedback = {};
 
   $scope.user.email = "sachinahj@gmail.com";
-  $scope.user.password = "soccer";
+  $scope.user.password = "riskfactor";
 
   $scope.goToRegistration = function () {
     $scope.user = {};
@@ -11,12 +11,19 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
   }
 
   $scope.login = function () {
+    if (!$scope.user.email) {
+      return setErrorMssage("Please make sure you entered an email address");
+    }
+
+    if (!$scope.user.password) {
+      return setErrorMssage("Please make sure you entered an password");
+    }
+
     authService.login($scope.user, function (error, userAuthData) {
       if (error) {
         return setErrorMssage(error);
       }
-      console.log("userAuthData", userAuthData);
-      alert('logged in!');
+      $state.go('questions');
     });
   }
 

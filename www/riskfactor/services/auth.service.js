@@ -5,6 +5,10 @@ riskfactorApp.factory('authService', function (firebaseNamespace) {
   var usersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/users");
 
 
+  authService.checkAuth = function (callback) {
+    return rootFbRef.getAuth();
+  }
+
   authService.register = function (newUser, callback) {
     rootFbRef.createUser({
       email: newUser.email,
@@ -40,6 +44,10 @@ riskfactorApp.factory('authService', function (firebaseNamespace) {
       return callback(null, authData);
     })
   };
+
+  authService.logout = function () {
+    rootFbRef.unauth();
+  }
 
   return authService;
 

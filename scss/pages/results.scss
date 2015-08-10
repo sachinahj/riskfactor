@@ -1,0 +1,81 @@
+#results {
+
+  .questions-background {
+    @include background-gradient ($environmental);
+    &.environmental {
+      @include background-gradient ($environmental);
+    }
+    &.ethical {
+      @include background-gradient ($ethical);
+    }
+    &.financial {
+      @include background-gradient ($financial);
+    }
+    &.healthandsafety {
+      @include background-gradient ($healthandsafety);
+    }
+    &.recreational {
+      @include background-gradient ($recreational);
+    }
+    &.socialandpolitical {
+      @include background-gradient ($socialandpolitical);
+    }
+  }
+
+  .header-row {
+    display: table;
+    position: relative;
+    @include background-gradient ($black);
+    h5 {
+      position: absolute;
+      color: $white;
+      &.left {
+        top: 50px;
+        left: 15px;
+      }
+      &.right {
+        top: 50px;
+        right: 15px;
+      }
+    }
+    img {
+      display: block;
+      margin: 0 auto;
+      margin-top: -10px;
+      padding-bottom: 10px;
+      width: 40%;
+    }
+  }
+  .category-row {
+    display: table;
+    .col {
+      float: left;
+      width: 16.666%;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .result {
+    padding: 0 30px;
+    h4, h5 {
+      color: $white;
+    }
+    .question {
+      border-bottom: 2px solid $white;
+      padding: 30px 30px;
+      h4 {
+        text-align: center;
+      }
+    }
+
+    .you-thought, .uthought {
+      margin-top: 10px;
+    }
+
+    .did-you-know {
+      margin-top: 20px;
+    }
+  }
+}

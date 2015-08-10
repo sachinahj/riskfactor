@@ -29,13 +29,14 @@
   @include flex-column-end
 }
 
-.splash-btn {
+.riskfactor-btn {
   background-color: transparent;
   border-radius: 20px;
   border: 2px solid $black;
   font-weight: bold;
   padding: 10px 20px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 input.auth-input {
