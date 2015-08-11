@@ -18,7 +18,7 @@ var riskfactorApp = angular.module('riskfactor', ['ionic'])
       StatusBar.styleDefault();
     }
 
-    // authService.logout();
+    authService.logout();
     // $state.go('results');
     var authData = authService.checkAuth();
     if (authData) {

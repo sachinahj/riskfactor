@@ -10,6 +10,11 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
     $state.go('registration');
   }
 
+  $scope.goToFacebook = function () {
+    $scope.user = {};
+    $state.go('loginfacebook');
+  }
+
   $scope.login = function () {
     if (!$scope.user.email) {
       return setErrorMssage("Please make sure you entered an email address");

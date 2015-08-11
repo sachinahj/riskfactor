@@ -19,6 +19,7 @@ riskfactorApp.factory('authService', function (firebaseNamespace) {
       }
 
       var userToSave = angular.copy(newUser);
+      userToSave.uid = newUserData.uid;
       delete userToSave.password;
       delete userToSave.passwordagain;
 
@@ -37,12 +38,42 @@ riskfactorApp.factory('authService', function (firebaseNamespace) {
     rootFbRef.authWithPassword({
       email: user.email,
       password: user.password
-    } , function (error, authData) {
+    }, function (error, authData) {
       if (error) {
         return callback(error.message, null);
       }
       return callback(null, authData);
     })
+  };
+
+  authService.loginWithFacebook = function (callback) {
+    rootFbRef.authWithOAuthPopup("facebook", function (error, authData) {
+      if (error) {
+        return callback(error.message, null);
+      }
+
+      console.log("authData", authData);
+      saveFacebookData(authData, callback);
+    }, {
+      scope: "email,public_profile"
+    });
+
+
+    function saveFacebookData (authData, callback) {
+      var userToSave = {
+        uid: authData.uid,
+        age: authData.facebook.cachedUserProfile.age_range,
+        email: authData.facebook.cachedUserProfile.email,
+        gender: authData.facebook.cachedUserProfile.gender,
+        location: authData.facebook.cachedUserProfile.locale
+      };
+      usersFbRef.child(authData.uid).set(userToSave, function (error) {
+        if (error) {
+          return callback(error.message, null);
+        }
+        return callback(null, authData);
+      })
+    };
   };
 
   authService.logout = function () {

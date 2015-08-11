@@ -14,6 +14,11 @@ riskfactorApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigP
       templateUrl: 'riskfactor/auth/login.html',
       controller: 'LoginController'
     })
+    .state('loginfacebook', {
+      url: '/loginfacebook',
+      templateUrl: 'riskfactor/auth/loginfacebook.html',
+      controller: 'LoginFacebookController'
+    })
     .state('registration', {
       url: '/registration',
       templateUrl: 'riskfactor/auth/registration.html',

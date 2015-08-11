@@ -7840,6 +7840,13 @@ input.auth-input {
 #login .registration-btn-row {
   position: absolute;
   bottom: 30px; }
+#login .facebook-btn-row {
+  position: absolute;
+  bottom: 100px; }
+
+#loginfacebook h3 {
+  margin-top: 15%;
+  text-align: center; }
 
 #registration h3.title {
   margin-top: 15%;
