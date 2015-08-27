@@ -1,0 +1,13 @@
+{
+  "name": "riskfactor-script",
+  "version": "1.0.0",
+  "description": "question importer for riskfactor-script",
+  "dependencies": {
+    "firebase": "latest",
+    "csv": "latest",
+    "csvtojson": "latest",
+    "json2csv": "latest",
+    "uid": "latest"
+  }
+}
+
