@@ -1,0 +1,45 @@
+#about {
+  @include background-gradient-black;
+  img.top {
+    display: block;
+    margin: 0 auto;
+    margin-top: -15px;
+    padding-bottom: 10px;
+    width: 50%;
+    height: auto;
+  }
+
+  img.play-now {
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 40%;
+    height: auto;
+  }
+
+  h5 {
+    padding: 0 30px;
+    margin-bottom: 10px;
+    span {
+      font-weight: bold;
+      &.environmental {
+        color: $environmental;
+      }
+      &.ethical {
+        color: $ethical;
+      }
+      &.financial {
+        color: $financial;
+      }
+      &.healthandsafety {
+        color: $healthandsafety;
+      }
+      &.recreational {
+        color: $recreational;
+      }
+      &.socialandpolitical {
+        color: $socialandpolitical;
+      }
+    }
+  }
+}

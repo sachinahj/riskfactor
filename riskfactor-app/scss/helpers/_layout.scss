@@ -32,7 +32,8 @@
 .riskfactor-btn {
   background-color: transparent;
   border-radius: 20px;
-  border: 2px solid $black;
+  border: 2px solid $white;
+  color: $white;
   font-weight: bold;
   padding: 10px 20px;
   text-align: center;
@@ -41,7 +42,9 @@
 
 input.auth-input {
   background-color: transparent;
-  border: 2px solid $black;
+  border: 1px solid $white;
+  border-radius: 10px;
   text-align: center;
+  color: $white;
   width: 80%;
 }

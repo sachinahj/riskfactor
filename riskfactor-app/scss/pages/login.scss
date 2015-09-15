@@ -1,4 +1,6 @@
 #login {
+  @include background-gradient-black;
+
   h3 {
     margin-top: 15%;
     text-align: center;
@@ -7,19 +9,37 @@
     margin-top: 10px;
   }
 
-
   .riskfactor-btn.login-btn {
-    margin-top: 10px;
+    margin-top: 80px;
   }
 
+  .feedback {
+    margin-top: 20px;
+  }
 
-  .registration-btn-row {
+  .bottom {
     position: absolute;
     bottom: 30px;
+    button {
+      width: 120px;
+    }
+    .left {
+      text-align: right;
+      margin-right: 10px;
+    }
+    .right {
+      text-align: left;
+      margin-left: 10px;
+    }
   }
 
-  .facebook-btn-row {
+  .top {
     position: absolute;
     bottom: 100px;
+    button {
+      background-color: #3B5998;
+      border-color: #3B5998;
+      border-radius: 6px;
+    }
   }
 }

@@ -1,31 +1,30 @@
 #results {
 
   .questions-background {
-    @include background-gradient ($environmental);
     &.environmental {
-      @include background-gradient ($environmental);
+      @include background-gradient-environmental;
     }
     &.ethical {
-      @include background-gradient ($ethical);
+      @include background-gradient-ethical;
     }
     &.financial {
-      @include background-gradient ($financial);
+      @include background-gradient-financial;
     }
     &.healthandsafety {
-      @include background-gradient ($healthandsafety);
+      @include background-gradient-healthandsafety;
     }
     &.recreational {
-      @include background-gradient ($recreational);
+      @include background-gradient-recreational;
     }
     &.socialandpolitical {
-      @include background-gradient ($socialandpolitical);
+      @include background-gradient-socialandpolitical;
     }
   }
 
   .header-row {
     display: table;
     position: relative;
-    @include background-gradient ($black);
+    @include background-gradient-black;
     h5 {
       position: absolute;
       color: $white;

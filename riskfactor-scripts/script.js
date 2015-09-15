@@ -16,8 +16,8 @@ var csvConverter = new Converter({
   constructResult: true
 });
 
-// insertAndUpdateQuestions();
-getLatestCSV();
+insertAndUpdateQuestions();
+// getLatestCSV();
 
 
 function getLatestCSV() {

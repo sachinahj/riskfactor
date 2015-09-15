@@ -9,6 +9,11 @@ riskfactorApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigP
       templateUrl: 'riskfactor/splash/splash.html',
       controller: 'SplashController'
     })
+    .state('about', {
+      url: '/about',
+      templateUrl: 'riskfactor/splash/about.html',
+      controller: 'AboutController'
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'riskfactor/auth/login.html',
@@ -33,6 +38,11 @@ riskfactorApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigP
       url: '/results',
       templateUrl: 'riskfactor/results/results.html',
       controller: 'ResultsController'
+    })
+    .state('contact', {
+      url: '/contact',
+      templateUrl: 'riskfactor/splash/contact.html',
+      controller: 'ContactController'
     });
 
 });

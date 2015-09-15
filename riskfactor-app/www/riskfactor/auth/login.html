@@ -17,15 +17,20 @@
       </div>
     </form>
 
-    <div class="row flex-center">
+    <div class="row flex-center feedback">
       <h5 ng-class="scope.feedback.type">{{feedback.message}}</h5>
     </div>
 
-    <div class="row flex-center registration-btn-row">
-      <button class="riskfactor-btn" ng-click="goToRegistration()">Sign Up</button>
+    <div class="row flex-center top">
+        <button class="riskfactor-btn" ng-click="loginWithFacebook()">Sign In with Facebook</button>
     </div>
-    <div class="row flex-center facebook-btn-row">
-      <button class="riskfactor-btn" ng-click="goToFacebook()">Sign In with Facebook</button>
+    <div class="row flex-center bottom">
+      <div class="col left">
+        <button class="riskfactor-btn" ng-click="goToSplash()">Back</button>
+      </div>
+      <div class="col right">
+        <button class="riskfactor-btn" ng-click="goToRegistration()">Sign Up</button>
+      </div>
     </div>
 
   </ion-content>

@@ -7696,6 +7696,10 @@ a.button {
 h1, h2, h3, h4, h5, h6, p, span {
   margin: 0; }
 
+h1, h2, h3, h4, h5, h6, p, span, input, select, textarea, button, div {
+  color: #ffffff;
+  font-family: 'Droid Sans'; }
+
 .row, .row + .row {
   padding: 0;
   margin: 0; }
@@ -7809,7 +7813,8 @@ h1, h2, h3, h4, h5, h6, p, span {
 .riskfactor-btn {
   background-color: transparent;
   border-radius: 20px;
-  border: 2px solid #000000;
+  border: 2px solid #ffffff;
+  color: #ffffff;
   font-weight: bold;
   padding: 10px 20px;
   text-align: center;
@@ -7817,130 +7822,202 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 input.auth-input {
   background-color: transparent;
-  border: 2px solid #000000;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
   text-align: center;
+  color: #ffffff;
   width: 80%; }
 
-#splash h5 {
-  margin-top: 15%;
-  text-align: center; }
-#splash img {
-  max-width: 100%;
+/* MyriadProRegular */
+@font-face {
+  font-family: 'MyriadProRegular';
+  src: url('http://aon-cdn.googlecode.com/files/myriadpro-regular_0.eot');
+  src: url('http://aon-cdn.googlecode.com/files/myriadpro-regular_0.eot') format('embedded-opentype'), url('http://aon-cdn.googlecode.com/files/myriadpro-regular_0.woff') format('woff'), url('http://aon-cdn.googlecode.com/files/myriadpro-regular_0.ttf') format('truetype'), url('http://aon-cdn.googlecode.com/files/myriadpro-regular_0.svg#MyriadProRegular') format('svg');
+  font-weight: normal;
+  font-style: normal; }
+
+#splash {
+  background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -o-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -ms-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -moz-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: linear-gradient(to bottom, #010000 0%, #3d3a3a 72%, #524f4e 100%); }
+  #splash h5 {
+    margin-top: 15%;
+    text-align: center; }
+  #splash img {
+    max-width: 100%;
+    height: auto; }
+  #splash .riskfactor-btn.about {
+    margin-top: 20px; }
+
+#about {
+  background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -o-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -ms-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -moz-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: linear-gradient(to bottom, #010000 0%, #3d3a3a 72%, #524f4e 100%); }
+  #about img.top {
+    display: block;
+    margin: 0 auto;
+    margin-top: -15px;
+    padding-bottom: 10px;
+    width: 50%;
+    height: auto; }
+  #about img.play-now {
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 40%;
+    height: auto; }
+  #about h5 {
+    padding: 0 30px;
+    margin-bottom: 10px; }
+    #about h5 span {
+      font-weight: bold; }
+      #about h5 span.environmental {
+        color: #0B5164; }
+      #about h5 span.ethical {
+        color: #51DED3; }
+      #about h5 span.financial {
+        color: #4BAF3C; }
+      #about h5 span.healthandsafety {
+        color: #AFEB00; }
+      #about h5 span.recreational {
+        color: #FFC800; }
+      #about h5 span.socialandpolitical {
+        color: #F54B32; }
+
+#contact img.top {
+  display: block;
+  margin: 0 auto;
+  margin-top: -15px;
+  padding-bottom: 10px;
+  width: 50%;
   height: auto; }
-#splash .riskfactor-btn.about {
-  margin-top: 20px; }
 
-#login h3 {
-  margin-top: 15%;
-  text-align: center; }
-#login .auth-input {
-  margin-top: 10px; }
-#login .riskfactor-btn.login-btn {
-  margin-top: 10px; }
-#login .registration-btn-row {
-  position: absolute;
-  bottom: 30px; }
-#login .facebook-btn-row {
-  position: absolute;
-  bottom: 100px; }
+#login {
+  background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -o-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -ms-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -moz-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: linear-gradient(to bottom, #010000 0%, #3d3a3a 72%, #524f4e 100%); }
+  #login h3 {
+    margin-top: 15%;
+    text-align: center; }
+  #login .auth-input {
+    margin-top: 10px; }
+  #login .riskfactor-btn.login-btn {
+    margin-top: 80px; }
+  #login .feedback {
+    margin-top: 20px; }
+  #login .bottom {
+    position: absolute;
+    bottom: 30px; }
+    #login .bottom button {
+      width: 120px; }
+    #login .bottom .left {
+      text-align: right;
+      margin-right: 10px; }
+    #login .bottom .right {
+      text-align: left;
+      margin-left: 10px; }
+  #login .top {
+    position: absolute;
+    bottom: 100px; }
+    #login .top button {
+      background-color: #3B5998;
+      border-color: #3B5998;
+      border-radius: 6px; }
 
-#loginfacebook h3 {
-  margin-top: 15%;
-  text-align: center; }
+#loginfacebook {
+  background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -o-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -ms-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -moz-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: linear-gradient(to bottom, #010000 0%, #3d3a3a 72%, #524f4e 100%); }
+  #loginfacebook h3 {
+    margin-top: 15%;
+    text-align: center; }
 
-#registration h3.title {
-  margin-top: 15%;
-  text-align: center; }
-#registration .auth-input {
-  margin-top: 10px; }
-#registration .age-row, #registration .gender-row, #registration .location-row {
-  display: table;
-  margin-top: 10px; }
-  #registration .age-row h4, #registration .gender-row h4, #registration .location-row h4 {
-    margin-left: 10%;
-    float: left; }
-#registration .age-row select, #registration .location-row select {
-  float: right;
-  margin-right: 10%;
-  width: calc(70% - 55px); }
-#registration .gender-row .gender-input-wrapper {
-  float: right;
-  margin-right: 10%;
-  width: calc(70% - 50px); }
-  #registration .gender-row .gender-input-wrapper label {
-    float: right; }
-    #registration .gender-row .gender-input-wrapper label input {
-      float: right;
-      margin: 0 10px; }
-#registration .riskfactor-btn.registation-btn {
-  margin-top: 10px; }
-#registration .login-btn-row {
-  position: absolute;
-  bottom: 30px; }
+#registration {
+  background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -o-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -ms-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -moz-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: linear-gradient(to bottom, #010000 0%, #3d3a3a 72%, #524f4e 100%); }
+  #registration h3.title {
+    margin-top: 15%;
+    text-align: center; }
+  #registration .auth-input {
+    margin-top: 10px; }
+  #registration .age-row, #registration .gender-row, #registration .location-row {
+    display: table;
+    margin-top: 10px; }
+    #registration .age-row h4, #registration .gender-row h4, #registration .location-row h4 {
+      margin-left: 10%;
+      float: left; }
+  #registration .age-row select, #registration .location-row select {
+    float: right;
+    margin-right: 10%;
+    width: calc(70% - 55px);
+    background: transparent;
+    padding: 5px;
+    line-height: 1;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    -webkit-appearance: none; }
+  #registration .gender-row .gender-input-wrapper {
+    float: right;
+    margin-right: 10%;
+    width: calc(70% - 50px); }
+    #registration .gender-row .gender-input-wrapper label {
+      float: right; }
+      #registration .gender-row .gender-input-wrapper label input {
+        float: right;
+        margin: 0 10px; }
+  #registration .riskfactor-btn.registation-btn {
+    margin-top: 60px; }
+  #registration .login-btn-row {
+    position: absolute;
+    bottom: 30px; }
 
-#questions .questions-background {
-  background: #0B5164;
-  background: -moz-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, #0B5164), color-stop(77%, #0B5164), color-stop(100%, #000000));
-  background: -webkit-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-  background: -o-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-  background: -ms-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-  background: linear-gradient(to bottom, #0B5164 0%, #0B5164 77%, #000000 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #questions .questions-background.environmental {
-    background: #0B5164;
-    background: -moz-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #0B5164), color-stop(77%, #0B5164), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-    background: -o-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-    background: linear-gradient(to bottom, #0B5164 0%, #0B5164 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #questions .questions-background.ethical {
-    background: #51DED3;
-    background: -moz-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #51DED3), color-stop(77%, #51DED3), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
-    background: -o-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
-    background: linear-gradient(to bottom, #51DED3 0%, #51DED3 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #questions .questions-background.financial {
-    background: #4BAF3C;
-    background: -moz-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #4BAF3C), color-stop(77%, #4BAF3C), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
-    background: -o-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
-    background: linear-gradient(to bottom, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #questions .questions-background.healthandsafety {
-    background: #AFEB00;
-    background: -moz-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #AFEB00), color-stop(77%, #AFEB00), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
-    background: -o-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
-    background: linear-gradient(to bottom, #AFEB00 0%, #AFEB00 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #questions .questions-background.recreational {
-    background: #FFC800;
-    background: -moz-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #FFC800), color-stop(77%, #FFC800), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
-    background: -o-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
-    background: linear-gradient(to bottom, #FFC800 0%, #FFC800 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #questions .questions-background.socialandpolitical {
-    background: #F54B32;
-    background: -moz-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #F54B32), color-stop(77%, #F54B32), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
-    background: -o-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
-    background: linear-gradient(to bottom, #F54B32 0%, #F54B32 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+#questions .questions-background.environmental {
+  background: -webkit-linear-gradient(top, #005064 0%, #001820 60%, #010000 100%);
+  background: -o-linear-gradient(top, #005064 0%, #001820 60%, #010000 100%);
+  background: -ms-linear-gradient(top, #005064 0%, #001820 60%, #010000 100%);
+  background: -moz-linear-gradient(top, #005064 0%, #001820 60%, #010000 100%);
+  background: linear-gradient(to bottom, #005064 0%, #001820 60%, #010000 100%); }
+#questions .questions-background.ethical {
+  background: -webkit-linear-gradient(top, #00ded3 0%, #008c84 40%, #00524e 60%, #001c1a 80%, #010000 100%);
+  background: -o-linear-gradient(top, #00ded3 0%, #008c84 40%, #00524e 60%, #001c1a 80%, #010000 100%);
+  background: -ms-linear-gradient(top, #00ded3 0%, #008c84 40%, #00524e 60%, #001c1a 80%, #010000 100%);
+  background: -moz-linear-gradient(top, #00ded3 0%, #008c84 40%, #00524e 60%, #001c1a 80%, #010000 100%);
+  background: linear-gradient(to bottom, #00ded3 0%, #008c84 40%, #00524e 60%, #001c1a 80%, #010000 100%); }
+#questions .questions-background.financial {
+  background: -webkit-linear-gradient(top, #00b02b 0%, #006d17 40%, #003f09 60%, #001303 80%, #010000 100%);
+  background: -o-linear-gradient(top, #00b02b 0%, #006d17 40%, #003f09 60%, #001303 80%, #010000 100%);
+  background: -ms-linear-gradient(top, #00b02b 0%, #006d17 40%, #003f09 60%, #001303 80%, #010000 100%);
+  background: -moz-linear-gradient(top, #00b02b 0%, #006d17 40%, #003f09 60%, #001303 80%, #010000 100%);
+  background: linear-gradient(to bottom, #00b02b 0%, #006d17 40%, #003f09 60%, #001303 80%, #010000 100%); }
+#questions .questions-background.healthandsafety {
+  background: -webkit-linear-gradient(top, #8feb00 0%, #5a9400 40%, #345700 60%, #111e00 80%, #010000 100%);
+  background: -o-linear-gradient(top, #8feb00 0%, #5a9400 40%, #345700 60%, #111e00 80%, #010000 100%);
+  background: -ms-linear-gradient(top, #8feb00 0%, #5a9400 40%, #345700 60%, #111e00 80%, #010000 100%);
+  background: -moz-linear-gradient(top, #8feb00 0%, #5a9400 40%, #345700 60%, #111e00 80%, #010000 100%);
+  background: linear-gradient(to bottom, #8feb00 0%, #5a9400 40%, #345700 60%, #111e00 80%, #010000 100%); }
+#questions .questions-background.recreational {
+  background: -webkit-linear-gradient(top, #ffc900 0%, #ad7e00 40%, #684900 60%, #271800 80%, #010000 100%);
+  background: -o-linear-gradient(top, #ffc900 0%, #ad7e00 40%, #684900 60%, #271800 80%, #010000 100%);
+  background: -ms-linear-gradient(top, #ffc900 0%, #ad7e00 40%, #684900 60%, #271800 80%, #010000 100%);
+  background: -moz-linear-gradient(top, #ffc900 0%, #ad7e00 40%, #684900 60%, #271800 80%, #010000 100%);
+  background: linear-gradient(to bottom, #ffc900 0%, #ad7e00 40%, #684900 60%, #271800 80%, #010000 100%); }
+#questions .questions-background.socialandpolitical {
+  background: -webkit-linear-gradient(top, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%);
+  background: -o-linear-gradient(top, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%);
+  background: -ms-linear-gradient(top, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%);
+  background: -moz-linear-gradient(top, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%);
+  background: linear-gradient(to bottom, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%); }
 #questions .header-row {
   display: table;
   position: relative;
@@ -7968,94 +8045,73 @@ input.auth-input {
   margin-top: 50px;
   padding: 0 10px;
   text-align: center; }
-#questions .answers-row {
-  margin-top: 50px; }
-  #questions .answers-row .riskfactor-btn {
-    border-color: #ffffff;
-    color: #ffffff;
-    margin: 0 auto; }
-    #questions .answers-row .riskfactor-btn:first-child {
-      margin-right: 20px; }
-    #questions .answers-row .riskfactor-btn:last-child {
-      margin-left: 20px; }
-#questions .countdown-timer {
-  color: white;
-  text-align: center; }
+#questions .bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 50px; }
+  #questions .bottom .answers-row {
+    margin-top: 50px; }
+    #questions .bottom .answers-row .riskfactor-btn {
+      border-color: #ffffff;
+      border-radius: 50%;
+      color: #ffffff;
+      height: 75px;
+      margin: 0 auto;
+      padding: 0;
+      width: 75px; }
+      #questions .bottom .answers-row .riskfactor-btn:first-child {
+        margin-right: 20px; }
+      #questions .bottom .answers-row .riskfactor-btn:last-child {
+        margin-left: 20px; }
+  #questions .bottom .countdown-timer {
+    color: white;
+    text-align: center;
+    margin-top: 60px; }
 
-#results .questions-background {
-  background: #0B5164;
-  background: -moz-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, #0B5164), color-stop(77%, #0B5164), color-stop(100%, #000000));
-  background: -webkit-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-  background: -o-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-  background: -ms-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-  background: linear-gradient(to bottom, #0B5164 0%, #0B5164 77%, #000000 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #results .questions-background.environmental {
-    background: #0B5164;
-    background: -moz-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #0B5164), color-stop(77%, #0B5164), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-    background: -o-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #0B5164 0%, #0B5164 77%, #000000 100%);
-    background: linear-gradient(to bottom, #0B5164 0%, #0B5164 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #results .questions-background.ethical {
-    background: #51DED3;
-    background: -moz-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #51DED3), color-stop(77%, #51DED3), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
-    background: -o-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #51DED3 0%, #51DED3 77%, #000000 100%);
-    background: linear-gradient(to bottom, #51DED3 0%, #51DED3 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #results .questions-background.financial {
-    background: #4BAF3C;
-    background: -moz-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #4BAF3C), color-stop(77%, #4BAF3C), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
-    background: -o-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
-    background: linear-gradient(to bottom, #4BAF3C 0%, #4BAF3C 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #results .questions-background.healthandsafety {
-    background: #AFEB00;
-    background: -moz-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #AFEB00), color-stop(77%, #AFEB00), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
-    background: -o-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #AFEB00 0%, #AFEB00 77%, #000000 100%);
-    background: linear-gradient(to bottom, #AFEB00 0%, #AFEB00 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #results .questions-background.recreational {
-    background: #FFC800;
-    background: -moz-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #FFC800), color-stop(77%, #FFC800), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
-    background: -o-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #FFC800 0%, #FFC800 77%, #000000 100%);
-    background: linear-gradient(to bottom, #FFC800 0%, #FFC800 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
-  #results .questions-background.socialandpolitical {
-    background: #F54B32;
-    background: -moz-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #F54B32), color-stop(77%, #F54B32), color-stop(100%, #000000));
-    background: -webkit-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
-    background: -o-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
-    background: -ms-linear-gradient(top, #F54B32 0%, #F54B32 77%, #000000 100%);
-    background: linear-gradient(to bottom, #F54B32 0%, #F54B32 77%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+#results .questions-background.environmental {
+  background: -webkit-linear-gradient(top, #005064 0%, #001820 60%, #010000 100%);
+  background: -o-linear-gradient(top, #005064 0%, #001820 60%, #010000 100%);
+  background: -ms-linear-gradient(top, #005064 0%, #001820 60%, #010000 100%);
+  background: -moz-linear-gradient(top, #005064 0%, #001820 60%, #010000 100%);
+  background: linear-gradient(to bottom, #005064 0%, #001820 60%, #010000 100%); }
+#results .questions-background.ethical {
+  background: -webkit-linear-gradient(top, #00ded3 0%, #008c84 40%, #00524e 60%, #001c1a 80%, #010000 100%);
+  background: -o-linear-gradient(top, #00ded3 0%, #008c84 40%, #00524e 60%, #001c1a 80%, #010000 100%);
+  background: -ms-linear-gradient(top, #00ded3 0%, #008c84 40%, #00524e 60%, #001c1a 80%, #010000 100%);
+  background: -moz-linear-gradient(top, #00ded3 0%, #008c84 40%, #00524e 60%, #001c1a 80%, #010000 100%);
+  background: linear-gradient(to bottom, #00ded3 0%, #008c84 40%, #00524e 60%, #001c1a 80%, #010000 100%); }
+#results .questions-background.financial {
+  background: -webkit-linear-gradient(top, #00b02b 0%, #006d17 40%, #003f09 60%, #001303 80%, #010000 100%);
+  background: -o-linear-gradient(top, #00b02b 0%, #006d17 40%, #003f09 60%, #001303 80%, #010000 100%);
+  background: -ms-linear-gradient(top, #00b02b 0%, #006d17 40%, #003f09 60%, #001303 80%, #010000 100%);
+  background: -moz-linear-gradient(top, #00b02b 0%, #006d17 40%, #003f09 60%, #001303 80%, #010000 100%);
+  background: linear-gradient(to bottom, #00b02b 0%, #006d17 40%, #003f09 60%, #001303 80%, #010000 100%); }
+#results .questions-background.healthandsafety {
+  background: -webkit-linear-gradient(top, #8feb00 0%, #5a9400 40%, #345700 60%, #111e00 80%, #010000 100%);
+  background: -o-linear-gradient(top, #8feb00 0%, #5a9400 40%, #345700 60%, #111e00 80%, #010000 100%);
+  background: -ms-linear-gradient(top, #8feb00 0%, #5a9400 40%, #345700 60%, #111e00 80%, #010000 100%);
+  background: -moz-linear-gradient(top, #8feb00 0%, #5a9400 40%, #345700 60%, #111e00 80%, #010000 100%);
+  background: linear-gradient(to bottom, #8feb00 0%, #5a9400 40%, #345700 60%, #111e00 80%, #010000 100%); }
+#results .questions-background.recreational {
+  background: -webkit-linear-gradient(top, #ffc900 0%, #ad7e00 40%, #684900 60%, #271800 80%, #010000 100%);
+  background: -o-linear-gradient(top, #ffc900 0%, #ad7e00 40%, #684900 60%, #271800 80%, #010000 100%);
+  background: -ms-linear-gradient(top, #ffc900 0%, #ad7e00 40%, #684900 60%, #271800 80%, #010000 100%);
+  background: -moz-linear-gradient(top, #ffc900 0%, #ad7e00 40%, #684900 60%, #271800 80%, #010000 100%);
+  background: linear-gradient(to bottom, #ffc900 0%, #ad7e00 40%, #684900 60%, #271800 80%, #010000 100%); }
+#results .questions-background.socialandpolitical {
+  background: -webkit-linear-gradient(top, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%);
+  background: -o-linear-gradient(top, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%);
+  background: -ms-linear-gradient(top, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%);
+  background: -moz-linear-gradient(top, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%);
+  background: linear-gradient(to bottom, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%); }
 #results .header-row {
   display: table;
   position: relative;
-  background: #000000;
-  background: -moz-linear-gradient(top, #000000 0%, #000000 77%, #000000 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, #000000), color-stop(77%, #000000), color-stop(100%, #000000));
-  background: -webkit-linear-gradient(top, #000000 0%, #000000 77%, #000000 100%);
-  background: -o-linear-gradient(top, #000000 0%, #000000 77%, #000000 100%);
-  background: -ms-linear-gradient(top, #000000 0%, #000000 77%, #000000 100%);
-  background: linear-gradient(to bottom, #000000 0%, #000000 77%, #000000 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#000000', GradientType=0 ); }
+  background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -o-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -ms-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: -moz-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
+  background: linear-gradient(to bottom, #010000 0%, #3d3a3a 72%, #524f4e 100%); }
   #results .header-row h5 {
     position: absolute;
     color: #ffffff; }

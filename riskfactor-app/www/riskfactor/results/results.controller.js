@@ -47,6 +47,10 @@ riskfactorApp.controller('ResultsController', function ($scope, $state, $q, auth
     updateResult();
   };
 
+  $scope.goToContact = function (index) {
+    $state.go('contact');
+  };
+
   $scope.leftSwipe = function () {
     if (currentQuestionIndex == 0) {
       return;

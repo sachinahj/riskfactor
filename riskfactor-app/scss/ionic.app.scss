@@ -25,10 +25,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "helpers/normalize";
 @import "helpers/mixins";
 @import "helpers/layout";
+@import "helpers/fonts";
 
 
 
 @import "pages/splash.scss";
+@import "pages/about.scss";
+@import "pages/contact.scss";
 @import "pages/login.scss";
 @import "pages/loginfacebook.scss";
 @import "pages/registration.scss";

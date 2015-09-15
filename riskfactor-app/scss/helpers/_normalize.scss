@@ -9,7 +9,25 @@ span {
   margin: 0;
 }
 
-.row,,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+input,
+select,
+textarea,
+button,
+div {
+  color: $white;
+  font-family: 'Droid Sans';
+}
+
+.row,
+,
 .row + .row {
   padding: 0;
   margin: 0;

@@ -1,14 +1,14 @@
 #splash {
+  @include background-gradient-black;
+
   h5 {
     margin-top: 15%;
     text-align: center;
   }
-
   img {
     max-width: 100%;
     height: auto;
   }
-
   .riskfactor-btn {
     &.about {
       margin-top: 20px;

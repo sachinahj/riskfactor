@@ -10,9 +10,21 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
     $state.go('registration');
   }
 
-  $scope.goToFacebook = function () {
+  $scope.loginWithFacebook = function () {
+    authService.loginWithFacebook(function (error, authData) {
+      if (error) {
+        // return setErrorMssage(error);
+        console.log("loginWithFacebook error:", error);
+        return;
+      }
+      console.log("authData", authData);
+      $state.go('questions');
+    });
+  }
+
+  $scope.goToSplash = function () {
     $scope.user = {};
-    $state.go('loginfacebook');
+    $state.go('splash');
   }
 
   $scope.login = function () {

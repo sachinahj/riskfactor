@@ -1,27 +1,24 @@
 #questions {
-
   .questions-background {
-    @include background-gradient ($environmental);
     &.environmental {
-      @include background-gradient ($environmental);
+      @include background-gradient-environmental;
     }
     &.ethical {
-      @include background-gradient ($ethical);
+      @include background-gradient-ethical;
     }
     &.financial {
-      @include background-gradient ($financial);
+      @include background-gradient-financial;
     }
     &.healthandsafety {
-      @include background-gradient ($healthandsafety);
+      @include background-gradient-healthandsafety;
     }
     &.recreational {
-      @include background-gradient ($recreational);
+      @include background-gradient-recreational;
     }
     &.socialandpolitical {
-      @include background-gradient ($socialandpolitical);
+      @include background-gradient-socialandpolitical;
     }
   }
-
   .header-row {
     display: table;
     position: relative;
@@ -55,22 +52,32 @@
     padding: 0 10px;
     text-align: center;
   }
-  .answers-row {
-    margin-top: 50px;
-    .riskfactor-btn {
-      border-color: $white;
-      color: $white;
-      margin: 0 auto;
-      &:first-child {
-        margin-right: 20px;
-      }
-      &:last-child {
-        margin-left: 20px;
+  .bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 50px;
+    .answers-row {
+      margin-top: 50px;
+      .riskfactor-btn {
+        border-color: $white;
+        border-radius: 50%;
+        color: $white;
+        height: 75px;
+        margin: 0 auto;
+        padding: 0;
+        width: 75px;
+        &:first-child {
+          margin-right: 20px;
+        }
+        &:last-child {
+          margin-left: 20px;
+        }
       }
     }
-  }
-  .countdown-timer {
-    color: white;
-    text-align: center;
+    .countdown-timer {
+      color: white;
+      text-align: center;
+      margin-top: 60px;
+    }
   }
 }

@@ -10,12 +10,14 @@
     <h5 class="sub-title">question of the day</h5>
     <h4 class="question">{{currentQuestion.question}}</h4>
 
-    <div class="row answers-row">
-      <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion.id, currentQuestion.answers[0])">{{currentQuestion.answers[0]}}</button>
-      <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion.id, currentQuestion.answers[1])">{{currentQuestion.answers[1]}}</button>
-    </div>
+    <div class="bottom">
+      <div class="row answers-row">
+        <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion.id, currentQuestion.answers[0])">{{currentQuestion.answers[0]}}</button>
+        <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion.id, currentQuestion.answers[1])">{{currentQuestion.answers[1]}}</button>
+      </div>
 
-    <h4 class="countdown-timer">:{{countdown}}</h4>
+      <h2 class="countdown-timer">:{{countdown}}</h2>
+    </div>
 
   </ion-content>
 </ion-view>
