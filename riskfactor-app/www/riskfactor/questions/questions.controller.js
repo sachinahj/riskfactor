@@ -37,7 +37,7 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
     currentQuestionIndex++;
     if (currentQuestionIndex < totalQuestionsCount) {
       angular.extend($scope.currentQuestion, _questions[currentQuestionIndex]);
-      // resetTimer();
+      resetTimer();
     } else {
       dbService.saveAnswers(_answers);
       $state.go('results');
@@ -45,7 +45,7 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
   };
 
   function resetTimer () {
-    timerTime = 2000;
+    timerTime = 1000;
     timerInterval = setInterval(timer, 10);
 
     function timer () {

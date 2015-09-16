@@ -19,7 +19,7 @@ var riskfactorApp = angular.module('riskfactor', ['ionic'])
     }
 
     authService.logout();
-    // $state.go('results');
+
     var authData = authService.checkAuth();
     if (authData) {
       $state.go('questions');
@@ -30,6 +30,5 @@ var riskfactorApp = angular.module('riskfactor', ['ionic'])
 
   });
 })
-
 
 .constant('firebaseNamespace', "uthoughttoday");

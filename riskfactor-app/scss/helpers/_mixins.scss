@@ -128,11 +128,11 @@ $mobile-breakpoint: 768px !default; //568px !default;
 }
 
 @mixin background-gradient-black {
-  background: -webkit-linear-gradient(top, rgb(1, 0, 0) 0%, rgb(61, 58, 58) 72%, rgb(82, 79, 78) 100%);
-  background: -o-linear-gradient(top, rgb(1, 0, 0) 0%, rgb(61, 58, 58) 72%, rgb(82, 79, 78) 100%);
-  background: -ms-linear-gradient(top, rgb(1, 0, 0) 0%, rgb(61, 58, 58) 72%, rgb(82, 79, 78) 100%);
-  background: -moz-linear-gradient(top, rgb(1, 0, 0) 0%, rgb(61, 58, 58) 72%, rgb(82, 79, 78) 100%);
-  background: linear-gradient(to bottom, rgb(1, 0, 0) 0%, rgb(61, 58, 58) 72%, rgb(82, 79, 78) 100%);
+  background: -webkit-linear-gradient(top, rgb(1, 0, 0) 0%, rgb(61, 58, 58) 50%, rgb(82, 79, 78) 100%);
+  background: -o-linear-gradient(top, rgb(1, 0, 0) 0%, rgb(61, 58, 58) 50%, rgb(82, 79, 78) 100%);
+  background: -ms-linear-gradient(top, rgb(1, 0, 0) 0%, rgb(61, 58, 58) 50%, rgb(82, 79, 78) 100%);
+  background: -moz-linear-gradient(top, rgb(1, 0, 0) 0%, rgb(61, 58, 58) 50%, rgb(82, 79, 78) 100%);
+  background: linear-gradient(to bottom, rgb(1, 0, 0) 0%, rgb(61, 58, 58) 50%, rgb(82, 79, 78) 100%);
 }
 
 @mixin background-gradient-environmental {

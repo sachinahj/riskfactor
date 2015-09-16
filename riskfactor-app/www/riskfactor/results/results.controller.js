@@ -51,7 +51,7 @@ riskfactorApp.controller('ResultsController', function ($scope, $state, $q, auth
     $state.go('contact');
   };
 
-  $scope.leftSwipe = function () {
+  $scope.rightSwipe = function () {
     if (currentQuestionIndex == 0) {
       return;
     }
@@ -59,7 +59,7 @@ riskfactorApp.controller('ResultsController', function ($scope, $state, $q, auth
     updateResult();
   };
 
-  $scope.rightSwipe = function () {
+  $scope.leftSwipe = function () {
     if (currentQuestionIndex == (totalQuestionsCount - 1)) {
       return;
     }
