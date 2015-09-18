@@ -1,8 +1,5 @@
 riskfactorApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-  $urlRouterProvider.otherwise('/');
-
-
   $stateProvider
     .state('splash', {
       url: '/splash',
@@ -45,4 +42,5 @@ riskfactorApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigP
       controller: 'ContactController'
     });
 
+  $urlRouterProvider.otherwise('splash');
 });

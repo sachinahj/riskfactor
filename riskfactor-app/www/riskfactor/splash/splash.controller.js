@@ -7,6 +7,4 @@ riskfactorApp.controller('SplashController', function ($scope, $state) {
   $scope.goToAbout = function () {
     $state.go('about');
   }
-
-
 });

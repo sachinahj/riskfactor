@@ -38,6 +38,11 @@
   padding: 10px 20px;
   text-align: center;
   text-transform: uppercase;
+  @include button-click;
+  &:active {
+    background-color: $white;
+    color: $black;
+  }
 }
 
 input.auth-input {

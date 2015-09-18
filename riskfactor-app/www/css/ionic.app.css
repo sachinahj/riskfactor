@@ -7819,6 +7819,13 @@ h1, h2, h3, h4, h5, h6, p, span, input, select, textarea, button, div {
   padding: 10px 20px;
   text-align: center;
   text-transform: uppercase; }
+  .riskfactor-btn:active {
+    position: relative;
+    top: 1px;
+    left: 1px; }
+  .riskfactor-btn:active {
+    background-color: #ffffff;
+    color: #000000; }
 
 input.auth-input {
   background-color: transparent;
