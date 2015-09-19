@@ -79,30 +79,28 @@ function insertAndUpdateQuestions() {
     for (var i = 0; i < length; i++) {
       var question = questions[i];
 
-      // insert new question if there is no ID
-      if (!question.id &&
-        question.question &&
-        question.category &&
-        question.stat &&
-        question.source &&
-        question.answer1Choice &&
-        question.answer2Choice
-      ) {
-        insertQuestion(question);
-        actual++;
-      }
-
       if (
-        question.id &&
         question.question &&
-        question.category &&
-        question.stat &&
-        question.source
+        (
+        question.category == "environmental" ||
+        question.category == "ethical" ||
+        question.category == "financial" ||
+        question.category == "healthandsafety" ||
+        question.category == "recreational" ||
+        question.category == "socialandpolitical"
+        ) &&
+        question.stat
       ) {
-        updateQuestion(question);
-        actual++;
+        if (!question.id) {
+          if (question.answer1Choice && question.answer2Choice) {
+            insertQuestion(question);
+            actual++;
+          }
+        } else {
+          updateQuestion(question);
+          actual++;
+        }
       }
-
     }
 
     console.log("length", length);
@@ -144,7 +142,7 @@ function insertAndUpdateQuestions() {
       date_updated: Firebase.ServerValue.TIMESTAMP
     }
 
-    fbQuestionsRef.child(question.id).update(pushId);
+    fbQuestionsRef.child(question.id).update(questionToUpdate);
     return questionToUpdate;
   }
 };

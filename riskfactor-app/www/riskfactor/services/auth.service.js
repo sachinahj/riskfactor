@@ -3,6 +3,7 @@ riskfactorApp.factory('authService', function (firebaseNamespace) {
   var authService = {};
   var rootFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com");
   var usersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/users");
+  var _authData = null;
 
 
   authService.checkAuth = function (callback) {
@@ -42,8 +43,13 @@ riskfactorApp.factory('authService', function (firebaseNamespace) {
       if (error) {
         return callback(error.message, null);
       }
+      _authData = authData;
       return callback(null, authData);
     })
+  };
+
+  authService.getUser = function () {
+    return _authData;
   };
 
   authService.loginWithFacebook = function (callback) {

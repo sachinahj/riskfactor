@@ -1,4 +1,4 @@
-riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, authService) {
+riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, authService, dbService) {
   $scope.user = {};
   $scope.feedback = {};
 
@@ -13,12 +13,14 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
   $scope.loginWithFacebook = function () {
     authService.loginWithFacebook(function (error, authData) {
       if (error) {
-        // return setErrorMssage(error);
-        console.log("loginWithFacebook error:", error);
-        return;
+        return setErrorMssage(error);
       }
-      console.log("authData", authData);
-      $state.go('questions');
+      dbService.checkForQuestions(function (error, questions) {
+        if (error) {
+          return setErrorMssage(error);
+        }
+        $state.go('questions');
+      });
     });
   }
 
@@ -40,7 +42,12 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
       if (error) {
         return setErrorMssage(error);
       }
-      $state.go('questions');
+      dbService.checkForQuestions(function (error, questions) {
+        if (error) {
+          return setErrorMssage(error);
+        }
+        $state.go('questions');
+      });
     });
   }
 
