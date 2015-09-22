@@ -1,6 +1,7 @@
 riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, authService, dbService) {
   $scope.user = {};
   $scope.feedback = {};
+  $scope.loading = false;
 
   $scope.user.email = "sachinahj@gmail.com";
   $scope.user.password = "riskfactor";
@@ -15,11 +16,19 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
       if (error) {
         return setErrorMssage(error);
       }
-      dbService.checkForQuestions(function (error, questions) {
+      dbService.checkForQuestions(function (error, isQuestions) {
         if (error) {
           return setErrorMssage(error);
         }
-        $state.go('questions');
+        if (isQuestions) {
+          $state.go('status', {
+            type: "new"
+          });
+        } else {
+          $state.go('status', {
+            type: "none"
+          });
+        }
       });
     });
   }
@@ -30,23 +39,36 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
   }
 
   $scope.login = function () {
+    $scope.loading = true;
     if (!$scope.user.email) {
+      $scope.loading = false;
       return setErrorMssage("Please make sure you entered an email address");
     }
 
     if (!$scope.user.password) {
+      $scope.loading = false;
       return setErrorMssage("Please make sure you entered an password");
     }
 
     authService.login($scope.user, function (error, userAuthData) {
       if (error) {
+        $scope.loading = false;
         return setErrorMssage(error);
       }
-      dbService.checkForQuestions(function (error, questions) {
+      dbService.checkForQuestions(function (error, isQuestions) {
         if (error) {
+          $scope.loading = false;
           return setErrorMssage(error);
         }
-        $state.go('questions');
+        if (isQuestions) {
+          $state.go('status', {
+            type: "new"
+          });
+        } else {
+          $state.go('status', {
+            type: "none"
+          });
+        }
       });
     });
   }

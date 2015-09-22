@@ -15,6 +15,7 @@
     margin-top: 15px;
     width: 40%;
     height: auto;
+    @include button-click;
   }
 
   h5 {

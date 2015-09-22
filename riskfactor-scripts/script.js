@@ -76,8 +76,72 @@ function insertAndUpdateQuestions() {
     var actual = 0;
     var length = questions.length;
 
+    var summary = {
+      "environmental": 0,
+      "ethical": 0,
+      "financial": 0,
+      "healthandsafety": 0,
+      "recreational": 0,
+      "socialandpolitical": 0
+    };
+
     for (var i = 0; i < length; i++) {
       var question = questions[i];
+
+      // console.log("============================ " + "Row " + (i + 1) + " ============================");
+      // console.log("question:", question.question);
+      // console.log("category:", question.category);
+      // console.log("stat:", question.stat);
+      // console.log("source:", question.source);
+      // console.log("answer1Choice:", question.answer1Choice);
+      // console.log("answer2Choice:", question.answer2Choice);
+      // console.log("-------------------------------------------------");
+
+      // if (!question.question) {
+      //   console.log("BAD question");
+      // }
+      // if (!(
+      //   question.category == "environmental" ||
+      //   question.category == "ethical" ||
+      //   question.category == "financial" ||
+      //   question.category == "healthandsafety" ||
+      //   question.category == "recreational" ||
+      //   question.category == "socialandpolitical"
+      //   )) {
+      //   console.log("BAD category");
+      // }
+
+      // if (!question.stat) {
+      //   console.log("BAD stat");
+      // }
+
+      // if (!question.source) {
+      //   console.log("BAD source");
+      // }
+
+      // if (!question.answer1Choice || !question.answer2Choice) {
+      //   console.log("BAD answer choices");
+      // }
+
+      // if (
+      //   question.question &&
+      //   (
+      //   question.category == "environmental" ||
+      //   question.category == "ethical" ||
+      //   question.category == "financial" ||
+      //   question.category == "healthandsafety" ||
+      //   question.category == "recreational" ||
+      //   question.category == "socialandpolitical"
+      //   ) &&
+      //   question.stat &&
+      //   question.source &&
+      //   question.answer1Choice &&
+      //   question.answer2Choice
+      // ) {
+      //   console.log("GOOD");
+      //   actual++;
+      //   summary[question.category]+=1;
+      // }
 
       if (
         question.question &&
@@ -102,19 +166,27 @@ function insertAndUpdateQuestions() {
         }
       }
     }
+    // console.log("\n");
+    // console.log("||||||||||||||||||||summary||||||||||||||||||||||||");
 
-    console.log("length", length);
-    console.log("actual", actual);
+    // console.log("---------questions count by category---------");
+    // for (var category in summary) {
+    //   console.log(category, "--->", summary[category]);
+    // }
+    console.log("total rows:", length);
+    console.log("valid questions:", actual);
   });
 
   fileStream.pipe(csvConverter);
 
   function insertQuestion(question) {
     var id = uid(10);
+    question.answer1Choice = String(question.answer1Choice).toLowerCase();
+    question.answer2Choice = String(question.answer2Choice).toLowerCase();
 
     var responses = {};
-    responses[question.answer1Choice] = 0;
-    responses[question.answer2Choice] = 0;
+    responses['0'] = 0;
+    responses['1'] = 0;
     responses.total = 0;
 
     var questionToInsert = {
@@ -129,7 +201,12 @@ function insertAndUpdateQuestions() {
       date_updated: Firebase.ServerValue.TIMESTAMP
     }
 
-    fbQuestionsRef.child(id).set(questionToInsert);
+    console.log("id", id);
+    console.log("questionToInsert", questionToInsert);
+
+    fbQuestionsRef.child(id).set(questionToInsert, function () {
+      console.log("inser");
+    });
     return questionToInsert;
   }
 

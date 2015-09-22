@@ -1,0 +1,17 @@
+<ion-view view-title="Status" id="status" animation="slide-right-left">
+  <ion-content scroll="false">
+    <img class="top" src="img/clouds/home-cloud.png"/>
+
+    <h1 ng-show="view == 'new'">You have new questions!!</h1>
+    <h1 ng-show="view == 'next'">Next Question</h1>
+    <h1 ng-show="view == 'done'">All done. See your results now.</h1>
+    <h1 ng-show="view == 'none'">No questions to answer now. Check back tomorrow</h1>
+
+    <button ng-click="nextQuestions()" ng-show="view == 'new'" class="riskfactor-btn">Start!</button>
+
+    <button ng-click="nextQuestions()" ng-show="view == 'next'" class="riskfactor-btn">Next!</button>
+
+    <button ng-click="results()" ng-show="view == 'done'" class="riskfactor-btn">Results</button>
+
+  </ion-content>
+</ion-view>

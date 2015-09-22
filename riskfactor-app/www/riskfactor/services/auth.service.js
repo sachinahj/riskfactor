@@ -7,7 +7,8 @@ riskfactorApp.factory('authService', function (firebaseNamespace) {
 
 
   authService.checkAuth = function (callback) {
-    return rootFbRef.getAuth();
+    _authData = rootFbRef.getAuth();
+    return _authData;
   }
 
   authService.register = function (newUser, callback) {

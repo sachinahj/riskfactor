@@ -16,30 +16,18 @@ riskfactorApp.controller('ResultsController', function ($scope, $state, $q, auth
   var questionsDeferred = $q.defer();
   var answersDeferred = $q.defer();
 
-  dbService.getQuestions(function (error, questions) {
-    if (error) {
-      questionsDeferred.reject();
-    }
-    $scope.questions = questions;
-    totalQuestionsCount = $scope.questions.length;
-    return questionsDeferred.resolve();
-  });
+  $scope.questions = dbService.getQuestions()
+  totalQuestionsCount = $scope.questions.length;
+  _answers = dbService.getAnswers();
+  updateResult();
 
-  dbService.getAnswers(function (error, answers) {
-    if (error) {
-      answersDeferred.reject();
-    }
-    _answers = answers;
-    return answersDeferred.resolve();
-  });
-
-  $q.all([$scope.questions.promise, _answers.promise]).then(function () {
-    updateResult();
-  });
 
   function updateResult() {
     $scope.currentQuestion = $scope.questions[currentQuestionIndex];
     $scope.currentAnswer = _answers[$scope.currentQuestion.id];
+
+    console.log("$scope.currentQuestion", $scope.currentQuestion);
+    console.log("$scope.currentAnswer", $scope.currentAnswer);
   };
 
   $scope.goToQuestion = function (index) {

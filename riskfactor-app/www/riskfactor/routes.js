@@ -11,6 +11,12 @@ riskfactorApp.config(function ($stateProvider, $urlRouterProvider, $ionicConfigP
       templateUrl: 'riskfactor/splash/about.html',
       controller: 'AboutController'
     })
+    .state('status', {
+      url: '/status',
+      templateUrl: 'riskfactor/splash/status.html',
+      controller: 'StatusController',
+      params: {'type': true}
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'riskfactor/auth/login.html',
