@@ -2,22 +2,21 @@ riskfactorApp.controller('StatusController', function ($scope, $state, $statePar
 
   $scope.view = $stateParams.type;
 
-
   $scope.nextQuestions = function () {
-    disableTransition();
+    $scope.view = null;
     $state.go('questions');
-  }
+  };
 
   $scope.results = function () {
-    console.log("go");
-    disableTransition();
+    $scope.view = null;
     $state.go('results');
-  }
+  };
 
-  function disableTransition() {
+  $scope.$on('$ionicView.enter', function () {
+    $scope.view = $stateParams.type;
     $ionicHistory.nextViewOptions({
       disableAnimate: true,
       disableBack: true
     });
-  }
+  });
 });

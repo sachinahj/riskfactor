@@ -7951,6 +7951,9 @@ input.auth-input {
   color: #000000;
   margin-top: 10px;
   padding: 5px 20px; }
+  #contact .riskfactor-btn:active {
+    background-color: #000000;
+    color: #ffffff; }
 #contact .thanks {
   height: 268px; }
   #contact .thanks h3 {
@@ -7964,6 +7967,10 @@ input.auth-input {
   padding-bottom: 10px;
   width: 40%;
   height: auto; }
+  #contact img.go-back:active {
+    position: relative;
+    top: 1px;
+    left: 1px; }
 #contact .bottom {
   position: absolute;
   bottom: 20px; }
@@ -8148,6 +8155,10 @@ input.auth-input {
         margin-left: 20px; }
       #questions .bottom .answers-row .riskfactor-btn div {
         width: 100%; }
+      #questions .bottom .answers-row .riskfactor-btn:active {
+        background-color: #ffffff; }
+        #questions .bottom .answers-row .riskfactor-btn:active div {
+          color: #000000; }
   #questions .bottom .countdown-timer {
     color: white;
     text-align: center;

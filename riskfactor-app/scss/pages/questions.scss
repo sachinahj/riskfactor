@@ -74,6 +74,12 @@
         div {
           width: 100%;
         }
+        &:active {
+          background-color: $white;
+          div {
+            color: $black;
+          }
+        }
       }
     }
     .countdown-timer {

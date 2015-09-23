@@ -49,7 +49,7 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
 
             console.log("_questionsForDay", _questionsForDay);
 
-            if (!hasNull(_questionsForDay)) {
+            if (_questionsForDay.length == 6 && !hasNull(_questionsForDay)) {
               return callback(null, true);
             } else {
               return callback(null, false);
@@ -82,11 +82,12 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
         var possibleQuestions = [];
         for (var questionId in questions) {
           if (!answeredQuestions.hasOwnProperty(questionId)) {
-            possibleQuestions.push(questions[questionId])
+            possibleQuestions.push(questions[questionId]);
           }
         }
         var question = possibleQuestions[Math.floor(Math.random() * possibleQuestions.length)];
-        deferred.resolve(question)
+        console.log("chosen question", question);
+        deferred.resolve(question);
       });
       return deferred.promise;
     }
@@ -122,7 +123,7 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
     console.log("answer", answer);
     var user = authService.getUser();
     _answers[questionId] = answer;
-    usersFbRef.child(user.uid).child('answered').child(questionId).set(answer);
+    // usersFbRef.child(user.uid).child('answered').child(questionId).set(answer);
 
     if (answer != null) {
       questionsFbRef.child(questionId).child('responses').child(answer).transaction(function (answerCount) {

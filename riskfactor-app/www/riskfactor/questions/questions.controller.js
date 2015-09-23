@@ -7,10 +7,6 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
   }
 
 
-  // var _questions = [];
-  // var _answers = {};
-  // var currentQuestionIndex = -1;
-  // var totalQuestionsCount = 0;
   $scope.currentQuestion = {};
   $scope.nextQuestion = {};
   var timerInterval;
@@ -25,13 +21,13 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
 
   $scope.$on('$ionicView.enter', function () {
     $scope.currentQuestion = $scope.nextQuestion;
-    // resetTimer();
+    resetTimer();
+    $ionicHistory.nextViewOptions({
+      disableAnimate: true,
+      disableBack: true
+    });
   });
 
-  $ionicHistory.nextViewOptions({
-    disableAnimate: true,
-    disableBack: true
-  });
 
   $scope.answerQuestion = function (questionId, answer) {
     dbService.saveAnswer(questionId, answer);
@@ -40,12 +36,10 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
       $scope.nextQuestion = question;
       console.log("$scope.nextQuestion", $scope.nextQuestion);
       if ($scope.nextQuestion) {
-        disableTransition();
         $state.go('status', {
           type: 'next'
         });
       } else {
-        disableTransition();
         $state.go('status', {
           type: 'done'
         });
@@ -75,14 +69,6 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
         $scope.countdown = "0" + (timerTime / 100).toFixed(2);
       }, 0)
     }
-  };
-
-
-  function disableTransition() {
-    $ionicHistory.nextViewOptions({
-      disableAnimate: true,
-      disableBack: true
-    });
   };
 
 

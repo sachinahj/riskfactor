@@ -19,7 +19,11 @@
     <!-- 3rd party libraries -->
     <script src="lib/firebase/firebase.js"></script>
     <script src="lib/ngFitText/ng-FitText.js"></script>
+    <script src="lib/ngIOS9UIWebViewPatch/angular-ios9-uiwebview.patch.js"></script>
+    <script src="lib/ng-cordova/dist/ng-cordova.min.js"></script>
 
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="riskfactor/app.js"></script>
@@ -41,8 +45,6 @@
     <script src="riskfactor/services/db.service.js"></script>
 
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
 
   </head>
   <body ng-app="riskfactor">

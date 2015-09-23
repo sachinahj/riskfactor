@@ -10,10 +10,10 @@
         <div class="col"></div>
       </div>
 
-      <textarea placeholder="Comments..." ng-model="feedback" ng-show="!feedbackSent"></textarea>
+      <textarea placeholder="Comments..." ng-model="feedbackText" ng-show="!feedbackSent"></textarea>
 
       <div class="row flex-end">
-        <button class="riskfactor-btn" ng-click="sendFeedback()" ng-show="!feedbackSent">Send</button>
+        <button class="riskfactor-btn" ng-click="sendFeedback(feedbackText) && (feedbackText='')" ng-show="!feedbackSent">Send</button>
       </div>
 
       <div class="row thanks flex-center" ng-show="feedbackSent">
