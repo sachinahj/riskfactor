@@ -1,8 +1,9 @@
-riskfactorApp.factory('authService', function (firebaseNamespace) {
+riskfactorApp.factory('authService', function (firebaseNamespace, $firebaseAuth, $cordovaFacebook) {
 
   var authService = {};
   var rootFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com");
   var usersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/users");
+  var authFb = $firebaseAuth(rootFbRef);
   var _authData = null;
 
 
@@ -54,19 +55,33 @@ riskfactorApp.factory('authService', function (firebaseNamespace) {
   };
 
   authService.loginWithFacebook = function (callback) {
-    rootFbRef.authWithOAuthPopup("facebook", function (error, authData) {
-      if (error) {
-        return callback(error.message, null);
-      }
-
-      console.log("authData", authData);
-      saveFacebookData(authData, callback);
-    }, {
-      scope: "email,public_profile"
+    console.log("loginWithFacebook");
+    console.log("$cordovaFacebook", $cordovaFacebook);
+    $cordovaFacebook.login("1609083659371250", ["email", "public_profile"]).then(function (success) {
+      console.log("success", success);
+      authFb.$authWithOAuthToken("facebook", success.access_token).then(function (authData) {
+        console.log("authData", authData);
+      }, function (error) {
+        console.error("ERROR inside: " + error);
+      });
+    }, function (error) {
+      console.log("ERROR outside: " + error);
     });
 
 
-    function saveFacebookData (authData, callback) {
+    // rootFbRef.authWithOAuthPopup("facebook", function (error, authData) {
+    //   if (error) {
+    //     return callback(error.message, null);
+    //   }
+
+    //   console.log("authData", authData);
+    //   saveFacebookData(authData, callback);
+    // }, {
+    //   scope: "email,public_profile"
+    // });
+
+
+    function saveFacebookData(authData, callback) {
       var userToSave = {
         uid: authData.uid,
         age: authData.facebook.cachedUserProfile.age_range,

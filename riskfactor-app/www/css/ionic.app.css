@@ -8064,9 +8064,15 @@ input.auth-input {
         margin: 0 10px; }
   #registration .riskfactor-btn.registation-btn {
     margin-top: 60px; }
+  #registration .loading-img {
+    margin-top: 25px; }
   #registration .login-btn-row {
     position: absolute;
     bottom: 30px; }
+  #registration .feedback {
+    margin-top: 15px;
+    text-align: center;
+    padding: 0 5px; }
 
 #questions .questions-background {
   background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 50%, #524f4e 100%);

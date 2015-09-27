@@ -1,10 +1,11 @@
-riskfactorApp.controller('RegistrationController', function ($scope, $state, $timeout, authService) {
+riskfactorApp.controller('RegistrationController', function ($scope, $state, $timeout, authService, dbService) {
 
   $scope.ageOptions = [];
   $scope.locationOptions = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
   $scope.newUser = {};
   $scope.feedback = {};
   createAgeOptions();
+  $scope.loading = false;
 
   $scope.newUser.email = "sachinahj@gmail.com";
   $scope.newUser.password = "riskfactor";
@@ -20,23 +21,31 @@ riskfactorApp.controller('RegistrationController', function ($scope, $state, $ti
   };
 
   $scope.register = function () {
+    window.cordova.plugins.Keyboard.close();
+    $scope.loading = true;
+    $scope.feedback = {};
     if (!$scope.newUser.email) {
+      $scope.loading = false;
       return setErrorMssage("Please make sure you entered an email address");
     }
 
     if (!$scope.newUser.age) {
+      $scope.loading = false;
       return setErrorMssage("Please select your age");
     }
 
     if (!$scope.newUser.gender) {
+      $scope.loading = false;
       return setErrorMssage("Please select your gender");
     }
 
     if (!$scope.newUser.location) {
+      $scope.loading = false;
       return setErrorMssage("Please select your location");
     }
 
     if (!$scope.newUser.password || !$scope.newUser.passwordagain || $scope.newUser.password != $scope.newUser.passwordagain) {
+      $scope.loading = false;
       return setErrorMssage("Please make sure you entered matching passwords");
     }
 
@@ -46,14 +55,30 @@ riskfactorApp.controller('RegistrationController', function ($scope, $state, $ti
 
       authService.register($scope.newUser, function (error, newUser) {
         if (error) {
+          $scope.loading = false;
           return setErrorMssage(error);
         }
 
         authService.login(newUser, function (error, userAuthData) {
           if (error) {
+            $scope.loading = false;
             return setErrorMssage(error);
           }
-          $state.go('questions');
+          dbService.checkForQuestions(function (error, isQuestions) {
+            if (error) {
+              $scope.loading = false;
+              return setErrorMssage(error);
+            }
+            if (isQuestions) {
+              $state.go('status', {
+                type: "new"
+              });
+            } else {
+              $state.go('status', {
+                type: "none"
+              });
+            }
+          });
         });
       });
 
@@ -64,7 +89,7 @@ riskfactorApp.controller('RegistrationController', function ($scope, $state, $ti
     }
   };
 
-  function setErrorMssage (message) {
+  function setErrorMssage(message) {
     $timeout(function () {
       $scope.newUser.password = "";
       $scope.newUser.passwordagain = "";

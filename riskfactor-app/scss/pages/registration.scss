@@ -1,6 +1,5 @@
 #registration {
   @include background-gradient-black;
-
   h3.title {
     margin-top: 15%;
     text-align: center;
@@ -49,8 +48,17 @@
   .riskfactor-btn.registation-btn {
     margin-top: 60px;
   }
+  .loading-img {
+    margin-top: 25px;
+  }
   .login-btn-row {
     position: absolute;
     bottom: 30px;
+
+  }
+  .feedback {
+    margin-top: 15px;
+    text-align: center;
+    padding: 0 5px;
   }
 }

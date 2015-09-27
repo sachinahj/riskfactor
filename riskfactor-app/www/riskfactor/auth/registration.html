@@ -43,11 +43,13 @@
 
 
       <div class="row flex-center">
-        <button class="riskfactor-btn registation-btn" ng-click="register()">Sign Up!</button>
+        <button class="riskfactor-btn registation-btn" ng-click="register()" ng-show="!loading">Sign Up!</button>
+        <img src="img/loaders/balls.gif" class="loading-img" ng-show="loading"/>
       </div>
     </form>
 
-    <div class="row flex-center">
+
+    <div class="row flex-center feedback">
       <h5 ng-class="scope.feedback.type">{{feedback.message}}</h5>
     </div>
 

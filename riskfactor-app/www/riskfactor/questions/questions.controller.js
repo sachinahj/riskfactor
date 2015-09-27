@@ -13,19 +13,24 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
   var timerTime;
   $scope.countdown = 0;
 
-  dbService.getNextQuestion(function (question) {
-    $scope.currentQuestion = question;
-    $scope.nextQuestion = question;
-    console.log("$scope.currentQuestion", $scope.currentQuestion);
-  });
-
   $scope.$on('$ionicView.enter', function () {
-    $scope.currentQuestion = $scope.nextQuestion;
-    resetTimer();
     $ionicHistory.nextViewOptions({
       disableAnimate: true,
       disableBack: true
     });
+
+    if (!$scope.nextQuestion || !$scope.nextQuestion.id || dbService.isNewSet()) {
+      console.log("NO NEXT QUESTION");
+      dbService.getNextQuestion(function (question) {
+        console.log("getNextQuestion!", question);
+        $scope.currentQuestion = question;
+        $scope.nextQuestion = question;
+      });
+    } else {
+      $scope.currentQuestion = $scope.nextQuestion;
+    }
+
+    resetTimer();
   });
 
 
@@ -34,6 +39,7 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
     clearInterval(timerInterval);
     dbService.getNextQuestion(function (question) {
       $scope.nextQuestion = question;
+      console.log("$scope.currentQuestion", $scope.currentQuestion);
       console.log("$scope.nextQuestion", $scope.nextQuestion);
       if ($scope.nextQuestion) {
         $state.go('status', {
@@ -44,12 +50,11 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
           type: 'done'
         });
       }
-      console.log("$scope.currentQuestion", $scope.currentQuestion);
     });
   };
 
   function resetTimer() {
-    timerTime = 300;
+    timerTime = 1000;
     timerInterval = setInterval(timer, 10);
 
     function timer() {

@@ -8,12 +8,19 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
   var _answers = {};
   var lastCheck = null;
 
+  var isNewSetOfQuestions = true;
+
+  dbService.isNewSet = function () {
+    return isNewSetOfQuestions;
+  }
+
   dbService.checkForQuestions = function (callback) {
     if (!callback) {
       return;
     }
     var user = authService.getUser();
     var now = new Date();
+    console.log("============checkForQuestions===================");
     console.log("user", user);
 
     usersFbRef.child(user.uid).child('lastCheck').once('value', function (snapshot) {
@@ -29,6 +36,7 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
         now.getMonth() >= lastDate.getMonth() &&
         now.getDate() > lastDate.getDate()
       ) {
+        console.log("GETTING NEW QUESTIONS");
 
         // usersFbRef.child(user.uid).child('lastCheck').set(now.getTime());
 
@@ -47,9 +55,10 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
             _questionsForDay = results;
             _answers = {};
 
-            console.log("_questionsForDay", _questionsForDay);
+            // console.log("_questionsForDay", _questionsForDay);
 
             if (_questionsForDay.length == 6 && !hasNull(_questionsForDay)) {
+              isNewSetOfQuestions = true;
               return callback(null, true);
             } else {
               return callback(null, false);
@@ -77,6 +86,7 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
 
       questionsFbRef.orderByChild('category').equalTo(category).once('value', function (snapshot) {
         var questions = snapshot.val();
+        console.log("=======================getQuestionForCategory=======================");
         console.log("questions for category:", category, questions);
         console.log("size for category:", category, Object.keys(questions).length);
         var possibleQuestions = [];
@@ -87,6 +97,7 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
         }
         var question = possibleQuestions[Math.floor(Math.random() * possibleQuestions.length)];
         console.log("chosen question", question);
+        console.log("---------------");
         deferred.resolve(question);
       });
       return deferred.promise;
@@ -103,8 +114,10 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
   };
 
   dbService.getNextQuestion = function (callback) {
-    console.log("_questionsForDay", _questionsForDay);
+    console.log("============getNextQuestion============");
+    console.log("_questionsForDay", JSON.stringify(_questionsForDay));
     console.log("_answers", _answers);
+    console.log("----------------------------------");
     for (var i = 0; i < _questionsForDay.length; i++) {
       if (!_answers.hasOwnProperty(_questionsForDay[i].id)) {
         return callback(_questionsForDay[i]);
@@ -121,7 +134,9 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
     console.log("============saveAnswer============");
     console.log("questionId", questionId);
     console.log("answer", answer);
+    console.log("----------------------------------");
     var user = authService.getUser();
+    isNewSetOfQuestions = false;
     _answers[questionId] = answer;
     // usersFbRef.child(user.uid).child('answered').child(questionId).set(answer);
 

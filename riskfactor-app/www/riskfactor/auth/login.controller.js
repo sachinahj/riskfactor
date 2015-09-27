@@ -40,6 +40,7 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
 
   $scope.login = function () {
     $scope.loading = true;
+    $scope.feedback = {};
     if (!$scope.user.email) {
       $scope.loading = false;
       return setErrorMssage("Please make sure you entered an email address");
