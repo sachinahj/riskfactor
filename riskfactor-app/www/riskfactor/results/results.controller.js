@@ -6,21 +6,25 @@ riskfactorApp.controller('ResultsController', function ($scope, $state, $q, auth
     return;
   }
 
-  $scope.questions = [];
   var _answers = {};
   var currentQuestionIndex = 0;
   var totalQuestionsCount = 0;
   $scope.currentQuestion = {};
   $scope.currentAnswer;
+  $scope.questions = [];
 
-  var questionsDeferred = $q.defer();
-  var answersDeferred = $q.defer();
+  init();
+  $scope.$on('$ionicView.enter', function () {
+    init();
+  });
 
-  $scope.questions = dbService.getQuestions()
-  totalQuestionsCount = $scope.questions.length;
-  _answers = dbService.getAnswers();
-  updateResult();
-
+  function init() {
+    currentQuestionIndex = 0;
+    $scope.questions = dbService.getQuestions()
+    totalQuestionsCount = $scope.questions.length;
+    _answers = dbService.getAnswers();
+    updateResult();
+  };
 
   function updateResult() {
     $scope.currentQuestion = $scope.questions[currentQuestionIndex];

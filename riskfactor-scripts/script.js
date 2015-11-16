@@ -8,7 +8,6 @@ var uid = require('uid');
 var firebaseNamespace = "uthoughttoday";
 var firebaseKey = "2hFUpJ0cCyeUtA8vG6Dsa7wvnc65ByovpLM94CaW";
 var firebaseUrl = "https://" + firebaseNamespace + ".firebaseio.com";
-console.log("firebaseUrl", firebaseUrl);
 var fbConfigRef = new Firebase(firebaseUrl).child('config');
 var fbQuestionsRef = new Firebase(firebaseUrl).child('questions');
 
@@ -16,8 +15,11 @@ var csvConverter = new Converter({
   constructResult: true
 });
 
-insertAndUpdateQuestions();
+console.log("firebaseUrl", firebaseUrl);
+
+// insertAndUpdateQuestions();
 // getLatestCSV();
+validateCSV();
 
 
 function getLatestCSV() {
@@ -63,7 +65,80 @@ function getLatestCSV() {
   });
 };
 
+function validateCSV() {
+  var fileStream = fs.createReadStream("./csvs/production_db.csv");
+  csvConverter.on("end_parsed", function (questions) {
 
+    var summary = {
+      "environmental": 0,
+      "ethical": 0,
+      "financial": 0,
+      "healthandsafety": 0,
+      "recreational": 0,
+      "socialandpolitical": 0
+    };
+    var actual = 0;
+    var length = questions.length;
+
+    for (var i = 0; i < length; i++) {
+      var question = questions[i];
+      var isValid = true;
+
+      console.log("============================ " + "Row " + (i + 1) + " ============================");
+      console.log("question:", question.question);
+      console.log("category:", question.category);
+      console.log("stat:", question.stat);
+      console.log("source:", question.source);
+      console.log("answer1Choice:", question.answer1Choice);
+      console.log("answer2Choice:", question.answer2Choice);
+      console.log("-------------------------------------------------");
+
+      if (!question.question) {
+        console.log("BAD question");
+        isValid = false;
+      }
+      if (!(
+          question.category == "environmental" ||
+          question.category == "ethical" ||
+          question.category == "financial" ||
+          question.category == "healthandsafety" ||
+          question.category == "recreational" ||
+          question.category == "socialandpolitical"
+        )) {
+        console.log("BAD category");
+        isValid = false;
+      }
+
+      if (!question.stat) {
+        console.log("BAD stat");
+        isValid = false;
+      }
+
+      if (!question.answer1Choice || !question.answer2Choice) {
+        console.log("BAD answer choices");
+        isValid = false;
+      }
+
+      if (isValid) {
+        console.log("GOOD");
+        actual++;
+        summary[question.category] += 1;
+      }
+    }
+
+    console.log("\n");
+    console.log("||||||||||||||||||||summary||||||||||||||||||||||||");
+
+    console.log("---------questions count by category---------");
+    for (var category in summary) {
+      console.log(category, "--->", summary[category]);
+    }
+    console.log("total rows:", length);
+    console.log("valid questions:", actual);
+  });
+
+  fileStream.pipe(csvConverter);
+}
 
 
 
@@ -88,70 +163,15 @@ function insertAndUpdateQuestions() {
     for (var i = 0; i < length; i++) {
       var question = questions[i];
 
-      // console.log("============================ " + "Row " + (i + 1) + " ============================");
-      // console.log("question:", question.question);
-      // console.log("category:", question.category);
-      // console.log("stat:", question.stat);
-      // console.log("source:", question.source);
-      // console.log("answer1Choice:", question.answer1Choice);
-      // console.log("answer2Choice:", question.answer2Choice);
-      // console.log("-------------------------------------------------");
-
-      // if (!question.question) {
-      //   console.log("BAD question");
-      // }
-      // if (!(
-      //   question.category == "environmental" ||
-      //   question.category == "ethical" ||
-      //   question.category == "financial" ||
-      //   question.category == "healthandsafety" ||
-      //   question.category == "recreational" ||
-      //   question.category == "socialandpolitical"
-      //   )) {
-      //   console.log("BAD category");
-      // }
-
-      // if (!question.stat) {
-      //   console.log("BAD stat");
-      // }
-
-      // if (!question.source) {
-      //   console.log("BAD source");
-      // }
-
-      // if (!question.answer1Choice || !question.answer2Choice) {
-      //   console.log("BAD answer choices");
-      // }
-
-      // if (
-      //   question.question &&
-      //   (
-      //   question.category == "environmental" ||
-      //   question.category == "ethical" ||
-      //   question.category == "financial" ||
-      //   question.category == "healthandsafety" ||
-      //   question.category == "recreational" ||
-      //   question.category == "socialandpolitical"
-      //   ) &&
-      //   question.stat &&
-      //   question.source &&
-      //   question.answer1Choice &&
-      //   question.answer2Choice
-      // ) {
-      //   console.log("GOOD");
-      //   actual++;
-      //   summary[question.category]+=1;
-      // }
-
       if (
         question.question &&
         (
-        question.category == "environmental" ||
-        question.category == "ethical" ||
-        question.category == "financial" ||
-        question.category == "healthandsafety" ||
-        question.category == "recreational" ||
-        question.category == "socialandpolitical"
+          question.category == "environmental" ||
+          question.category == "ethical" ||
+          question.category == "financial" ||
+          question.category == "healthandsafety" ||
+          question.category == "recreational" ||
+          question.category == "socialandpolitical"
         ) &&
         question.stat
       ) {
@@ -166,13 +186,7 @@ function insertAndUpdateQuestions() {
         }
       }
     }
-    // console.log("\n");
-    // console.log("||||||||||||||||||||summary||||||||||||||||||||||||");
 
-    // console.log("---------questions count by category---------");
-    // for (var category in summary) {
-    //   console.log(category, "--->", summary[category]);
-    // }
     console.log("total rows:", length);
     console.log("valid questions:", actual);
   });
