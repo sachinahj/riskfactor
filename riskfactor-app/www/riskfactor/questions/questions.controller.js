@@ -6,45 +6,28 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
     return;
   }
 
-
   $scope.currentQuestion = {};
   $scope.nextQuestion = {};
   var timerInterval;
   var timerTime;
   $scope.countdown = 0;
 
-  $scope.$on('$ionicView.enter', function () {
-    $ionicHistory.nextViewOptions({
-      disableAnimate: true,
-      disableBack: true
+  dbService.getNextQuestion(function (question) {
+    console.log("firstQuestion!", question);
+    $timeout(function () {
+      $scope.currentQuestion = question;
+      resetTimer();
     });
-
-    if (!$scope.nextQuestion || !$scope.nextQuestion.id || dbService.isNewSet()) {
-      console.log("NO NEXT QUESTION");
-      dbService.getNextQuestion(function (question) {
-        console.log("getNextQuestion!", question);
-        $scope.currentQuestion = question;
-        $scope.nextQuestion = question;
-      });
-    } else {
-      $scope.currentQuestion = $scope.nextQuestion;
-    }
-
-    resetTimer();
   });
-
 
   $scope.answerQuestion = function (questionId, answer) {
     dbService.saveAnswer(questionId, answer);
     clearInterval(timerInterval);
     dbService.getNextQuestion(function (question) {
-      $scope.nextQuestion = question;
-      console.log("$scope.currentQuestion", $scope.currentQuestion);
-      console.log("$scope.nextQuestion", $scope.nextQuestion);
-      if ($scope.nextQuestion) {
-        $state.go('status', {
-          type: 'next'
-        });
+      console.log("nextQuestion", question);
+      if (question) {
+        $scope.currentQuestion = question;
+        resetTimer();
       } else {
         $state.go('status', {
           type: 'done'
@@ -75,6 +58,4 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
       }, 0)
     }
   };
-
-
 });

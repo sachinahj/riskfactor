@@ -1,10 +1,10 @@
 <ion-view view-title="Questions" id="questions" animation="slide-right-left">
-  <ion-content scroll="false" class="questions-background" ng-class="currentQuestion.id == nextQuestion.id ? currentQuestion.category : ''">
+  <ion-content scroll="false" class="questions-background" ng-class="currentQuestion.category">
     <div class="row header-row">
       <img src="img/clouds/header-cloud.png" class="header-cloud-img" />
-      <img ng-src="img/clouds/{{currentQuestion.category}}-cloud.png" class="category-cloud-img" ng-show="currentQuestion.id == nextQuestion.id"/>
+      <img ng-src="img/clouds/{{currentQuestion.category}}-cloud.png" class="category-cloud-img" ng-show="currentQuestion.id"/>
     </div>
-    <div ng-show="currentQuestion.id == nextQuestion.id">
+    <div ng-show="currentQuestion.id">
       <h3 class="category">{{currentQuestion.category}}</h3>
       <h5 class="sub-title">question of the day</h5>
       <h4 class="question">{{currentQuestion.question}}</h4>

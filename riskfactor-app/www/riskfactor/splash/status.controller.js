@@ -1,4 +1,4 @@
-riskfactorApp.controller('StatusController', function ($scope, $state, $stateParams, $ionicHistory) {
+riskfactorApp.controller('StatusController', function ($scope, $state, $stateParams, $ionicHistory, $timeout) {
 
   $scope.view = $stateParams.type;
 
@@ -18,5 +18,11 @@ riskfactorApp.controller('StatusController', function ($scope, $state, $statePar
       disableAnimate: true,
       disableBack: true
     });
+
+    if ($scope.view == 'done') {
+      $timeout(function () {
+        $state.go('results');
+      }, 1500)
+    }
   });
 });

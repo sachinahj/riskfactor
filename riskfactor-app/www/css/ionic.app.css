@@ -7698,7 +7698,7 @@ h1, h2, h3, h4, h5, h6, p, span {
 
 h1, h2, h3, h4, h5, h6, p, span, input, select, textarea, button, div {
   color: #ffffff;
-  font-family: 'Droid Sans'; }
+  font-family: 'Signika'; }
 
 .row, .row + .row {
   padding: 0;
@@ -7855,8 +7855,10 @@ input.auth-input {
   #splash img {
     max-width: 100%;
     height: auto; }
-  #splash .riskfactor-btn.about {
-    margin-top: 20px; }
+  #splash .riskfactor-btn {
+    text-transform: initial; }
+    #splash .riskfactor-btn.about {
+      margin-top: 20px; }
 
 #about {
   background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 50%, #524f4e 100%);
