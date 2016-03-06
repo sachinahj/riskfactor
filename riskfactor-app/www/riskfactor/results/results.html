@@ -1,5 +1,5 @@
 <ion-view view-title="Results" id="results">
-  <ion-content scroll="false" class="questions-background" ng-class="currentQuestion.category" on-swipe-left="leftSwipe()" on-swipe-right="rightSwipe()">
+  <ion-content scroll="false" on-swipe-left="leftSwipe()" on-swipe-right="rightSwipe()">
 
     <div class="row header-row">
       <!-- <h5 class="left">Swipe left/right</h5> -->
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="result">
+    <div class="result questions-background" ng-class="currentQuestion.category">
       <div class="row question">
         <h4>{{currentQuestion.question}}</h4>
       </div>

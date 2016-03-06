@@ -5,7 +5,7 @@
       <img ng-src="img/clouds/{{currentQuestion.category}}-cloud.png" class="category-cloud-img" ng-show="currentQuestion.id"/>
     </div>
     <div ng-show="currentQuestion.id">
-      <h3 class="category">{{currentQuestion.category}}</h3>
+      <h3 class="category">{{categoryDisplayText[currentQuestion.category]}}</h3>
       <h5 class="sub-title">question of the day</h5>
       <h4 class="question">{{currentQuestion.question}}</h4>
       <div class="bottom">

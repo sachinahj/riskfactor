@@ -12,6 +12,15 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
   var timerTime;
   $scope.countdown = 0;
 
+  $scope.categoryDisplayText = {
+    "environmental": "Environmental",
+    "ethical": "Ethical",
+    "financial": "Financial",
+    "healthandsafety": "Health & Safety",
+    "recreational": "Recreational",
+    "socialandpolitical": "Social/Political"
+  }
+
   dbService.getNextQuestion(function (question) {
     console.log("firstQuestion!", question);
     $timeout(function () {

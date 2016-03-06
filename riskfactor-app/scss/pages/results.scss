@@ -1,6 +1,7 @@
 #results {
 
   .questions-background {
+    margin-top: -2px;
     &.environmental {
       @include background-gradient-environmental;
     }
@@ -58,6 +59,7 @@
   }
   .result {
     padding: 0 30px;
+    height: 100%;
     h4, h5 {
       color: $white;
     }
