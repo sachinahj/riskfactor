@@ -57,10 +57,15 @@ riskfactorApp.factory('authService', function (firebaseNamespace, $firebaseAuth,
   authService.loginWithFacebook = function (callback) {
     console.log("loginWithFacebook");
     console.log("$cordovaFacebook", $cordovaFacebook);
-    $cordovaFacebook.login("1609083659371250", ["email", "public_profile"]).then(function (success) {
+    $cordovaFacebook.login(["email", "public_profile"]).then(function (success) {
       console.log("success", success);
-      authFb.$authWithOAuthToken("facebook", success.access_token).then(function (authData) {
-        console.log("authData", authData);
+      console.log("success.authResponse.access_token", success.authResponse.accessToken);
+
+      authFb.$authWithOAuthToken("facebook", success.authResponse.accessToken).then(function (authData) {
+      console.log("authData", authData);
+      _authData = authData;
+      saveFacebookData(authData, callback);
+
       }, function (error) {
         console.error("ERROR inside: " + error);
       });
@@ -75,6 +80,7 @@ riskfactorApp.factory('authService', function (firebaseNamespace, $firebaseAuth,
     //   }
 
     //   console.log("authData", authData);
+    //   _authData = authData;
     //   saveFacebookData(authData, callback);
     // }, {
     //   scope: "email,public_profile"
@@ -89,11 +95,13 @@ riskfactorApp.factory('authService', function (firebaseNamespace, $firebaseAuth,
         gender: authData.facebook.cachedUserProfile.gender,
         location: authData.facebook.cachedUserProfile.locale
       };
-      usersFbRef.child(authData.uid).set(userToSave, function (error) {
+
+      console.log("userToSave", userToSave);
+      usersFbRef.child(userToSave.uid).set(userToSave, function (error) {
         if (error) {
           return callback(error.message, null);
         }
-        return callback(null, authData);
+        return callback(null, userToSave);
       })
     };
   };

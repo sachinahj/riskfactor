@@ -1,8 +1,20 @@
 var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9UIWebViewPatch', 'ngCordova', 'firebase'])
 
-.run(function ($ionicPlatform, $state, authService, dbService) {
+// .config(function ($cordovaFacebookProvider, $ionicPlatform) {
+//   $ionicPlatform.ready(function () {
+//     var appID = 1609083659371250;
+//     var version = "v2.0"; // or leave blank and default is v2.0
+//     $cordovaFacebookProvider.browserInit(appID, version);
+//   });
+// })
+
+.run(function ($ionicPlatform, $state, authService, dbService, $rootScope) {
 
   $ionicPlatform.ready(function () {
+    if (!window.cordova && !$rootScope.fbInitiated) {
+        $rootScope.fbInitiated = true;
+        facebookConnectPlugin.browserInit("1609083659371250");
+    }
 
     if (window.StatusBar) {
       StatusBar.styleDefault();
@@ -13,7 +25,7 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
     if (authData) {
       dbService.checkForQuestions(function (error, isQuestions) {
         if (error) {
-          return $state.go('login');
+          return $state.go('splash');
         }
         if (isQuestions) {
           $state.go('status', {
@@ -56,7 +68,6 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
 })
 
 .constant('firebaseNamespace', "uthoughttoday")
-
 
 .filter('capitalize', function () {
   return function (input, all) {

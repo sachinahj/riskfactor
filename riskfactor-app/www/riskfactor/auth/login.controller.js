@@ -16,20 +16,8 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
       if (error) {
         return setErrorMssage(error);
       }
-      dbService.checkForQuestions(function (error, isQuestions) {
-        if (error) {
-          return setErrorMssage(error);
-        }
-        if (isQuestions) {
-          $state.go('status', {
-            type: "new"
-          });
-        } else {
-          $state.go('status', {
-            type: "none"
-          });
-        }
-      });
+      console.log("loginWithFacebook userAuthData", authData);
+      checkForQuestions();
     });
   }
 
@@ -56,21 +44,26 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
         $scope.loading = false;
         return setErrorMssage(error);
       }
-      dbService.checkForQuestions(function (error, isQuestions) {
-        if (error) {
-          $scope.loading = false;
-          return setErrorMssage(error);
-        }
-        if (isQuestions) {
-          $state.go('status', {
-            type: "new"
-          });
-        } else {
-          $state.go('status', {
-            type: "none"
-          });
-        }
-      });
+      console.log("login userAuthData", userAuthData);
+      checkForQuestions();
+    });
+  }
+
+  function checkForQuestions() {
+    dbService.checkForQuestions(function (error, isQuestions) {
+      if (error) {
+        $scope.loading = false;
+        return setErrorMssage(error);
+      }
+      if (isQuestions) {
+        $state.go('status', {
+          type: "new"
+        });
+      } else {
+        $state.go('status', {
+          type: "none"
+        });
+      }
     });
   }
 
