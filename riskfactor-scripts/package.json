@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "question importer for riskfactor-script",
   "dependencies": {
-    "firebase": "latest",
+    "async": "2.0.0",
     "csv": "latest",
     "csvtojson": "latest",
+    "firebase": "latest",
     "json2csv": "latest",
     "uid": "latest"
   }
 }
-

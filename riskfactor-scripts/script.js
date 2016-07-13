@@ -17,9 +17,24 @@ var csvConverter = new Converter({
 
 console.log("firebaseUrl", firebaseUrl);
 
-// insertAndUpdateQuestions();
-// getLatestCSV();
-validateCSV();
+var myArgs = process.argv.slice(2);
+var runVariable = myArgs[0];
+
+console.log("runVariable", runVariable);
+
+switch (runVariable) {
+  case '1':
+    insertAndUpdateQuestions();
+    break;
+  case '2':
+    getLatestCSV();
+    break;
+  case '3':
+    validateCSV();
+    break;
+  default:
+    console.log('doing nothing');
+}
 
 
 function getLatestCSV() {
@@ -109,10 +124,10 @@ function validateCSV() {
         isValid = false;
       }
 
-      if (!question.stat) {
-        console.log("BAD stat");
-        isValid = false;
-      }
+      // if (!question.stat) {
+      //   console.log("BAD stat");
+      //   isValid = false;
+      // }
 
       if (!question.answer1Choice || !question.answer2Choice) {
         console.log("BAD answer choices");
@@ -124,6 +139,7 @@ function validateCSV() {
         actual++;
         summary[question.category] += 1;
       }
+
     }
 
     console.log("\n");
@@ -146,6 +162,7 @@ function insertAndUpdateQuestions() {
 
   var fileStream = fs.createReadStream("./csvs/production_db.csv");
   csvConverter.on("end_parsed", function (questions) {
+  console.log("questions", questions);
 
     var inserted = 0;
     var actual = 0;
@@ -172,8 +189,7 @@ function insertAndUpdateQuestions() {
           question.category == "healthandsafety" ||
           question.category == "recreational" ||
           question.category == "socialandpolitical"
-        ) &&
-        question.stat
+        )
       ) {
         if (!question.id) {
           if (question.answer1Choice && question.answer2Choice) {
@@ -219,7 +235,7 @@ function insertAndUpdateQuestions() {
     console.log("questionToInsert", questionToInsert);
 
     fbQuestionsRef.child(id).set(questionToInsert, function () {
-      console.log("inser");
+      console.log("insert");
     });
     return questionToInsert;
   }
@@ -237,3 +253,6 @@ function insertAndUpdateQuestions() {
     return questionToUpdate;
   }
 };
+
+
+
