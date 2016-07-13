@@ -1,87 +1,38 @@
-riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q) {
+riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q, $state) {
 
   var dbService = {};
+
   var rootFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com");
   var questionsFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/questions");
   var usersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/users");
+
   var _questionsForDay = [];
   var _answers = {};
   var lastCheck = null;
 
-  var isNewSetOfQuestions = true;
+  dbService.getQuestions = function () {
+    return _questionsForDay;
+  };
 
-  dbService.isNewSet = function () {
-    return isNewSetOfQuestions;
-  }
+  dbService.getAnswers = function () {
+    return _answers;
+  };
 
-  dbService.checkForQuestions = function (callback) {
-    if (!callback) {
-      return;
-    }
+  dbService.checkForQuestions = function () {
     var user = authService.getUser();
-    var now = new Date();
+    var now = new Date().getTime();
+
     console.log("============checkForQuestions===================");
     console.log("user", user);
 
-    usersFbRef.child(user.uid).child('lastCheck').once('value', function (snapshot) {
-      var lastCheck = snapshot.val();
-      var lastDate = new Date(lastCheck);
+    var getLastCheckTimestamp = function (callback) {
+      usersFbRef.child(user.uid).child('lastCheck').once('value', function (snapshot) {
+        var lastCheck = snapshot.val();
+        callback(null, lastCheck);
+      });
+    };
 
-      console.log("now", now);
-      console.log("lastDate", lastDate);
-
-      if (
-        !lastCheck ||
-        now.getYear() >= lastDate.getYear() &&
-        now.getMonth() >= lastDate.getMonth() &&
-        now.getDate() > lastDate.getDate()
-      ) {
-        console.log("GETTING NEW QUESTIONS");
-
-        // usersFbRef.child(user.uid).child('lastCheck').set(now.getTime());
-
-        usersFbRef.child(user.uid).child('answered').once('value', function (snapshot) {
-          var answeredQuestions = snapshot.val() || {};
-
-          var promises = [];
-          promises.push(getQuestionForCategory("environmental", answeredQuestions));
-          promises.push(getQuestionForCategory("ethical", answeredQuestions));
-          promises.push(getQuestionForCategory("financial", answeredQuestions));
-          promises.push(getQuestionForCategory("healthandsafety", answeredQuestions));
-          promises.push(getQuestionForCategory("recreational", answeredQuestions));
-          promises.push(getQuestionForCategory("socialandpolitical", answeredQuestions));
-
-          $q.all(promises).then(function (results) {
-            _questionsForDay = results;
-            _answers = {};
-
-            // console.log("_questionsForDay", _questionsForDay);
-
-            if (_questionsForDay.length == 6 && !hasNull(_questionsForDay)) {
-              isNewSetOfQuestions = true;
-              return callback(null, true);
-            } else {
-              return callback(null, false);
-            }
-          });
-        });
-
-      } else {
-
-        if (
-          _questionsForDay.length == 6 &&
-          !hasNull(_questionsForDay) &&
-          _questionsForDay.length > Object.keys(_answers).length
-        ) {
-          return callback(null, true)
-        } else {
-          return callback(null, false)
-        }
-      }
-
-    });
-
-    function getQuestionForCategory(category, answeredQuestions) {
+    var getQuestionForCategory = function (category, answeredQuestions) {
       var deferred = $q.defer();
 
       questionsFbRef.orderByChild('category').equalTo(category).once('value', function (snapshot) {
@@ -101,16 +52,86 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
         deferred.resolve(question);
       });
       return deferred.promise;
-    }
+    };
 
-    function hasNull(array) {
+    var hasNull = function (array) {
       for (var i = 0; i < array.length; i++) {
         if (!array[i]) {
           return true;
         }
       }
       return false;
-    }
+    };
+
+    var showStatus = function (type) {
+      $state.go('status', {
+        type: type
+      });
+    };
+
+
+    getLastCheckTimestamp(function (err, lastCheck) {
+
+
+      var tz = jstz.determine();
+
+      var lastDate = moment(lastCheck).tz(tz.name());
+      var nowDate = moment(now).tz(tz.name());
+
+      var dateDiff = nowDate.diff(lastDate, 'days');
+
+      console.log("now", now);
+      console.log("lastCheck", lastCheck);
+      console.log("lastDate", lastDate);
+      console.log("nowDate", nowDate);
+      console.log("dateDiff", dateDiff);
+
+      if (
+        isNaN(dateDiff) ||
+        dateDiff > 1
+      ) {
+        console.log("GETTING NEW QUESTIONS");
+
+        usersFbRef.child(user.uid).child('answered').once('value', function (snapshot) {
+          var answeredQuestions = snapshot.val() || {};
+
+          var promises = [];
+          promises.push(getQuestionForCategory("environmental", answeredQuestions));
+          promises.push(getQuestionForCategory("ethical", answeredQuestions));
+          promises.push(getQuestionForCategory("financial", answeredQuestions));
+          promises.push(getQuestionForCategory("healthandsafety", answeredQuestions));
+          promises.push(getQuestionForCategory("recreational", answeredQuestions));
+          promises.push(getQuestionForCategory("socialandpolitical", answeredQuestions));
+
+          $q.all(promises).then(function (results) {
+            _questionsForDay = results;
+            _answers = {};
+
+            // console.log("_questionsForDay", _questionsForDay);
+
+            if (_questionsForDay.length == 6 && !hasNull(_questionsForDay)) {
+              usersFbRef.child(user.uid).child('lastCheck').set(now);
+              showStatus("new");
+            } else {
+              showStatus("none");
+            }
+          });
+        });
+
+      } else {
+
+        if (
+          _questionsForDay.length == 6 &&
+          !hasNull(_questionsForDay) &&
+          _questionsForDay.length > Object.keys(_answers).length
+        ) {
+          showStatus("next");
+        } else {
+          showStatus("none");
+        }
+      }
+
+    });
   };
 
   dbService.getNextQuestion = function (callback) {
@@ -126,19 +147,14 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
     return callback(null)
   };
 
-  dbService.getQuestions = function () {
-    return _questionsForDay;
-  };
-
   dbService.saveAnswer = function (questionId, answer) {
     console.log("============saveAnswer============");
     console.log("questionId", questionId);
     console.log("answer", answer);
     console.log("----------------------------------");
     var user = authService.getUser();
-    isNewSetOfQuestions = false;
     _answers[questionId] = answer;
-    // usersFbRef.child(user.uid).child('answered').child(questionId).set(answer);
+    usersFbRef.child(user.uid).child('answered').child(questionId).set(answer);
 
     if (answer != null) {
       questionsFbRef.child(questionId).child('responses').child(answer).transaction(function (answerCount) {
@@ -150,9 +166,6 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q)
     }
   };
 
-  dbService.getAnswers = function () {
-    return _answers;
-  };
 
   return dbService;
 

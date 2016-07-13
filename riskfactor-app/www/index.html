@@ -20,10 +20,13 @@
     <!-- 3rd party libraries -->
     <script src="lib/ngIOS9UIWebViewPatch/angular-ios9-uiwebview.patch.js"></script>
     <script src="lib/ng-cordova/dist/ng-cordova.min.js"></script>
-    <!-- // <script src="lib/ng-cordova/dist/ng-cordova-oauth.min.js"></script> -->
     <script src="lib/firebase/firebase.js"></script>
     <script src="lib/firebase/angularfire.min.js"></script>
     <script src="lib/ngFitText/ng-FitText.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.4.0/moment-timezone-with-data.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js"></script>
+
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -39,7 +42,7 @@
     <script src="riskfactor/splash/contact.controller.js"></script>
     <script src="riskfactor/auth/login.controller.js"></script>
     <script src="riskfactor/auth/registration.controller.js"></script>
-    <script src="riskfactor/auth/loginfacebook.controller.js"></script>
+    <!-- <script src="riskfactor/auth/loginfacebook.controller.js"></script> -->
     <script src="riskfactor/questions/questions.controller.js"></script>
     <script src="riskfactor/results/results.controller.js"></script>
 
@@ -53,10 +56,6 @@
     <div id="fb-root"></div>
   </head>
   <body ng-app="riskfactor">
-
-    <!-- <ion-header-bar class="bar-stable">
-      <h1 class="title">uThought</h1>
-    </ion-header-bar> -->
     <ion-nav-view></ion-nav-view>
   </body>
 </html>
