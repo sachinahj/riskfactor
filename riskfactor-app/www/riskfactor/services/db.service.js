@@ -184,7 +184,10 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q,
           _questionsForDay = currentQuestionSetData.questions;
           _answersForDay = currentQuestionSetData.answers || {};
 
-          if (_questionsForDay.length == Object.keys(_answersForDay).length) {
+          console.log("_questionsForDay.length", _questionsForDay.length);
+          console.log("Object.keys(_answersForDay).length", Object.keys(_answersForDay).length);
+
+          if (_questionsForDay.length <= Object.keys(_answersForDay).length) {
             showStatus("done");
           } else {
             showStatus("next");
