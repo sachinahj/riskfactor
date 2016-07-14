@@ -30,12 +30,12 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
       return setErrorMssage("Please make sure you entered an password");
     }
 
-    authService.login($scope.user, function (error, userAuthData) {
+    authService.login($scope.user, function (error) {
       if (error) {
         $scope.loading = false;
         return setErrorMssage(error);
       }
-      console.log("login userAuthData", userAuthData);
+
       dbService.checkForQuestions();
     });
   }

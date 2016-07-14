@@ -2,11 +2,6 @@ riskfactorApp.controller('ContactController', function ($scope, $state, $cordova
 
   $scope.feedbackSent = false;
 
-
-  $scope.goToResults = function () {
-    $state.go('results');
-  };
-
   $scope.sendFeedback = function (feedbackText) {
     console.log("feedbackText", feedbackText);
     if (feedbackText) {

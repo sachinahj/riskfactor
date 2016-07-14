@@ -4,7 +4,7 @@
     <div class="row header-row">
       <!-- <h5 class="left">Swipe left/right</h5> -->
       <img src="img/clouds/home-single-cloud.png"/>
-      <h5 class="right" ng-click="goToContact()">Contact Us&nbsp;<i class="fa fa-envelope-o"></i></h5>
+      <h5 ui-sref="contact" class="right">Contact Us&nbsp;<i class="fa fa-envelope-o"></i></h5>
     </div>
 
     <div class="row category-row">
@@ -19,21 +19,20 @@
       </div>
 
       <div class="row you-thought">
-        <h5>You thought: <b>{{(currentQuestion.answers[currentAnswer] | capitalize)|| "No Answer"}}</b></h5>
+        <h5>You thought: <b>{{(currentQuestion.answers[currentAnswer.answerIndex] | capitalize)|| "No Answer"}}</b></h5>
       </div>
 
-      <div class="row uthought">
-        <h5>Percentage of uThought users who also answered {{currentQuestion.answers[currentAnswer] | capitalize}}: <b>{{((currentQuestion.responses[currentAnswer] / currentQuestion.responses.total * 100) | number : 1) || 'N/A'}}%</b></h5>
+      <div class="row uthought" ng-show="currentAnswer.answerIndex == 0 || currentAnswer.answerIndex == 1">
+        <h5>Percentage of uThought users who also answered {{currentQuestion.answers[currentAnswer.answerIndex] | capitalize}}:
+          <b>{{((currentQuestion.responses[currentAnswer.answerIndex] / currentQuestion.responses.total * 100) | number : 1) || 'N/A'}}%</b>
+        </h5>
       </div>
 
       <div class="row did-you-know">
         <h5>{{currentQuestion.stat}}</h5>
       </div>
 
-
-
     </div>
-
 
   </ion-content>
 </ion-view>

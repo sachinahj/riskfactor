@@ -79,19 +79,13 @@ riskfactorApp.controller('RegistrationController', function ($scope, $state, $ti
 
     if (isValid) {
 
-      authService.register($scope.newUser, function (error, newUser) {
+      authService.register($scope.newUser, function (error) {
         if (error) {
           $scope.loading = false;
           return setErrorMssage(error);
         }
 
-        authService.login(newUser, function (error, userAuthData) {
-          if (error) {
-            $scope.loading = false;
-            return setErrorMssage(error);
-          }
-          dbService.checkForQuestions();
-        });
+        dbService.checkForQuestions();
       });
 
     } else {

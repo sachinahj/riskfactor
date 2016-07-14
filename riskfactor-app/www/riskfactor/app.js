@@ -20,23 +20,11 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
       StatusBar.styleDefault();
     }
 
-    authService.logout();
+    // authService.logout();
+    $state.go('splash');
     var authData = authService.checkAuth();
     if (authData) {
-      dbService.checkForQuestions(function (error, isQuestions) {
-        if (error) {
-          return $state.go('splash');
-        }
-        if (isQuestions) {
-          $state.go('status', {
-            type: "new"
-          });
-        } else {
-          $state.go('status', {
-            type: "none"
-          });
-        }
-      });
+      dbService.checkForQuestions();
     } else {
       return $state.go('splash');
     }
@@ -47,20 +35,7 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
     console.log("resuming");
     var authData = authService.checkAuth();
     if (authData) {
-      dbService.checkForQuestions(function (error, isQuestions) {
-        if (error) {
-          return $state.go('splash');
-        }
-        if (isQuestions) {
-          $state.go('status', {
-            type: "new"
-          });
-        } else {
-          $state.go('status', {
-            type: "none"
-          });
-        }
-      });
+      dbService.checkForQuestions();
     } else {
       $state.go('splash');
     }

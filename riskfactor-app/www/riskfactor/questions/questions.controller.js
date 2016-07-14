@@ -29,13 +29,13 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
     });
   });
 
-  $scope.answerQuestion = function (questionId, answer) {
-    dbService.saveAnswer(questionId, answer);
+  $scope.answerQuestion = function (question, answer) {
+    dbService.saveAnswer(question, answer);
     clearInterval(timerInterval);
-    dbService.getNextQuestion(function (question) {
-      console.log("nextQuestion", question);
-      if (question) {
-        $scope.currentQuestion = question;
+    dbService.getNextQuestion(function (nextQuestion) {
+      console.log("nextQuestion", nextQuestion);
+      if (nextQuestion) {
+        $scope.currentQuestion = nextQuestion;
         resetTimer();
       } else {
         $state.go('status', {
@@ -55,7 +55,7 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
         $timeout(function () {
           $scope.countdown = "00.00";
         }, 0);
-        $scope.answerQuestion($scope.currentQuestion.id, null);;
+        $scope.answerQuestion($scope.currentQuestion, null);;
       }
       timerTime--;
       updateCountdownDisplay();

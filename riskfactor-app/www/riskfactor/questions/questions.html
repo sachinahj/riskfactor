@@ -10,8 +10,8 @@
       <h4 class="question">{{currentQuestion.question}}</h4>
       <div class="bottom">
         <div class="row answers-row">
-          <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion.id, 0)"><div data-fittext data-fittext-min="10">{{currentQuestion.answers[0]}}</div></button>
-          <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion.id, 1)"><div data-fittext data-fittext-min="10">{{currentQuestion.answers[1]}}</div></button>
+          <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion, 0)"><div data-fittext data-fittext-min="10">{{currentQuestion.answers[0]}}</div></button>
+          <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion, 1)"><div data-fittext data-fittext-min="10">{{currentQuestion.answers[1]}}</div></button>
         </div>
         <h2 class="countdown-timer">:{{countdown}}</h2>
       </div>

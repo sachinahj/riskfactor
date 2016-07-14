@@ -1,4 +1,4 @@
-riskfactorApp.controller('ResultsController', function ($scope, $state, $q, authService, dbService) {
+riskfactorApp.controller('ResultsController', function ($scope, $state, $q, $timeout, authService, dbService) {
 
   var authData = authService.checkAuth();
   if (!authData) {
@@ -27,20 +27,18 @@ riskfactorApp.controller('ResultsController', function ($scope, $state, $q, auth
   };
 
   function updateResult() {
-    $scope.currentQuestion = $scope.questions[currentQuestionIndex];
-    $scope.currentAnswer = _answers[$scope.currentQuestion.id];
+    $timeout(function () {
+      $scope.currentQuestion = $scope.questions[currentQuestionIndex];
+      $scope.currentAnswer = _answers[$scope.currentQuestion.id];
 
-    console.log("$scope.currentQuestion", $scope.currentQuestion);
-    console.log("$scope.currentAnswer", $scope.currentAnswer);
+      console.log("$scope.currentQuestion", $scope.currentQuestion);
+      console.log("$scope.currentAnswer", $scope.currentAnswer);
+    });
   };
 
   $scope.goToQuestion = function (index) {
     currentQuestionIndex = index;
     updateResult();
-  };
-
-  $scope.goToContact = function (index) {
-    $state.go('contact');
   };
 
   $scope.rightSwipe = function () {

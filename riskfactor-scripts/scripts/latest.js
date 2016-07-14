@@ -10,8 +10,8 @@ Database.getAll(function (questions) {
   let questionsCsv = [];
 
   for (let questionId in questions) {
-    questions[questionId].date_updated = new Date(questions[questionId].date_updated);
-    questions[questionId].date_created = new Date(questions[questionId].date_created);
+    questions[questionId].dateUpdated = new Date(questions[questionId].dateUpdated);
+    questions[questionId].dateCreated = new Date(questions[questionId].dateCreated);
     questionsCsv.push(questions[questionId]);
   }
 
@@ -43,8 +43,8 @@ Database.getAll(function (questions) {
     'stat',
     'source',
     'url',
-    'date_created',
-    'date_updated'
+    'dateCreated',
+    'dateUpdated'
   ];
 
   jsonConverter({

@@ -90,8 +90,8 @@ class Question {
       url: this.url,
       answers: [this.answer1, this.answer2],
       responses: responses,
-      date_created: Firebase.ServerValue.TIMESTAMP,
-      date_updated: Firebase.ServerValue.TIMESTAMP
+      dateCreated: Firebase.ServerValue.TIMESTAMP,
+      dateUpdated: Firebase.ServerValue.TIMESTAMP
     }
 
     Database.insertQuestion(questionToInsert, (err) => {
@@ -110,7 +110,7 @@ class Question {
       stat: this.stat,
       source: this.source,
       url: this.url,
-      date_updated: Firebase.ServerValue.TIMESTAMP
+      dateUpdated: Firebase.ServerValue.TIMESTAMP
     }
 
     Database.updateQuestion(questionToUpdate, callback);
