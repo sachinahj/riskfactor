@@ -1,3 +1,5 @@
+'use strict'
+
 let Firebase = require("firebase");
 let uid = require('uid');
 
@@ -5,7 +7,7 @@ let Database = require('./Database');
 
 class Question {
 
-  constructor(question = {}) {
+  constructor(question) {
       this.question = question.question;
       this.category = question.category;
       this.stat = question.stat;

@@ -1,3 +1,5 @@
+'use strict'
+
 let Database = module.exports;
 
 let Firebase = require("firebase");

@@ -1,3 +1,5 @@
+'use strict'
+
 let async = require('async')
 
 let fs = require('fs');
