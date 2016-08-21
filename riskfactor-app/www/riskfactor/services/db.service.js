@@ -148,7 +148,7 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q,
 
       if (
         isNaN(dateDiff) ||
-        dateDiff > 1
+        dateDiff >= 1
       ) {
         console.log("GETTING NEW QUESTIONS");
 
