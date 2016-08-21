@@ -141,6 +141,7 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q,
       var nowDate = moment().tz(tz.name());
       var dateDiff = nowDate.diff(lastDate, 'days');
 
+      console.log("tz", tz);
       console.log("lastCheck", lastCheck);
       console.log("lastDate", lastDate);
       console.log("nowDate", nowDate);
