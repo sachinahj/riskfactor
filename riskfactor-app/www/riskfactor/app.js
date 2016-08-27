@@ -11,6 +11,7 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
 .run(function ($ionicPlatform, $state, authService, dbService, $rootScope) {
 
   $ionicPlatform.ready(function () {
+    alert();
     if (!window.cordova && !$rootScope.fbInitiated) {
         $rootScope.fbInitiated = true;
         facebookConnectPlugin.browserInit("1609083659371250");
@@ -20,9 +21,10 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
       StatusBar.styleDefault();
     }
 
-    // authService.logout();
+    authService.logout();
     $state.go('splash');
     var authData = authService.checkAuth();
+    console.log("app.js | authData", authData);
     if (authData) {
       dbService.checkForQuestions();
     } else {
@@ -32,8 +34,9 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
   });
 
   $ionicPlatform.on('resume', function () {
-    console.log("resuming");
+    console.log("app.js | resuming");
     var authData = authService.checkAuth();
+    console.log("app.js | authData", authData);
     if (authData) {
       dbService.checkForQuestions();
     } else {
