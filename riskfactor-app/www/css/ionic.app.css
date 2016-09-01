@@ -9635,11 +9635,13 @@ input.auth-input {
     position: absolute;
     color: #ffffff; }
     #results .header-row h5.left {
-      top: 50px;
-      left: 15px; }
+      top: 35px;
+      left: 0px;
+      padding: 15px; }
     #results .header-row h5.right {
-      top: 50px;
-      right: 15px; }
+      top: 35px;
+      right: 0px;
+      padding: 15px; }
   #results .header-row img {
     display: block;
     margin: 0 auto;

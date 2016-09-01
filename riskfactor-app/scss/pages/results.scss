@@ -30,12 +30,14 @@
       position: absolute;
       color: $white;
       &.left {
-        top: 50px;
-        left: 15px;
+        top: 35px;
+        left: 0px;
+        padding: 15px;
       }
       &.right {
-        top: 50px;
-        right: 15px;
+        top: 35px;
+        right: 0px;
+        padding: 15px;
       }
     }
     img {
