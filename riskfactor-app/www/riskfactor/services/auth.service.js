@@ -1,9 +1,9 @@
-riskfactorApp.factory('authService', function (firebaseNamespace, $firebaseAuth, $cordovaFacebook, $window) {
+riskfactorApp.factory('authService', function (firebaseNamespace, $cordovaFacebook, $state, $window) {
 
   var authService = {};
-  var rootFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com");
-  var usersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/users");
-  var authFb = $firebaseAuth(rootFbRef);
+  // var rootFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com");
+  // var usersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/users");
+  // var authFb = $firebaseAuth(rootFbRef);
   var _authData = null;
 
   var updateLastSeen = function (userId) {
@@ -15,7 +15,7 @@ riskfactorApp.factory('authService', function (firebaseNamespace, $firebaseAuth,
   };
 
   authService.checkAuth = function (callback) {
-    _authData = rootFbRef.getAuth();
+    _authData = firebase.auth().currentUser;
     if (_authData) {
       updateLastSeen(_authData.uid);
     }
@@ -23,8 +23,9 @@ riskfactorApp.factory('authService', function (firebaseNamespace, $firebaseAuth,
   };
 
   authService.logout = function () {
+    $state.go("splash");
     rootFbRef.unauth();
-    $window.location.reload(true)
+    ionic.Platform.exitApp();
   };
 
   authService.register = function (newUser, callback) {

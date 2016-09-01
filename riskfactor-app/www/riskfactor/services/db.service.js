@@ -2,10 +2,10 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q,
 
   var dbService = {};
 
-  var rootFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com");
-  var questionsFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/questions");
-  var answersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/answers");
-  var usersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/users");
+  // var rootFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com");
+  // var questionsFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/questions");
+  // var answersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/answers");
+  // var usersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/users");
 
   var _questionsForDay = [];
   var _answersForDay = {};
