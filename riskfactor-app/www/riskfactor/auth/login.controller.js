@@ -4,8 +4,8 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
   $scope.feedback = {};
   $scope.loading = false;
 
-  // $scope.user.email = "sachinahj@gmail.com";
-  // $scope.user.password = "riskfactor";
+  $scope.user.email = "sachinahj@gmail.com";
+  $scope.user.password = "riskfactor";
 
   $scope.loginWithFacebook = function () {
     authService.loginWithFacebook(function (error, authData) {

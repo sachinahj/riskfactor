@@ -1,4 +1,4 @@
-riskfactorApp.factory('authService', function (firebaseNamespace, $firebaseAuth, $cordovaFacebook) {
+riskfactorApp.factory('authService', function (firebaseNamespace, $firebaseAuth, $cordovaFacebook, $window) {
 
   var authService = {};
   var rootFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com");
@@ -16,12 +16,15 @@ riskfactorApp.factory('authService', function (firebaseNamespace, $firebaseAuth,
 
   authService.checkAuth = function (callback) {
     _authData = rootFbRef.getAuth();
-    updateLastSeen(_authData.uid);
+    if (_authData) {
+      updateLastSeen(_authData.uid);
+    }
     return _authData;
   };
 
   authService.logout = function () {
     rootFbRef.unauth();
+    $window.location.reload(true)
   };
 
   authService.register = function (newUser, callback) {

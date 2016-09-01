@@ -57,4 +57,8 @@ riskfactorApp.controller('ResultsController', function ($scope, $state, $q, $tim
     updateResult();
   };
 
+  $scope.logout = function () {
+    authService.logout();
+  };
+
 });
