@@ -22,26 +22,12 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
       StatusBar.styleDefault();
     }
 
-    $state.go('splash');
-    var authData = authService.checkAuth();
-    console.log("app.js | authData", authData);
-    if (authData) {
-      dbService.checkForQuestions();
-    } else {
-      return $state.go('splash');
-    }
-
+    $state.go('splash', {}, {reload: true});
+    var authData = authService.listenAuth();
   });
 
   $ionicPlatform.on('resume', function () {
     console.log("app.js | resuming");
-    var authData = authService.checkAuth();
-    console.log("app.js | authData", authData);
-    if (authData) {
-      dbService.checkForQuestions();
-    } else {
-      $state.go('splash');
-    }
   });
 })
 

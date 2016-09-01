@@ -4,22 +4,33 @@ riskfactorApp.factory('authService', function (firebaseNamespace, $cordovaFacebo
   // var rootFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com");
   // var usersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/users");
   // var authFb = $firebaseAuth(rootFbRef);
-  var _authData = null;
+  var _authData = undefined;
 
-  var updateLastSeen = function (userId) {
-    usersFbRef.child(userId).child('lastSeen').set(Firebase.ServerValue.TIMESTAMP);
-  };
+  // var updateLastSeen = function (userId) {
+  //   usersFbRef.child(userId).child('lastSeen').set(Firebase.ServerValue.TIMESTAMP);
+  // };
 
   authService.getUser = function () {
     return _authData;
   };
 
-  authService.checkAuth = function (callback) {
-    _authData = firebase.auth().currentUser;
-    if (_authData) {
-      updateLastSeen(_authData.uid);
+  authService.checkAuth = function () {
+    var currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      _authData = currentUser;
     }
     return _authData;
+  };
+
+  authService.listenAuth = function (callback) {
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log("authChanged", user);
+      if (_authData == undefined || _authData != user) {
+        console.log("authChanged true");
+        _authData = user;
+        $state.go('splash', {}, {reload: true});
+      }
+    });
   };
 
   authService.logout = function () {
@@ -30,35 +41,33 @@ riskfactorApp.factory('authService', function (firebaseNamespace, $cordovaFacebo
 
   authService.register = function (newUser, callback) {
 
-    rootFbRef.createUser({
+    console.log('newUser', angular.copy(newUser));
+    firebase.auth().createUserWithEmailAndPassword(
+      newUser.email,
+      newUser.password
+    )
+    .catch(function (error) {
+      console.log("error", error);
+      return callback(error.message, null);
+    })
+    // .then(function(newUserData) {
+    //   console.log('newUserData', angular.copy(newUserData));
 
-      email: newUser.email,
-      password: newUser.password
+    //   // var userToSave = angular.copy(newUser);
+    //   // userToSave.uid = newUserData.uid;
+    //   // delete userToSave.password;
+    //   // delete userToSave.passwordagain;
 
-    }, function (error, newUserData) {
+    //   // usersFbRef.child(newUserData.uid).set(userToSave, function (error) {
 
-      console.log('newUser', angular.copy(newUser));
-      console.log('newUserData', angular.copy(newUserData));
+    //   //   if (error) {
+    //   //     return callback(error.message, null);
+    //   //   }
 
-      if (error) {
-        return callback(error.message, null);
-      }
-
-      var userToSave = angular.copy(newUser);
-      userToSave.uid = newUserData.uid;
-      delete userToSave.password;
-      delete userToSave.passwordagain;
-
-      usersFbRef.child(newUserData.uid).set(userToSave, function (error) {
-
-        if (error) {
-          return callback(error.message, null);
-        }
-
-        newUser.uid = newUserData.uid;
-        authService.login(newUser, callback);
-      });
-    });
+    //   //   newUser.uid = newUserData.uid;
+    //   //   authService.login(newUser, callback);
+    //   // });
+    // })
   };
 
   authService.login = function (user, callback) {
@@ -74,7 +83,7 @@ riskfactorApp.factory('authService', function (firebaseNamespace, $cordovaFacebo
       }
 
       _authData = authData;
-      updateLastSeen(authData.uid);
+      // updateLastSeen(authData.uid);
       return callback(null, authData);
     });
   };
@@ -112,7 +121,7 @@ riskfactorApp.factory('authService', function (firebaseNamespace, $cordovaFacebo
         if (error) {
           return callback(error.message, null);
         }
-        updateLastSeen(authData.uid);
+        // updateLastSeen(authData.uid);
         return callback(null, userToSave);
       })
     };

@@ -15,12 +15,12 @@ riskfactorApp.controller('RegistrationController', function ($scope, $state, $ti
 
   createAgeOptions();
 
-  // $scope.newUser.email = "sachinahj@gmail.com";
-  // $scope.newUser.password = "riskfactor";
-  // $scope.newUser.passwordagain = "riskfactor";
-  // $scope.newUser.age = 24;
-  // $scope.newUser.gender = "male";
-  // $scope.newUser.location = "Louisiana";
+  $scope.newUser.email = "sachinahj@gmail.com";
+  $scope.newUser.password = "riskfactor";
+  $scope.newUser.passwordagain = "riskfactor";
+  $scope.newUser.age = 24;
+  $scope.newUser.gender = "male";
+  $scope.newUser.location = "Louisiana";
 
   $scope.register = function () {
     if (window.cordova) {
