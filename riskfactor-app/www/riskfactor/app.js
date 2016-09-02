@@ -30,7 +30,7 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
     // alert("resuming");
     console.log("app.js | resuming");
     $state.go('status', {
-      type: 'loading'
+      type: 'loading',
     }, {}, {reload: true});
     _unsubscribe = authService.listenAuth();
   });

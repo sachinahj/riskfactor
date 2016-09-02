@@ -44,6 +44,9 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
           }
 
           console.log("authService listenAuth | checkForQuestions");
+          $state.go('status', {
+            type: 'loading',
+          }, {reload: true});
           dbService.checkForQuestions();
 
         } else {
