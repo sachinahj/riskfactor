@@ -6,7 +6,7 @@ riskfactorApp.controller('ContactController', function ($scope, $state, $cordova
     console.log("feedbackText", feedbackText);
     if (feedbackText) {
       $cordovaSocialSharing
-        .shareViaEmail(feedbackText, 'uThought Feedback', ['sachinahj@gmail.com'], [], [], [])
+        .shareViaEmail(feedbackText, 'uThought Feedback', ['team@riskfactor.info'], [], [], [])
         .then(function (result) {
           // Success!
           $scope.feedbackSent = true;

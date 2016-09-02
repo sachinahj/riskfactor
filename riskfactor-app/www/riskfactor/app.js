@@ -14,8 +14,6 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
     if (!window.cordova && !$rootScope.fbInitiated) {
         $rootScope.fbInitiated = true;
         facebookConnectPlugin.browserInit("1609083659371250");
-    } else {
-      alert("ahuja says waddup");
     }
 
     if (window.StatusBar) {

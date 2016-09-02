@@ -1,6 +1,7 @@
 riskfactorApp.factory("authService", function ($state, userService, dbService) {
 
   var authService = {};
+  var _registerInfo = null;
 
   authService.checkAuth = function () {
     return firebase.auth().currentUser;
@@ -15,6 +16,22 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
       if (user == undefined || newUser != user) {
         console.log("authService listenAuth | authChanged");
         userService.setUser(newUser);
+
+
+        if (_registerInfo) {
+          console.log("authService listenAuth | _registerInfo", _registerInfo);
+          var usersFbRef = firebase.database().ref("users");
+
+          usersFbRef.child(newUser.uid).child('data').set({
+            age: _registerInfo.age,
+            email: _registerInfo.email,
+            gender: _registerInfo.gender,
+            location: _registerInfo.location,
+          });
+
+          _registerInfo = null;
+        }
+
         if (newUser) {
           console.log("authService listenAuth | checkForQuestions");
           dbService.checkForQuestions();
@@ -38,6 +55,7 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
   };
 
   authService.register = function (newUser, callback) {
+    _registerInfo = newUser;
     console.log("authService register |  newUser", angular.copy(newUser));
     firebase.auth().createUserWithEmailAndPassword(
       newUser.email,
@@ -67,12 +85,13 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
     facebookConnectPlugin.login(
       ["email", "public_profile"],
       function (result) {
+        console.log("authService loginWithFacebook facebookConnectPlugin.login | result", result);
         var provider = firebase.auth.FacebookAuthProvider.credential(result.authResponse.accessToken);
 
         firebase.auth()
           .signInWithCredential(provider)
           .then(function(result) {
-            console.log("authService loginWithFacebook | result", result);
+            console.log("authService loginWithFacebook signInWithCredential | result", result);
           })
           .catch(function(error) {
             console.log("authService loginWithFacebook | error", error);

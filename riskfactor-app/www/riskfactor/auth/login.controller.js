@@ -8,12 +8,14 @@ riskfactorApp.controller('LoginController', function ($scope, $timeout, authServ
   $scope.user.password = "riskfactor";
 
   $scope.loginWithFacebook = function () {
+    $scope.loading = true;
     authService.loginWithFacebook(function (error) {
       if (error) {
+        $scope.loading = false;
         return setErrorMssage(error);
       }
     });
-  }
+  };
 
   $scope.login = function () {
     $scope.loading = true;
@@ -34,7 +36,7 @@ riskfactorApp.controller('LoginController', function ($scope, $timeout, authServ
         return setErrorMssage(error);
       }
     });
-  }
+  };
 
   function setErrorMssage(message) {
     $timeout(function () {
