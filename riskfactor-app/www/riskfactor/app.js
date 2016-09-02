@@ -1,6 +1,6 @@
 var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9UIWebViewPatch', 'ngCordova'])
 
-.run(function ($ionicPlatform, $state, authService, $rootScope, userService) {
+.run(function ($ionicPlatform, $state, authService, $rootScope, $ionicConfig, userService) {
 
   _unsubscribe = null;
 
@@ -12,6 +12,8 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
     };
 
     firebase.initializeApp(config);
+
+    $ionicConfig.views.transition('none');
 
     if (!window.cordova && !$rootScope.fbInitiated) {
         $rootScope.fbInitiated = true;
