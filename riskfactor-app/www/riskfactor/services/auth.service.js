@@ -117,6 +117,10 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
           .signInWithCredential(provider)
           .then(function(result) {
             console.log("authService loginWithFacebook signInWithCredential | result", result);
+            var usersFbRef = firebase.database().ref("users");
+            usersFbRef.child(result.uid).child('data').set({
+              provider: "facebook",
+            });
           })
           .catch(function(error) {
             console.log("authService loginWithFacebook signInWithCredential | error", error);
