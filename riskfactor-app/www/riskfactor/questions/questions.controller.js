@@ -2,7 +2,7 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
 
   var authData = authService.checkAuth();
   if (!authData) {
-    $state.go('splash');
+    $state.go('splash', {}, {reload: true});
     return;
   }
 
@@ -40,7 +40,7 @@ riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeo
       } else {
         $state.go('status', {
           type: 'done'
-        });
+        }, {}, {reload: true});
       }
     });
   };

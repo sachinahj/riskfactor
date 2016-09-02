@@ -131,7 +131,7 @@ riskfactorApp.factory('dbService', function (userService, $q, $state) {
     var showStatus = function (type) {
       $state.go('status', {
         type: type
-      });
+      }, {}, {reload: true});
     };
 
     getLastCheckTimestamp(function (err, lastCheck) {

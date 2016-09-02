@@ -4,12 +4,12 @@ riskfactorApp.controller('StatusController', function ($scope, $state, $statePar
 
   $scope.nextQuestions = function () {
     $scope.view = null;
-    $state.go('questions');
+    $state.go('questions', {}, {reload: true});
   };
 
   $scope.results = function () {
     $scope.view = null;
-    $state.go('results');
+    $state.go('results', {}, {reload: true});
   };
 
   $scope.$on('$ionicView.enter', function () {
@@ -21,7 +21,7 @@ riskfactorApp.controller('StatusController', function ($scope, $state, $statePar
 
     if ($scope.view == 'done') {
       $timeout(function () {
-        $state.go('results');
+        $state.go('results', {}, {reload: true});
       }, 1500)
     }
   });

@@ -2,7 +2,7 @@ riskfactorApp.controller('ResultsController', function ($scope, $state, $q, $tim
 
   var authData = authService.checkAuth();
   if (!authData) {
-    $state.go('splash');
+    $state.go('splash', {}, {reload: true});
     return;
   }
 

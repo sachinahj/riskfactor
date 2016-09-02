@@ -36,18 +36,20 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
             });
 
             _registerInfo = null;
+
           } else {
+
             usersFbRef.child(newUser.uid).child('lastSeen').set(firebase.database.ServerValue.TIMESTAMP);
+
           }
 
           console.log("authService listenAuth | checkForQuestions");
-
           dbService.checkForQuestions();
 
         } else {
 
           console.log("authService listenAuth | to splash");
-          $state.go("splash", {}, {reload: true});
+          $state.go('splash', {}, {reload: true});
 
         }
       }
@@ -59,7 +61,7 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
   authService.logout = function () {
     console.log("authService logout | logging out");
     userService.setUser(undefined);
-    $state.go("splash", {}, {reload: true});
+    $state.go('splash', {}, {reload: true});
     firebase.auth().signOut().then(function() {
     }, function(error) {
       ionic.Platform.exitApp();
