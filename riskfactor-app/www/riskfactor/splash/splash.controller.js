@@ -1,6 +1,6 @@
 riskfactorApp.controller('SplashController', function ($scope, $state, userService) {
 
-  $scope.$on('$ionicView.enter', function () {
+  // $scope.$on('$ionicView.enter', function () {
     var user = userService.getUser();
     console.log("SplashController | user", user);
     if (user === undefined) {
@@ -8,6 +8,6 @@ riskfactorApp.controller('SplashController', function ($scope, $state, userServi
     } else {
       $scope.showButtons = true;
     }
-  });
+  // });
 
 });

@@ -14,9 +14,9 @@ riskfactorApp.controller('ResultsController', function ($scope, $state, $q, $tim
   $scope.questions = [];
 
   init();
-  $scope.$on('$ionicView.enter', function () {
-    init();
-  });
+  // $scope.$on('$ionicView.enter', function () {
+  //   init();
+  // });
 
   function init() {
     currentQuestionIndex = 0;

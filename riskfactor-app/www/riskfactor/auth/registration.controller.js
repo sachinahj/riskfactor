@@ -1,6 +1,6 @@
 riskfactorApp.controller('RegistrationController', function ($scope, $timeout, authService) {
 
-  $scope.$on('$ionicView.enter', function () {
+  // $scope.$on('$ionicView.enter', function () {
     $scope.newUser = {};
     $scope.feedback = {};
     $scope.loading = false;
@@ -22,7 +22,7 @@ riskfactorApp.controller('RegistrationController', function ($scope, $timeout, a
     $scope.newUser.age = 24;
     $scope.newUser.gender = "male";
     $scope.newUser.location = "Louisiana";
-  });
+  // });
 
   $scope.register = function () {
     if (window.cordova) {
