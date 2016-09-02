@@ -140,7 +140,8 @@ riskfactorApp.factory('dbService', function (userService, $q, $state) {
 
       var lastDate = moment(lastCheck).tz(tz.name());
       var nowDate = moment().tz(tz.name());
-      var dateDiff = nowDate.diff(lastDate, 'days');
+      // var dateDiff = nowDate.diff(lastDate, 'days');
+      var dateDiff = nowDate.diff(lastDate, 'hours');
 
       console.log("tz", tz);
       console.log("lastCheck", lastCheck);
