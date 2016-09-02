@@ -1,6 +1,8 @@
 var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9UIWebViewPatch', 'ngCordova'])
 
-.run(function ($ionicPlatform, $state, authService, $rootScope) {
+.run(function ($ionicPlatform, $state, authService, $rootScope, userService) {
+
+  _unsubscribe = null;
 
   $ionicPlatform.ready(function () {
     var config = {
@@ -21,12 +23,20 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
     }
 
     $state.go('splash', {}, {reload: true});
-    var authData = authService.listenAuth();
+    _unsubscribe = authService.listenAuth();
   });
 
   $ionicPlatform.on('resume', function () {
     console.log("app.js | resuming");
+    _unsubscribe = authService.listenAuth();
   });
+
+  $ionicPlatform.on('pause', function () {
+    console.log("app.js | pausing");
+    userService.setUser(undefined);
+    _unsubscribe();
+  });
+
 })
 
 .constant('firebaseNamespace', "uthoughttoday")

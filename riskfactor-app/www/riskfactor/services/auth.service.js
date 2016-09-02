@@ -8,7 +8,7 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
   };
 
   authService.listenAuth = function (callback) {
-    firebase.auth().onAuthStateChanged(function(newUser) {
+    var unsubscribe = firebase.auth().onAuthStateChanged(function(newUser) {
       var user = userService.getUser();
       console.log("authService listenAuth | newUser", newUser);
       console.log("authService listenAuth | user", user);
@@ -52,6 +52,8 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
         }
       }
     });
+
+    return unsubscribe;
   };
 
   authService.logout = function () {
