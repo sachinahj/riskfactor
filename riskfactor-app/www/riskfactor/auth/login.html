@@ -22,16 +22,16 @@
       <h5 ng-class="feedback.type">{{feedback.message || '&nbsp;'}}</h5>
     </div>
 
-    <div class="row flex-center top">
+    <div class="row flex-center top" ng-show="!loading">
         <button class="riskfactor-btn" ng-click="loginWithFacebook()">Sign In with Facebook</button>
     </div>
 
     <div class="row flex-center bottom">
       <div class="col left">
-        <button class="riskfactor-btn" ui-sref="splash">Back</button>
+        <button class="riskfactor-btn" ui-sref="splash" ui-sref-opts="{reload: true}">Back</button>
       </div>
       <div class="col right">
-        <button class="riskfactor-btn" ui-sref="registration">Sign Up</button>
+        <button class="riskfactor-btn" ui-sref="registration" ui-sref-opts="{reload: true}">Sign Up</button>
       </div>
     </div>
 

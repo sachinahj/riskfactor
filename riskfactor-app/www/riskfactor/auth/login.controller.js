@@ -1,11 +1,14 @@
 riskfactorApp.controller('LoginController', function ($scope, $timeout, authService) {
 
-  $scope.user = {};
-  $scope.feedback = {};
-  $scope.loading = false;
+  $scope.$on('$ionicView.enter', function () {
 
-  $scope.user.email = "sachinahj@gmail.com";
-  $scope.user.password = "riskfactor";
+    $scope.user = {};
+    $scope.feedback = {};
+    $scope.loading = false;
+
+    $scope.user.email = "sachinahj@gmail.com";
+    $scope.user.password = "riskfactor";
+  });
 
   $scope.loginWithFacebook = function () {
     $scope.loading = true;

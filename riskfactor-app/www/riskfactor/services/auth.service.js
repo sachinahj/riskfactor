@@ -59,9 +59,8 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
   authService.logout = function () {
     console.log("authService logout | logging out");
     userService.setUser(undefined);
-    $state.go("splash");
+    $state.go("splash", {}, {reload: true});
     firebase.auth().signOut().then(function() {
-      ionic.Platform.exitApp();
     }, function(error) {
       ionic.Platform.exitApp();
     });

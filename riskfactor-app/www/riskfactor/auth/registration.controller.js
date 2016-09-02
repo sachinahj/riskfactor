@@ -1,26 +1,28 @@
 riskfactorApp.controller('RegistrationController', function ($scope, $timeout, authService) {
 
-  $scope.newUser = {};
-  $scope.feedback = {};
-  $scope.loading = false;
+  $scope.$on('$ionicView.enter', function () {
+    $scope.newUser = {};
+    $scope.feedback = {};
+    $scope.loading = false;
 
-  $scope.ageOptions = [];
-  $scope.locationOptions = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+    $scope.ageOptions = [];
+    $scope.locationOptions = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
 
-  var createAgeOptions = function () {
-    for (var i = 1; i < 100; i++) {
-      $scope.ageOptions.push(i);
-    }
-  };
+    var createAgeOptions = function () {
+      for (var i = 1; i < 100; i++) {
+        $scope.ageOptions.push(i);
+      }
+    };
 
-  createAgeOptions();
+    createAgeOptions();
 
-  $scope.newUser.email = "sachinahj@gmail.com";
-  $scope.newUser.password = "riskfactor";
-  $scope.newUser.passwordagain = "riskfactor";
-  $scope.newUser.age = 24;
-  $scope.newUser.gender = "male";
-  $scope.newUser.location = "Louisiana";
+    $scope.newUser.email = "sachinahj@gmail.com";
+    $scope.newUser.password = "riskfactor";
+    $scope.newUser.passwordagain = "riskfactor";
+    $scope.newUser.age = 24;
+    $scope.newUser.gender = "male";
+    $scope.newUser.location = "Louisiana";
+  });
 
   $scope.register = function () {
     if (window.cordova) {
