@@ -1,11 +1,6 @@
-riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q, $state) {
+riskfactorApp.factory('dbService', function (firebaseNamespace, userService, $q, $state) {
 
   var dbService = {};
-
-  // var rootFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com");
-  // var questionsFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/questions");
-  // var answersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/answers");
-  // var usersFbRef = new Firebase("https://" + firebaseNamespace + ".firebaseio.com/users");
 
   var _questionsForDay = [];
   var _answersForDay = {};
@@ -20,7 +15,10 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q,
   };
 
   var getNewQuestionSet = function (callback) {
-    var user = authService.getUser();
+    var answersFbRef = firebase.database().ref("answers");
+    var questionsFbRef = firebase.database().ref("questions");
+
+    var user = userService.getUser();
     var _answeredQuestions = {};
 
     var getAnsweredQuestions = function (callback) {
@@ -94,11 +92,12 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q,
   };
 
   var saveQuestionSetData = function (questionSet, callback) {
-    var user = authService.getUser();
+    var usersFbRef = firebase.database().ref("users");
+    var user = userService.getUser();
 
     var currentQuestionSetData = {
       questions: questionSet,
-      dateGrabbed: Firebase.ServerValue.TIMESTAMP,
+      dateGrabbed: firebase.database.ServerValue.TIMESTAMP,
       answers: {},
     };
 
@@ -106,7 +105,8 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q,
   };
 
   var getOldQuestionSet = function (callback) {
-    var user = authService.getUser();
+    var usersFbRef = firebase.database().ref("users");
+    var user = userService.getUser();
 
     usersFbRef.child(user.uid).child('currentQuestionSetData').once('value', function (snapshot) {
       var questionSet = snapshot.val() || {};
@@ -115,7 +115,8 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q,
   };
 
   dbService.checkForQuestions = function () {
-    var user = authService.getUser();
+    var usersFbRef = firebase.database().ref("users");
+    var user = userService.getUser();
 
     console.log("============checkForQuestions===================");
     console.log("user", user);
@@ -213,18 +214,21 @@ riskfactorApp.factory('dbService', function (firebaseNamespace, authService, $q,
   };
 
   dbService.saveAnswer = function (question, answer) {
+    var usersFbRef = firebase.database().ref("users");
+    var answersFbRef = firebase.database().ref("answers");
+    var questionsFbRef = firebase.database().ref("questions");
     console.log("============saveAnswer============");
     console.log("questionId", question.id);
     console.log("answer", answer);
     console.log("----------------------------------");
 
-    var user = authService.getUser();
+    var user = userService.getUser();
 
     var answerData = {
       questionId: question.id,
       answerIndex: answer,
       answerDisplay: question.answers[answer] || null,
-      dateAnswered: Firebase.ServerValue.TIMESTAMP
+      dateAnswered: firebase.database.ServerValue.TIMESTAMP
     };
 
     _answersForDay[question.id] = answerData;

@@ -9405,7 +9405,7 @@ input.auth-input {
     margin-top: 40px;
     margin-bottom: -37px; }
   #login .feedback {
-    margin: 20px; }
+    padding: 20px; }
   #login .bottom {
     margin-top: 30px; }
     #login .bottom button {
@@ -9420,16 +9420,6 @@ input.auth-input {
     background-color: #3B5998;
     border-color: #3B5998;
     border-radius: 6px; }
-
-#loginfacebook {
-  background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
-  background: -o-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
-  background: -ms-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
-  background: -moz-linear-gradient(top, #010000 0%, #3d3a3a 72%, #524f4e 100%);
-  background: linear-gradient(to bottom, #010000 0%, #3d3a3a 72%, #524f4e 100%); }
-  #loginfacebook h3 {
-    margin-top: 15%;
-    text-align: center; }
 
 #registration {
   background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 50%, #524f4e 100%);
@@ -9481,7 +9471,7 @@ input.auth-input {
   #registration .feedback {
     margin-top: 15px;
     text-align: center;
-    padding: 0 5px; }
+    padding: 0 15px; }
 
 #questions .questions-background {
   background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 50%, #524f4e 100%);

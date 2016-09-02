@@ -1,11 +1,9 @@
-riskfactorApp.controller('SplashController', function ($scope, $state, authService, dbService) {
+riskfactorApp.controller('SplashController', function ($scope, $state, userService) {
 
   $scope.$on('$ionicView.enter', function () {
-    var authData = authService.checkAuth();
-    console.log("SplashController: authData", authData);
-    if (authData) {
-      dbService.checkForQuestions();
-    } else if (authData === undefined) {
+    var user = userService.getUser();
+    console.log("SplashController | user", user);
+    if (user === undefined) {
       $scope.showButtons = false;
     } else {
       $scope.showButtons = true;

@@ -1,6 +1,6 @@
 var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9UIWebViewPatch', 'ngCordova'])
 
-.run(function ($ionicPlatform, $state, authService, dbService, $rootScope) {
+.run(function ($ionicPlatform, $state, authService, $rootScope) {
 
   $ionicPlatform.ready(function () {
     var config = {

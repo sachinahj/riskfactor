@@ -8,12 +8,10 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
   $scope.user.password = "riskfactor";
 
   $scope.loginWithFacebook = function () {
-    authService.loginWithFacebook(function (error, authData) {
+    authService.loginWithFacebook(function (error) {
       if (error) {
         return setErrorMssage(error);
       }
-      console.log("loginWithFacebook userAuthData", authData);
-      dbService.checkForQuestions();
     });
   }
 
@@ -35,8 +33,6 @@ riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, 
         $scope.loading = false;
         return setErrorMssage(error);
       }
-
-      dbService.checkForQuestions();
     });
   }
 

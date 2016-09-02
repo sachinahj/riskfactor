@@ -84,8 +84,6 @@ riskfactorApp.controller('RegistrationController', function ($scope, $state, $ti
           $scope.loading = false;
           return setErrorMssage(error);
         }
-
-        dbService.checkForQuestions();
       });
 
     } else {
