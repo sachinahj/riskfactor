@@ -63,16 +63,27 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
   };
 
   authService.loginWithFacebook = function (callback) {
-    var provider = new firebase.auth.FacebookAuthProvider();
 
-    provider.addScope('email, public_profile');
+    facebookConnectPlugin.login(
+      ["email", "public_profile"],
+      function (result) {
+        var provider = firebase.auth.FacebookAuthProvider.credential(result.authResponse.accessToken);
 
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-      console.log("authService loginWithFacebook | result", result);
-    }).catch(function(error) {
-      console.log("authService loginWithFacebook | error", error);
-      return callback(error.message, null);
-    });
+        firebase.auth()
+          .signInWithCredential(provider)
+          .then(function(result) {
+            console.log("authService loginWithFacebook | result", result);
+          })
+          .catch(function(error) {
+            console.log("authService loginWithFacebook | error", error);
+            return callback(error.message, null);
+          });
+
+      },
+      function (error) {
+        return callback(error.message, null);
+      }
+    );
   };
 
   return authService;
