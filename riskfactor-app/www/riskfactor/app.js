@@ -27,13 +27,16 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
   });
 
   $ionicPlatform.on('resume', function () {
-    alert("resuming");
+    // alert("resuming");
     console.log("app.js | resuming");
+    $state.go('status', {
+      type: 'loading'
+    }, {}, {reload: true});
     _unsubscribe = authService.listenAuth();
   });
 
   $ionicPlatform.on('pause', function () {
-    alert("pausing");
+    // alert("pausing");
     console.log("app.js | pausing");
     userService.setUser(undefined);
     _unsubscribe();
