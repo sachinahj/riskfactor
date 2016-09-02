@@ -1,9 +1,6 @@
-riskfactorApp.factory("authService", function (firebaseNamespace, $cordovaFacebook, $state, $window, userService, dbService) {
+riskfactorApp.factory("authService", function ($state, userService, dbService) {
 
   var authService = {};
-  // var updateLastSeen = function (userId) {
-  //   usersFbRef.child(userId).child('lastSeen').set(Firebase.ServerValue.TIMESTAMP);
-  // };
 
   authService.checkAuth = function () {
     var currentUser = firebase.auth().currentUser;
@@ -23,14 +20,10 @@ riskfactorApp.factory("authService", function (firebaseNamespace, $cordovaFacebo
         console.log("authService listenAuth | authChanged");
         userService.setUser(newUser);
         if (newUser) {
-          console.log("checkForQuestions");
-          // authService.logout();
-          try {
-            dbService.checkForQuestions();
-          } catch(e) {
-            console.log("e", e);
-          }
+          console.log("authService listenAuth | checkForQuestions");
+          dbService.checkForQuestions();
         } else {
+          console.log("authService listenAuth | to splash");
           $state.go("splash", {}, {reload: true});
         }
       }
@@ -42,10 +35,8 @@ riskfactorApp.factory("authService", function (firebaseNamespace, $cordovaFacebo
     userService.setUser(undefined);
     $state.go("splash");
     firebase.auth().signOut().then(function() {
-      // Sign-out successful.
       ionic.Platform.exitApp();
     }, function(error) {
-      // An error happened.
       ionic.Platform.exitApp();
     });
   };
@@ -86,47 +77,7 @@ riskfactorApp.factory("authService", function (firebaseNamespace, $cordovaFacebo
       console.log("authService loginWithFacebook | error", error);
       return callback(error.message, null);
     });
-
   };
-
-  // authService.loginWithFacebook = function (callback) {
-  //   console.log("loginWithFacebook");
-  //   console.log("$cordovaFacebook", $cordovaFacebook);
-  //   $cordovaFacebook.login(["email", "public_profile"]).then(function (success) {
-  //     console.log("success", success);
-  //     console.log("success.authResponse.access_token", success.authResponse.accessToken);
-
-  //     authFb.$authWithOAuthToken("facebook", success.authResponse.accessToken).then(function (authData) {
-  //       console.log("authData", authData);
-  //       _authData = authData;
-  //       saveFacebookData(authData, callback);
-
-  //     }, function (error) {
-  //       console.error("ERROR inside: " + error);
-  //     });
-  //   }, function (error) {
-  //     console.log("ERROR outside: " + error);
-  //   });
-
-    // function saveFacebookData(authData, callback) {
-    //   var userToSave = {
-    //     uid: authData.uid,
-    //     age: authData.facebook.cachedUserProfile.age_range,
-    //     email: authData.facebook.cachedUserProfile.email,
-    //     gender: authData.facebook.cachedUserProfile.gender,
-    //     location: authData.facebook.cachedUserProfile.locale
-    //   };
-
-    //   console.log("userToSave", userToSave);
-    //   usersFbRef.child(userToSave.uid).set(userToSave, function (error) {
-    //     if (error) {
-    //       return callback(error.message, null);
-    //     }
-    //     // updateLastSeen(authData.uid);
-    //     return callback(null, userToSave);
-    //   })
-    // };
-  // };
 
   return authService;
 });
