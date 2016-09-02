@@ -17,8 +17,6 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
         console.log("authService listenAuth | authChanged");
         userService.setUser(newUser);
 
-
-
         if (newUser) {
 
           var usersFbRef = firebase.database().ref("users");
@@ -26,12 +24,9 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
           if (_registerInfo) {
             console.log("authService listenAuth | _registerInfo", _registerInfo);
 
-            usersFbRef.child(newUser.uid).child('data').set({
-              provider: "email",
-              age: _registerInfo.age,
-              email: _registerInfo.email,
-              gender: _registerInfo.gender,
-              location: _registerInfo.location,
+            usersFbRef.child(newUser.uid).set({
+              provider: _registerInfo.provider,
+              data: _registerInfo.data,
               lastSeen: firebase.database.ServerValue.TIMESTAMP,
             });
 
@@ -72,7 +67,13 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
   };
 
   authService.register = function (newUser, callback) {
-    _registerInfo = newUser;
+    _registerInfo = {
+      provider: "email",
+      data: JSON.parse(JSON.stringify(newUser))
+    };
+    delete _registerInfo.data.password;
+    delete _registerInfo.data.passwordagain;
+
     console.log("authService register |  newUser", angular.copy(newUser));
     firebase.auth().createUserWithEmailAndPassword(
       newUser.email,
@@ -105,36 +106,34 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
         console.log("authService loginWithFacebook facebookConnectPlugin.login | result", result);
         var provider = firebase.auth.FacebookAuthProvider.credential(result.authResponse.accessToken);
 
-        // facebookConnectPlugin.api(
-        //   '/' + result.authResponse.userID,
-        //   ["public_profile", "email"],
-        //   function (result) {
-        //     console.log("authService loginWithFacebook facebookConnectPlugin.api | result", result);
-        //     authService.logout();
-
-        //   },
-        //   function (error) {
-        //     console.log("authService loginWithFacebook facebookConnectPlugin.api | error", error);
-
-        //   }
-        // );
-
-        firebase.auth()
-          .signInWithCredential(provider)
-          .then(function(result) {
-            console.log("authService loginWithFacebook signInWithCredential | result", result);
-            var usersFbRef = firebase.database().ref("users");
-            usersFbRef.child(result.uid).child('data').set({
+        facebookConnectPlugin.api(
+          '/' + result.authResponse.userID + "?fields=id,email,name,first_name,last_name,age_range,link,gender,locale,picture,timezone,updated_time,verified",
+          ["public_profile", "email"],
+          function (result) {
+            console.log("authService loginWithFacebook facebookConnectPlugin.api | result", result);
+            _registerInfo = {
               provider: "facebook",
-            });
-          })
-          .catch(function(error) {
-            console.log("authService loginWithFacebook signInWithCredential | error", error);
-            return callback(error.message, null);
-          });
+              data: result
+            };
 
+            firebase.auth()
+              .signInWithCredential(provider)
+              .then(function(result) {
+                console.log("authService loginWithFacebook signInWithCredential | result", result);
+              })
+              .catch(function(error) {
+                console.log("authService loginWithFacebook signInWithCredential | error", error);
+                return callback(error.message, null);
+              });
+          },
+          function (error) {
+            console.log("authService loginWithFacebook facebookConnectPlugin.api | error", error);
+            return callback(error.message, null);
+          }
+        );
       },
       function (error) {
+        console.log("authService loginWithFacebook facebookConnectPlugin.login | error", error);
         return callback(error.message, null);
       }
     );
