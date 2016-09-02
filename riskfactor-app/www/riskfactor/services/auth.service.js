@@ -3,11 +3,7 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
   var authService = {};
 
   authService.checkAuth = function () {
-    var currentUser = firebase.auth().currentUser;
-    if (currentUser) {
-      _authData = currentUser;
-    }
-    return _authData;
+    return firebase.auth().currentUser;
   };
 
   authService.listenAuth = function (callback) {

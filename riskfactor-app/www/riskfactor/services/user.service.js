@@ -1,4 +1,4 @@
-riskfactorApp.factory('userService', function (firebaseNamespace, $cordovaFacebook, $state, $window) {
+riskfactorApp.factory('userService', function () {
 
   var userService = {};
   var _user = undefined;

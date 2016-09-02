@@ -1,4 +1,4 @@
-riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeout, $ionicHistory, authService, dbService) {
+riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeout, authService, dbService) {
 
   var authData = authService.checkAuth();
   if (!authData) {

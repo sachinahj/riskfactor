@@ -1,4 +1,4 @@
-riskfactorApp.controller('LoginController', function ($scope, $state, $timeout, authService, dbService) {
+riskfactorApp.controller('LoginController', function ($scope, $timeout, authService) {
 
   $scope.user = {};
   $scope.feedback = {};

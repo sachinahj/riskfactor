@@ -1,4 +1,4 @@
-riskfactorApp.factory('dbService', function (firebaseNamespace, userService, $q, $state) {
+riskfactorApp.factory('dbService', function (userService, $q, $state) {
 
   var dbService = {};
 
