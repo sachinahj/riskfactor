@@ -18,27 +18,37 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
         userService.setUser(newUser);
 
 
-        if (_registerInfo) {
-          console.log("authService listenAuth | _registerInfo", _registerInfo);
-          var usersFbRef = firebase.database().ref("users");
-
-          usersFbRef.child(newUser.uid).child('data').set({
-            provider: "email",
-            age: _registerInfo.age,
-            email: _registerInfo.email,
-            gender: _registerInfo.gender,
-            location: _registerInfo.location,
-          });
-
-          _registerInfo = null;
-        }
 
         if (newUser) {
+
+          var usersFbRef = firebase.database().ref("users");
+
+          if (_registerInfo) {
+            console.log("authService listenAuth | _registerInfo", _registerInfo);
+
+            usersFbRef.child(newUser.uid).child('data').set({
+              provider: "email",
+              age: _registerInfo.age,
+              email: _registerInfo.email,
+              gender: _registerInfo.gender,
+              location: _registerInfo.location,
+              lastSeen: firebase.database.ServerValue.TIMESTAMP,
+            });
+
+            _registerInfo = null;
+          } else {
+            usersFbRef.child(newUser.uid).child('lastSeen').set(firebase.database.ServerValue.TIMESTAMP);
+          }
+
           console.log("authService listenAuth | checkForQuestions");
+
           dbService.checkForQuestions();
+
         } else {
+
           console.log("authService listenAuth | to splash");
           $state.go("splash", {}, {reload: true});
+
         }
       }
     });
