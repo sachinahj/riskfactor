@@ -23,6 +23,7 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
           var usersFbRef = firebase.database().ref("users");
 
           usersFbRef.child(newUser.uid).child('data').set({
+            provider: "email",
             age: _registerInfo.age,
             email: _registerInfo.email,
             gender: _registerInfo.gender,
@@ -83,10 +84,24 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
   authService.loginWithFacebook = function (callback) {
 
     facebookConnectPlugin.login(
-      ["email", "public_profile"],
+      ["public_profile", "email"],
       function (result) {
         console.log("authService loginWithFacebook facebookConnectPlugin.login | result", result);
         var provider = firebase.auth.FacebookAuthProvider.credential(result.authResponse.accessToken);
+
+        // facebookConnectPlugin.api(
+        //   '/' + result.authResponse.userID,
+        //   ["public_profile", "email"],
+        //   function (result) {
+        //     console.log("authService loginWithFacebook facebookConnectPlugin.api | result", result);
+        //     authService.logout();
+
+        //   },
+        //   function (error) {
+        //     console.log("authService loginWithFacebook facebookConnectPlugin.api | error", error);
+
+        //   }
+        // );
 
         firebase.auth()
           .signInWithCredential(provider)
@@ -94,7 +109,7 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
             console.log("authService loginWithFacebook signInWithCredential | result", result);
           })
           .catch(function(error) {
-            console.log("authService loginWithFacebook | error", error);
+            console.log("authService loginWithFacebook signInWithCredential | error", error);
             return callback(error.message, null);
           });
 
