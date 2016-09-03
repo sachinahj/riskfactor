@@ -2,12 +2,16 @@
   "name": "riskfactor-script",
   "version": "1.0.0",
   "description": "question importer for riskfactor-script",
+  "scripts": {
+    "latest": "node ./scripts/latest",
+    "upsert": "node ./scripts/upsert",
+    "upsert:production": "node ./scripts/upsert production_db"
+  },
   "dependencies": {
-    "async": "2.0.0",
-    "csv": "latest",
-    "csvtojson": "latest",
-    "firebase": "latest",
-    "json2csv": "latest",
-    "uid": "latest"
+    "async": "^2.0.0",
+    "csvtojson": "^0.4.2",
+    "firebase": "^3.3.0",
+    "json2csv": "^2.11.0",
+    "uid": "^0.0.2"
   }
 }

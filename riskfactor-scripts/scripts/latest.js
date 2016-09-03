@@ -5,7 +5,7 @@ let jsonConverter = require('json2csv');
 
 let Database = require('../collections/Database');
 
-
+Database.initialize();
 Database.getAll(function (questions) {
   let timestamp = new Date().getTime();
   let fileName = 'questions-' + timestamp + '.csv';
@@ -59,10 +59,11 @@ Database.getAll(function (questions) {
       console.log(err);
     }
 
-    fs.writeFile('./csvs/questions-' + timestamp + '.csv', csv, function (err) {
+    const fileName = `./csvs/questions-${timestamp}.csv`;
+    fs.writeFile(fileName, csv, function (err) {
       if (err) throw err;
       Database.setTimestamp(timestamp);
-      console.log('file saved');
+      console.log(`file saved: ${fileName}`);
     });
 
   });

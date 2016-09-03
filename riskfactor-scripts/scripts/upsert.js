@@ -79,10 +79,29 @@ csvConverter.on("end_parsed", function (questions) {
   });
 });
 
+var myArgs = process.argv.slice(2);
+var fileName = myArgs[0];
+Database.initialize();
 Database.getTimestamp(function (timestamp) {
-  let fileStream = fs.createReadStream("./csvs/production_db.csv");
-  // let fileStream = fs.createReadStream("./csvs/questions-" + timestamp + ".csv");
-  fileStream.pipe(csvConverter);
+  let fileStream;
+  let file = `./csvs/questions-${timestamp}.csv`;
+
+  console.log("file to upload", file);
+
+  if (fileName) {
+    file = `./csvs/${fileName}.csv`;
+  }
+
+  fileStream = fs.createReadStream(file);
+
+  fileStream.on('open', function () {
+    console.log("uploading file", file);
+    fileStream.pipe(csvConverter);
+  });
+
+   fileStream.on('error', function(err) {
+      console.log("error no file found for", fileName || timestamp);
+    });
 });
 
 

@@ -1,6 +1,6 @@
 var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9UIWebViewPatch', 'ngCordova'])
 
-.run(function ($ionicPlatform, $state, authService, $rootScope, $ionicConfig, userService) {
+.run(function ($ionicPlatform, $state, $timeout, authService, $rootScope, $ionicConfig, userService) {
 
   _unsubscribe = null;
 
@@ -34,7 +34,10 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
     $state.go('status', {
       type: 'loading',
     }, {}, {reload: true});
-    _unsubscribe = authService.listenAuth();
+
+    $timeout(function () {
+      _unsubscribe = authService.listenAuth();
+    });
   });
 
   $ionicPlatform.on('pause', function () {
