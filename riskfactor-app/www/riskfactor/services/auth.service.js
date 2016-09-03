@@ -13,43 +13,40 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
       console.log("authService listenAuth | newUser", newUser);
       console.log("authService listenAuth | user", user);
 
-      if (user == undefined || newUser != user) {
-        console.log("authService listenAuth | authChanged");
-        userService.setUser(newUser);
+      userService.setUser(newUser);
 
-        if (newUser) {
+      if (newUser) {
 
-          var usersFbRef = firebase.database().ref("users");
+        var usersFbRef = firebase.database().ref("users");
 
-          if (_registerInfo) {
-            console.log("authService listenAuth | _registerInfo", _registerInfo);
+        if (_registerInfo) {
+          console.log("authService listenAuth | _registerInfo", _registerInfo);
 
-            usersFbRef.child(newUser.uid).set({
-              provider: _registerInfo.provider,
-              data: _registerInfo.data,
-              lastSeen: firebase.database.ServerValue.TIMESTAMP,
-            });
+          usersFbRef.child(newUser.uid).set({
+            provider: _registerInfo.provider,
+            data: _registerInfo.data,
+            lastSeen: firebase.database.ServerValue.TIMESTAMP,
+          });
 
-            _registerInfo = null;
-
-          } else {
-
-            usersFbRef.child(newUser.uid).child('lastSeen').set(firebase.database.ServerValue.TIMESTAMP);
-
-          }
-
-          console.log("authService listenAuth | checkForQuestions");
-          $state.go('status', {
-            type: 'loading',
-          }, {reload: true});
-          dbService.checkForQuestions();
+          _registerInfo = null;
 
         } else {
 
-          console.log("authService listenAuth | to splash");
-          $state.go('splash', {}, {reload: true});
+          usersFbRef.child(newUser.uid).child('lastSeen').set(firebase.database.ServerValue.TIMESTAMP);
 
         }
+
+        console.log("authService listenAuth | checkForQuestions");
+        $state.go('status', {
+          type: 'loading',
+        }, {reload: true});
+        dbService.checkForQuestions();
+
+      } else {
+
+        console.log("authService listenAuth | to splash");
+        $state.go('splash', {}, {reload: true});
+
       }
     });
 
