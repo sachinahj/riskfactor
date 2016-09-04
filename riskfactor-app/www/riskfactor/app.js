@@ -29,8 +29,10 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
   });
 
   $ionicPlatform.on('resume', function () {
-    // alert("resuming");
     console.log("app.js | resuming");
+
+    firebase.database().goOnline();
+
     $state.go('status', {
       type: 'loading',
     }, {}, {reload: true});
@@ -41,10 +43,11 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
   });
 
   $ionicPlatform.on('pause', function () {
-    // alert("pausing");
     console.log("app.js | pausing");
+
     userService.setUser(undefined);
     _unsubscribe();
+    firebase.database().goOffline();
   });
 
 })
