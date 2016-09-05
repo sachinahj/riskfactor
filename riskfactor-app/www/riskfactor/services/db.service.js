@@ -114,25 +114,30 @@ riskfactorApp.factory('dbService', function (userService, $q, $state) {
     });
   };
 
+  var getLastCheckTimestamp = function (callback) {
+    var user = userService.getUser();
+    var usersFbRef = firebase.database().ref("users");
+
+    usersFbRef.child(user.uid).child('currentQuestionSetData').child('dateGrabbed').once('value', function (snapshot) {
+      var lastCheck = snapshot.val();
+      callback(null, lastCheck);
+    });
+  };
+
+  var showStatus = function (type) {
+    $state.go('status', {
+      type: type
+    }, {}, {reload: true});
+  };
+
   dbService.checkForQuestions = function () {
     var usersFbRef = firebase.database().ref("users");
     var user = userService.getUser();
 
     console.log("============checkForQuestions===================");
     console.log("user", user);
+    console.log("user.uid", user.uid);
 
-    var getLastCheckTimestamp = function (callback) {
-      usersFbRef.child(user.uid).child('currentQuestionSetData').child('dateGrabbed').once('value', function (snapshot) {
-        var lastCheck = snapshot.val();
-        callback(null, lastCheck);
-      });
-    };
-
-    var showStatus = function (type) {
-      $state.go('status', {
-        type: type
-      }, {}, {reload: true});
-    };
 
     getLastCheckTimestamp(function (err, lastCheck) {
 
@@ -173,6 +178,8 @@ riskfactorApp.factory('dbService', function (userService, $q, $state) {
       } else {
 
         getOldQuestionSet(function (err, currentQuestionSetData) {
+          console.log("getOldQuestionSet err", err);
+          console.log("getOldQuestionSet currentQuestionSetData", currentQuestionSetData);
           if (
             err ||
             !currentQuestionSetData.questions ||
@@ -181,8 +188,6 @@ riskfactorApp.factory('dbService', function (userService, $q, $state) {
             usersFbRef.child(user.uid).child('currentQuestionSetData').remove();
             return dbService.checkForQuestions();
           }
-          console.log("getOldQuestionSet err", err);
-          console.log("getOldQuestionSet currentQuestionSetData", currentQuestionSetData);
 
           _questionsForDay = currentQuestionSetData.questions;
           _answersForDay = currentQuestionSetData.answers || {};
