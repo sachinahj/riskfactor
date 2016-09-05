@@ -64,6 +64,7 @@ Database.getAll(function (questions) {
       if (err) throw err;
       Database.setTimestamp(timestamp);
       console.log(`file saved: ${fileName}`);
+      process.exit();
     });
 
   });

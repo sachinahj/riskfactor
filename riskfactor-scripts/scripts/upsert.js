@@ -76,6 +76,7 @@ csvConverter.on("end_parsed", function (questions) {
     console.log("upserted:", upserted);
     console.log("invalid questions:", invalidQuestions);
     console.log("error uploading questions:", errorUploadingQuestions);
+    process.exit();
   });
 });
 
@@ -101,6 +102,7 @@ Database.getTimestamp(function (timestamp) {
 
    fileStream.on('error', function(err) {
       console.log("error no file found for", fileName || timestamp);
+      process.exit();
     });
 });
 
