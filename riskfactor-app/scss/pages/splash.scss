@@ -1,8 +1,14 @@
 #splash {
   @include background-gradient-black;
 
+  .version {
+    display: block;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
   h5 {
-    margin-top: 15%;
+    margin-top: 10%;
     text-align: center;
   }
   img {
