@@ -9,11 +9,14 @@ then
   rm "$RISKFACTOR_APK_DIR/android-release-signed.apk"
 fi
 
+echo "Signing android-release-unsigned.apk"
+
 if  jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore "$RISKFACTOR_DIR/my-release-key.keystore" "$RISKFACTOR_APK_DIR/android-release-unsigned.apk" alias_name
 then
   if zipalign -v 4 "$RISKFACTOR_APK_DIR/android-release-unsigned.apk" "$RISKFACTOR_APK_DIR/android-release-signed.apk"
   then
-    cp "$RISKFACTOR_APK_DIR/android-release-signed.apk" ~/Dropbox/uThought/
+    cp "$RISKFACTOR_APK_DIR/android-release-signed.apk" ~/Dropbox/Companies/uThought/
+    echo "Copied to ~/Dropbox/Companies/uThought/android-release-signed.apk"
   fi
 fi
 
