@@ -1,7 +1,7 @@
 var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9UIWebViewPatch', 'ngCordova'])
 
 .run(function ($ionicPlatform, $state, $timeout, authService, $rootScope, $ionicConfig, userService) {
-  $rootScope.appVersion = "0.9.0";
+  $rootScope.appVersion = "1.0.0";
 
   _unsubscribe = null;
 
