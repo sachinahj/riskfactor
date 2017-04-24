@@ -1,7 +1,7 @@
-riskfactorApp.controller('ResultsController', function ($scope, $state, $q, $timeout, authService, dbService) {
+riskfactorApp.controller('ResultsController', function ($scope, $state, $q, $timeout, authService, userService, dbService) {
 
-  var authData = authService.checkAuth();
-  if (!authData) {
+  var user = userService.getUser();
+  if (!user) {
     $state.go('splash', {}, {reload: true});
     return;
   }

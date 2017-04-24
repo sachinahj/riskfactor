@@ -1,7 +1,7 @@
-riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeout, authService, dbService) {
+riskfactorApp.controller('QuestionsController', function ($scope, $state, $timeout, userService, dbService) {
 
-  var authData = authService.checkAuth();
-  if (!authData) {
+  var user = userService.getUser();
+  if (!user) {
     $state.go('splash', {}, {reload: true});
     return;
   }

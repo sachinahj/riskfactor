@@ -3,10 +3,6 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
   var authService = {};
   var _registerInfo = null;
 
-  authService.checkAuth = function () {
-    return firebase.auth().currentUser;
-  };
-
   authService.listenAuth = function (callback) {
     var unsubscribe = firebase.auth().onAuthStateChanged(function(newUser) {
       var user = userService.getUser();
@@ -95,8 +91,23 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
     });
   };
 
-  authService.skip = function (callback) {
-    console.log("authService skip | ");
+  authService.skip = function (deviceUuid) {
+    console.log("authService skip | ", deviceUuid);
+
+    userService.setUser({
+      uid: deviceUuid,
+    });
+
+    var usersFbRef = firebase.database().ref("users");
+    usersFbRef.child(deviceUuid).update({
+      provider: "deviceUuid",
+      lastSeen: firebase.database.ServerValue.TIMESTAMP,
+    });
+
+    $state.go('status', {
+      type: 'loading',
+    }, {reload: true});
+    dbService.checkForQuestions();
   };
 
   authService.loginWithFacebook = function (callback) {

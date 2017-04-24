@@ -44,10 +44,9 @@ riskfactorApp.controller('LoginController', function ($scope, $timeout, authServ
     $scope.feedback = {};
 
     var device = window.device || null;
-    console.log("device", device);
     if (device) {
-      var deviceId = device.uuid;
-      console.log("deviceId", deviceId);
+      var deviceUuid = device.uuid;
+      authService.skip(deviceUuid);
     } else {
       $scope.loading = false;
       return setErrorMssage("No device id set");
