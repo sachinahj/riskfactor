@@ -3,7 +3,7 @@ var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9U
 .run(function ($ionicPlatform, $state, $timeout, authService, $rootScope, $ionicConfig, userService) {
   $rootScope.appVersion = "1.0.0";
 
-  _unsubscribe = null;
+  var _unsubscribe = null;
 
   $ionicPlatform.ready(function () {
     var config = {

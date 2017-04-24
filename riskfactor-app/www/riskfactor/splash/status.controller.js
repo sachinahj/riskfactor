@@ -18,9 +18,9 @@ riskfactorApp.controller('StatusController', function ($scope, $state, $statePar
     $state.go('questions', {}, {reload: true});
   };
 
-  $scope.results = function () {
-    $scope.view = null;
-    $state.go('results', {}, {reload: true});
-  };
+  // $scope.results = function () {
+  //   $scope.view = null;
+  //   $state.go('results', {}, {reload: true});
+  // };
 
 });
