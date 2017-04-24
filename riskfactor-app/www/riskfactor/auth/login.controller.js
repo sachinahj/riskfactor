@@ -39,6 +39,22 @@ riskfactorApp.controller('LoginController', function ($scope, $timeout, authServ
     });
   };
 
+  $scope.skip = function () {
+    $scope.loading = true;
+    $scope.feedback = {};
+
+    var device = window.device || null;
+    console.log("device", device);
+    if (device) {
+      var deviceId = device.uuid;
+      console.log("deviceId", deviceId);
+    } else {
+      $scope.loading = false;
+      return setErrorMssage("No device id set");
+    }
+
+  }
+
   function setErrorMssage(message) {
     $timeout(function () {
       $scope.user.password = "";

@@ -22,9 +22,14 @@
       <h5 ng-class="feedback.type">{{feedback.message || '&nbsp;'}}</h5>
     </div>
 
-    <div class="row flex-center top" ng-show="!loading">
-        <button class="riskfactor-btn" ng-click="loginWithFacebook()">Sign In with Facebook</button>
+    <div class="row flex-center" ng-show="!loading">
+      <button class="riskfactor-btn facebook-btn" ng-click="loginWithFacebook()">Sign In with Facebook</button>
     </div>
+    
+    <div class="row flex-center" ng-show="!loading">
+      <button class="riskfactor-btn skip-btn" ng-click="skip()">Continue as Guest</button>
+    </div>
+
 
     <div class="row flex-center bottom">
       <div class="col left">

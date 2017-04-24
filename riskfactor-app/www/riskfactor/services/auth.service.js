@@ -95,6 +95,10 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
     });
   };
 
+  authService.skip = function (callback) {
+    console.log("authService skip | ");
+  };
+
   authService.loginWithFacebook = function (callback) {
 
     facebookConnectPlugin.login(

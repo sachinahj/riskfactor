@@ -1,48 +1,53 @@
 #login {
-  @include background-gradient-black;
+    @include background-gradient-black;
 
-  h3 {
-    margin-top: 15%;
-    text-align: center;
-  }
-  .auth-input {
-    margin-top: 10px;
-  }
-
-  .riskfactor-btn.login-btn {
-    margin-top: 80px;
-  }
-
-  .loading-img {
-    margin-top: 40px;
-    margin-bottom: -37px;
-  }
-
-  .feedback {
-    padding: 20px;
-  }
-
-  .bottom {
-    margin-top: 30px;
-    button {
-      width: 120px;
+    h3 {
+        margin-top: 15%;
+        text-align: center;
     }
-    .left {
-      text-align: right;
-      margin-right: 10px;
-    }
-    .right {
-      text-align: left;
-      margin-left: 10px;
-    }
-  }
 
-  .top {
-
-    button {
-      background-color: #3B5998;
-      border-color: #3B5998;
-      border-radius: 6px;
+    .auth-input {
+        margin-top: 10px;
     }
-  }
+
+    .riskfactor-btn.login-btn {
+        margin-top: 80px;
+    }
+
+    button.riskfactor-btn.facebook-btn {
+        background-color: #3B5998;
+        border-color: #3B5998;
+        border-radius: 6px;
+    }
+
+    .riskfactor-btn.skip-btn {
+        margin-top: 20px;
+    }
+
+    .loading-img {
+        margin-top: 40px;
+        margin-bottom: -37px;
+    }
+
+    .feedback {
+        padding: 20px;
+    }
+
+    .bottom {
+        margin-top: 30px;
+
+        button {
+            width: 120px;
+        }
+
+        .left {
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .right {
+            text-align: left;
+            margin-left: 10px;
+        }
+    }
 }

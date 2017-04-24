@@ -9405,6 +9405,12 @@ input.auth-input {
     margin-top: 10px; }
   #login .riskfactor-btn.login-btn {
     margin-top: 80px; }
+  #login button.riskfactor-btn.facebook-btn {
+    background-color: #3B5998;
+    border-color: #3B5998;
+    border-radius: 6px; }
+  #login .riskfactor-btn.skip-btn {
+    margin-top: 20px; }
   #login .loading-img {
     margin-top: 40px;
     margin-bottom: -37px; }
@@ -9420,10 +9426,6 @@ input.auth-input {
     #login .bottom .right {
       text-align: left;
       margin-left: 10px; }
-  #login .top button {
-    background-color: #3B5998;
-    border-color: #3B5998;
-    border-radius: 6px; }
 
 #registration {
   background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 50%, #524f4e 100%);
