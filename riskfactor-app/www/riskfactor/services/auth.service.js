@@ -18,7 +18,7 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
         if (_registerInfo) {
           console.log("authService listenAuth | _registerInfo", _registerInfo);
 
-          usersFbRef.child(newUser.uid).set({
+          usersFbRef.child(newUser.uid).update({
             provider: _registerInfo.provider,
             data: _registerInfo.data,
             lastSeen: firebase.database.ServerValue.TIMESTAMP,
@@ -53,10 +53,15 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
     console.log("authService logout | logging out");
     userService.setUser(undefined);
     $state.go('splash', {}, {reload: true});
-    firebase.auth().signOut().then(function() {
-    }, function(error) {
-      ionic.Platform.exitApp();
-    });
+    if (firebase.auth().currentUser) {
+      firebase.auth().signOut().then(function() {
+        userService.setUser(null);
+      }, function(error) {
+        ionic.Platform.exitApp();
+      });
+    } else {
+      userService.setUser(null);
+    }
   };
 
   authService.register = function (newUser, callback) {
