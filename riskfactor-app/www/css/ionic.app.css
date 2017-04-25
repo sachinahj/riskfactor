@@ -9108,7 +9108,7 @@ div {
 
 .col {
   padding: 0;
-  margin-bottom: -5px; }
+  margin-bottom: -0.5rem; }
 
 .row-eq-height {
   display: -webkit-box;
@@ -9214,11 +9214,12 @@ div {
 
 .riskfactor-btn {
   background-color: transparent;
-  border-radius: 20px;
+  border-radius: 2rem;
   border: 2px solid #ffffff;
   color: #ffffff;
+  font-size: 1.4rem;
   font-weight: bold;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   text-align: center;
   text-transform: uppercase; }
   .riskfactor-btn:active {
@@ -9232,10 +9233,15 @@ div {
 input.auth-input {
   background-color: transparent;
   border: 1px solid #ffffff;
-  border-radius: 10px;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  height: 3.4rem;
   text-align: center;
   color: #ffffff;
   width: 80%; }
+
+select, label {
+  font-size: 1.4rem; }
 
 /* MyriadProRegular */
 @font-face {
@@ -9245,6 +9251,41 @@ input.auth-input {
   font-weight: normal;
   font-style: normal; }
 
+html {
+  font-size: 10px; }
+
+h1 {
+  font-size: 3.6rem; }
+
+h2 {
+  font-size: 3rem; }
+
+h3 {
+  font-size: 2.4rem; }
+
+h4 {
+  font-size: 1.8rem; }
+
+h5 {
+  font-size: 1.4rem; }
+
+h6 {
+  font-size: 1.2rem; }
+
+p {
+  font-size: 1.4rem; }
+
+span {
+  font-size: 1.4rem; }
+
+@media (min-width: 500px) {
+  html {
+    font-size: 15px; } }
+
+@media (min-width: 1000px) {
+  html {
+    font-size: 20px; } }
+
 #splash {
   background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 50%, #524f4e 100%);
   background: -o-linear-gradient(top, #010000 0%, #3d3a3a 50%, #524f4e 100%);
@@ -9253,18 +9294,21 @@ input.auth-input {
   background: linear-gradient(to bottom, #010000 0%, #3d3a3a 50%, #524f4e 100%); }
   #splash .version {
     display: block;
-    margin-left: 10px;
-    margin-top: 10px; }
+    margin-left: 1rem;
+    margin-top: 1rem; }
   #splash h5 {
     margin-top: 10%;
     text-align: center; }
-  #splash img {
-    max-width: 100%;
-    height: auto; }
+  #splash #splash-img {
+    background-image: url("/img/clouds/home-cloud.png");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 60%;
+    width: 100%; }
   #splash .riskfactor-btn {
+    margin-top: 2rem;
     text-transform: initial; }
-    #splash .riskfactor-btn.about {
-      margin-top: 20px; }
 
 #about {
   background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 50%, #524f4e 100%);
@@ -9275,14 +9319,14 @@ input.auth-input {
   #about img.top {
     display: block;
     margin: 0 auto;
-    margin-top: -15px;
-    padding-bottom: 10px;
+    margin-top: -1.5rem;
+    padding-bottom: 1rem;
     width: 50%;
     height: auto; }
   #about img.play-now {
     display: block;
     margin: 0 auto;
-    margin-top: 15px;
+    margin-top: 1.5rem;
     width: 40%;
     height: auto; }
     #about img.play-now:active {
@@ -9290,8 +9334,8 @@ input.auth-input {
       top: 1px;
       left: 1px; }
   #about h5 {
-    padding: 0 30px;
-    margin-bottom: 10px; }
+    padding: 0 3rem;
+    margin-bottom: 1rem; }
     #about h5 span {
       font-weight: bold; }
       #about h5 span.environmental {
@@ -9316,59 +9360,59 @@ input.auth-input {
   #status img.top {
     display: block;
     margin: 0 auto;
-    margin-top: -15px;
-    padding-bottom: 10px;
+    margin-top: -1.5rem;
+    padding-bottom: 1rem;
     width: 50%;
     height: auto;
-    margin-bottom: 80px; }
+    margin-bottom: 8rem; }
   #status h1 {
     text-align: center;
     font-weight: bold;
-    padding: 0 10px; }
+    padding: 0 1rem; }
   #status button {
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 5rem;
     display: block; }
 
 #contact img.top {
   display: block;
   margin: 0 auto;
-  margin-top: -15px;
-  padding-bottom: 10px;
+  margin-top: -1.5rem;
+  padding-bottom: 1rem;
   width: 50%;
   height: auto; }
 
 #contact p {
   color: #000000;
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 10px; }
+  margin-bottom: 1rem; }
 
 #contact .row {
-  padding: 0 20px; }
+  padding: 0 2rem; }
 
 #contact textarea {
   background-color: #d0d0d0;
-  border-radius: 10px;
+  border-radius: 1rem;
   color: #000000;
-  height: 125px;
-  margin: 0 20px;
+  height: 12.5rem;
+  margin: 0 2rem;
   resize: none;
-  text-indent: 5px;
-  padding: 5px;
-  width: calc(100% - 40px); }
+  text-indent: 0.5rem;
+  padding: 0.5rem;
+  width: calc(100% - 4rem); }
 
 #contact .riskfactor-btn {
   border-color: #000000;
   color: #000000;
-  margin-top: 10px;
-  padding: 5px 20px; }
+  margin-top: 1rem;
+  padding: 0.5rem 2rem; }
   #contact .riskfactor-btn:active {
     background-color: #000000;
     color: #ffffff; }
 
 #contact .thanks {
-  height: 268px; }
+  height: 26.8rem; }
   #contact .thanks h3 {
     color: #000000;
     font-weight: bold;
@@ -9376,9 +9420,9 @@ input.auth-input {
 
 #contact img.go-back {
   display: block;
-  margin-left: -10px;
-  margin-top: -30px;
-  padding-bottom: 10px;
+  margin-left: -1rem;
+  margin-top: -3rem;
+  padding-bottom: 1rem;
   width: 40%;
   height: auto; }
   #contact img.go-back:active {
@@ -9402,30 +9446,29 @@ input.auth-input {
     margin-top: 15%;
     text-align: center; }
   #login .auth-input {
-    margin-top: 10px; }
+    margin-top: 1rem; }
   #login .riskfactor-btn.login-btn {
-    margin-top: 80px; }
+    margin-top: 8rem; }
   #login button.riskfactor-btn.facebook-btn {
     background-color: #3B5998;
     border-color: #3B5998;
-    border-radius: 6px; }
+    border-radius: 0.6rem; }
   #login .riskfactor-btn.skip-btn {
-    margin-top: 20px; }
+    margin-top: 2rem; }
   #login .loading-img {
-    margin-top: 40px;
-    margin-bottom: -37px; }
+    margin-top: 4rem; }
   #login .feedback {
-    padding: 20px; }
+    padding: 2rem; }
   #login .bottom {
-    margin-top: 30px; }
+    margin-top: 3rem; }
     #login .bottom button {
-      width: 120px; }
+      width: 12rem; }
     #login .bottom .left {
       text-align: right;
-      margin-right: 10px; }
+      margin-right: 1rem; }
     #login .bottom .right {
       text-align: left;
-      margin-left: 10px; }
+      margin-left: 1rem; }
 
 #registration {
   background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 50%, #524f4e 100%);
@@ -9437,12 +9480,12 @@ input.auth-input {
     margin-top: 15%;
     text-align: center; }
   #registration .auth-input {
-    margin-top: 10px; }
+    margin-top: 1rem; }
   #registration .age-row,
   #registration .gender-row,
   #registration .location-row {
     display: table;
-    margin-top: 10px; }
+    margin-top: 1rem; }
     #registration .age-row h4,
     #registration .gender-row h4,
     #registration .location-row h4 {
@@ -9452,32 +9495,32 @@ input.auth-input {
   #registration .location-row select {
     float: right;
     margin-right: 10%;
-    width: calc(70% - 55px);
+    width: calc(70% - 5.5rem);
     background: transparent;
-    padding: 5px;
+    padding: 0.5rem;
     line-height: 1;
     border: 1px solid #ffffff;
-    border-radius: 6px;
+    border-radius: 0.6rem;
     -webkit-appearance: none; }
   #registration .gender-row .gender-input-wrapper {
     float: right;
     margin-right: 10%;
-    width: calc(70% - 50px); }
+    width: calc(70% - 5rem); }
     #registration .gender-row .gender-input-wrapper label {
       float: right; }
       #registration .gender-row .gender-input-wrapper label input {
         float: right;
-        margin: 0 10px; }
+        margin: 0 1rem; }
   #registration .riskfactor-btn.registation-btn {
-    margin-top: 60px; }
+    margin-top: 6rem; }
   #registration .loading-img {
-    margin-top: 25px; }
+    margin-top: 2.5rem; }
   #registration .login-btn-row {
-    margin-top: 25px; }
+    margin-top: 2.5rem; }
   #registration .feedback {
-    margin-top: 15px;
+    margin-top: 1.5rem;
     text-align: center;
-    padding: 0 15px; }
+    padding: 0 1.5rem; }
 
 #questions .questions-background {
   background: -webkit-linear-gradient(top, #010000 0%, #3d3a3a 50%, #524f4e 100%);
@@ -9525,15 +9568,15 @@ input.auth-input {
 #questions .header-row {
   display: table;
   position: relative;
-  margin-bottom: 150px; }
+  margin-bottom: 15rem; }
   #questions .header-row .category-cloud-img {
     position: absolute;
-    top: -10px;
+    top: -1rem;
     width: 45%; }
   #questions .header-row .header-cloud-img {
     position: absolute;
     right: 0;
-    top: -20px;
+    top: -2rem;
     width: 60%; }
 
 #questions .category {
@@ -9549,26 +9592,26 @@ input.auth-input {
 
 #questions .question {
   color: #ffffff;
-  margin-top: 50px;
-  padding: 0 10px;
+  margin-top: 5rem;
+  padding: 0 1rem;
   text-align: center; }
 
 #questions .bottom {
   position: absolute;
   width: 100%;
-  bottom: 50px; }
+  bottom: 5rem; }
   #questions .bottom .answers-row {
-    margin-top: 50px; }
+    margin-top: 5rem; }
     #questions .bottom .answers-row .riskfactor-btn {
       border-radius: 50%;
-      height: 75px;
+      height: 7.5rem;
       margin: 0 auto;
-      padding: 5px;
-      width: 75px; }
+      padding: 0.5rem;
+      width: 7.5rem; }
       #questions .bottom .answers-row .riskfactor-btn:first-child {
-        margin-right: 20px; }
+        margin-right: 2rem; }
       #questions .bottom .answers-row .riskfactor-btn:last-child {
-        margin-left: 20px; }
+        margin-left: 2rem; }
       #questions .bottom .answers-row .riskfactor-btn div {
         width: 100%; }
       #questions .bottom .answers-row .riskfactor-btn:active {
@@ -9578,7 +9621,7 @@ input.auth-input {
   #questions .bottom .countdown-timer {
     color: white;
     text-align: center;
-    margin-top: 60px; }
+    margin-top: 6rem; }
 
 #results .questions-background {
   margin-top: -2px; }
@@ -9631,18 +9674,18 @@ input.auth-input {
     position: absolute;
     color: #ffffff; }
     #results .header-row h5.left {
-      top: 35px;
-      left: 0px;
-      padding: 15px; }
+      top: 3.5rem;
+      left: 0;
+      padding: 1.5rem; }
     #results .header-row h5.right {
-      top: 35px;
-      right: 0px;
-      padding: 15px; }
+      top: 3.5rem;
+      right: 0;
+      padding: 1.5rem; }
   #results .header-row img {
     display: block;
     margin: 0 auto;
-    margin-top: -10px;
-    padding-bottom: 10px;
+    margin-top: -1rem;
+    padding-bottom: 1rem;
     width: 40%; }
 
 #results .category-row {
@@ -9655,16 +9698,16 @@ input.auth-input {
     height: auto; }
 
 #results .result {
-  padding: 0 30px;
+  padding: 0 3rem;
   height: 100%; }
   #results .result h4, #results .result h5 {
     color: #ffffff; }
   #results .result .question {
     border-bottom: 2px solid #ffffff;
-    padding: 30px 30px; }
+    padding: 3rem 3rem; }
     #results .result .question h4 {
       text-align: center; }
   #results .result .you-thought, #results .result .uthought {
-    margin-top: 10px; }
+    margin-top: 1rem; }
   #results .result .did-you-know {
-    margin-top: 20px; }
+    margin-top: 2rem; }

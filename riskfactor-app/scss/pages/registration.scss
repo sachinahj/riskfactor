@@ -5,13 +5,13 @@
     text-align: center;
   }
   .auth-input {
-    margin-top: 10px;
+    margin-top: 1rem;
   }
   .age-row,
   .gender-row,
   .location-row {
     display: table;
-    margin-top: 10px;
+    margin-top: 1rem;
     h4 {
       margin-left: 10%;
       float: left;
@@ -22,12 +22,12 @@
     select {
       float: right;
       margin-right: 10%;
-      width: calc(70% - 55px);
+      width: calc(70% - 5.5rem);
       background: transparent;
-      padding: 5px;
+      padding: 0.5rem;
       line-height: 1;
       border: 1px solid $white;
-      border-radius: 6px;
+      border-radius: 0.6rem;
       -webkit-appearance: none;
     }
   }
@@ -35,28 +35,28 @@
     .gender-input-wrapper {
       float: right;
       margin-right: 10%;
-      width: calc(70% - 50px);
+      width: calc(70% - 5rem);
       label {
         float: right;
         input {
           float: right;
-          margin: 0 10px;
+          margin: 0 1rem;
         }
       }
     }
   }
   .riskfactor-btn.registation-btn {
-    margin-top: 60px;
+    margin-top: 6rem;
   }
   .loading-img {
-    margin-top: 25px;
+    margin-top: 2.5rem;
   }
   .login-btn-row {
-    margin-top: 25px;
+    margin-top: 2.5rem;
   }
   .feedback {
-    margin-top: 15px;
+    margin-top: 1.5rem;
     text-align: center;
-    padding: 0 15px;
+    padding: 0 1.5rem;
   }
 }

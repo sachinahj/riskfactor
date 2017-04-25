@@ -31,12 +31,12 @@
 
 .riskfactor-btn {
   background-color: transparent;
-  border-radius: 20px;
+  border-radius: 2rem;
   border: 2px solid $white;
   color: $white;
   font-size: 1.4rem;
   font-weight: bold;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   text-align: center;
   text-transform: uppercase;
   @include button-click;
@@ -49,8 +49,14 @@
 input.auth-input {
   background-color: transparent;
   border: 1px solid $white;
-  border-radius: 10px;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  height: 3.4rem;
   text-align: center;
   color: $white;
   width: 80%;
+}
+
+select, label {
+  font-size: 1.4rem;
 }

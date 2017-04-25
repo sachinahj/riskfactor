@@ -23,16 +23,16 @@
   .header-row {
     display: table;
     position: relative;
-    margin-bottom: 150px;
+    margin-bottom: 15rem;
     .category-cloud-img {
       position: absolute;
-      top: -10px;
+      top: -1rem;
       width: 45%;
     }
     .header-cloud-img {
       position: absolute;
       right: 0;
-      top: -20px;
+      top: -2rem;
       width: 60%;
     }
   }
@@ -49,27 +49,27 @@
   }
   .question {
     color: $white;
-    margin-top: 50px;
-    padding: 0 10px;
+    margin-top: 5rem;
+    padding: 0 1rem;
     text-align: center;
   }
   .bottom {
     position: absolute;
     width: 100%;
-    bottom: 50px;
+    bottom: 5rem;
     .answers-row {
-      margin-top: 50px;
+      margin-top: 5rem;
       .riskfactor-btn {
         border-radius: 50%;
-        height: 75px;
+        height: 7.5rem;
         margin: 0 auto;
-        padding: 5px;
-        width: 75px;
+        padding: 0.5rem;
+        width: 7.5rem;
         &:first-child {
-          margin-right: 20px;
+          margin-right: 2rem;
         }
         &:last-child {
-          margin-left: 20px;
+          margin-left: 2rem;
         }
         div {
           width: 100%;
@@ -85,7 +85,7 @@
     .countdown-timer {
       color: white;
       text-align: center;
-      margin-top: 60px;
+      margin-top: 6rem;
     }
   }
 }
