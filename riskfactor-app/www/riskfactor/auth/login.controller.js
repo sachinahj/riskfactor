@@ -44,6 +44,11 @@ riskfactorApp.controller('LoginController', function ($scope, $timeout, authServ
     $scope.feedback = {};
 
     var device = window.device || null;
+
+    if (!window.cordova) {
+      device = {uuid: "testing"};
+    }
+
     if (device) {
       var deviceUuid = device.uuid;
       authService.skip(deviceUuid);

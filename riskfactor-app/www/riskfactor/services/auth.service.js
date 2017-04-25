@@ -97,7 +97,7 @@ riskfactorApp.factory("authService", function ($state, userService, dbService) {
   };
 
   authService.skip = function (deviceUuid) {
-    console.log("authService skip | ", deviceUuid);
+    console.log("authService skip | deviceUuid", deviceUuid);
 
     userService.setUser({
       uid: deviceUuid,
