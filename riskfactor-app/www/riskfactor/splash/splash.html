@@ -2,13 +2,14 @@
   <ion-content scroll="false">
     <span class="version">v{{$root.appVersion}}</span>
     <h5>You thought you knew...</h5>
-    <img src="img/clouds/home-cloud.png"/>
+    <div id="splash-img"></div>
 
     <div class="row flex-center" ng-show="showButtons">
       <button ui-sref="login" ui-sref-opts="{reload: true}" class="riskfactor-btn">Play today's uThought now!</button>
     </div>
+
     <div class="row flex-center" ng-show="showButtons">
-      <button ui-sref="about" ui-sref-opts="{reload: true}" class="riskfactor-btn about">About</button>
+      <button ui-sref="about" ui-sref-opts="{reload: true}" class="riskfactor-btn">About</button>
     </div>
 
   </ion-content>
