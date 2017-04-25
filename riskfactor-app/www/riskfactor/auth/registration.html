@@ -19,7 +19,9 @@
 
       <div class="row age-row">
         <h4>Age:</h4>
-        <select ng-model="newUser.age" ng-options="age as age for age in ageOptions" dir="rtl"></select>
+        <select ng-model="newUser.age" ng-options="age as age for age in ageOptions" dir="rtl">
+          <option value="" disabled selected>Select your age</option>
+        </select>
       </div>
 
       <div class="row gender-row">
@@ -37,7 +39,9 @@
 
       <div class="row location-row">
         <h4>Location:</h4>
-        <select ng-model="newUser.location" ng-options="location as location for location in locationOptions" dir="rtl"></select>
+        <select ng-model="newUser.location" ng-options="location as location for location in locationOptions" dir="rtl">
+          <option value="" disabled selected>Select your location</option>
+        </select>
       </div>
 
 
