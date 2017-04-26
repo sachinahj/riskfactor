@@ -1,8 +1,7 @@
 riskfactorApp.controller('AboutController', function ($scope, $state) {
 
   $scope.goToSplash = function () {
-    $scope.user = {};
-    $state.go('splash', {}, {reload: true});
+    $state.go('login', {}, {reload: true});
   }
 
 });

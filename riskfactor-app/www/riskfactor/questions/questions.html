@@ -1,8 +1,12 @@
 <ion-view view-title="Questions" id="questions" animation="slide-right-left">
   <ion-content scroll="false" class="questions-background" ng-class="currentQuestion.category">
     <div class="row header-row">
-      <img src="img/clouds/header-cloud.png" class="header-cloud-img" />
-      <img ng-src="img/clouds/{{currentQuestion.category}}-cloud.png" class="category-cloud-img" ng-show="currentQuestion.id"/>
+      <div
+        class="cloud-img category-cloud"
+        ng-show="currentQuestion.id"
+        ng-style="{'background-image': 'url(/img/clouds/'+currentQuestion.category+'-cloud.png)'}"
+      ></div>
+      <div class="cloud-img header-cloud"></div>
     </div>
     <div ng-show="currentQuestion.id">
       <h3 class="category">{{categoryDisplayText[currentQuestion.category]}}</h3>

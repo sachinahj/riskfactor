@@ -9566,18 +9566,17 @@ span {
     background: linear-gradient(to bottom, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%); }
 
 #questions .header-row {
-  display: table;
-  position: relative;
-  margin-bottom: 15rem; }
-  #questions .header-row .category-cloud-img {
-    position: absolute;
-    top: -1rem;
-    width: 45%; }
-  #questions .header-row .header-cloud-img {
-    position: absolute;
-    right: 0;
-    top: -2rem;
-    width: 60%; }
+  margin-bottom: 2rem;
+  height: 20rem; }
+  #questions .header-row .cloud-img {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center; }
+    #questions .header-row .cloud-img.category-cloud {
+      width: 45%; }
+    #questions .header-row .cloud-img.header-cloud {
+      background-image: url("/img/clouds/header-cloud.png");
+      width: 60%; }
 
 #questions .category {
   color: #ffffff;

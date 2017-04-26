@@ -20,22 +20,26 @@
       @include background-gradient-socialandpolitical;
     }
   }
+
   .header-row {
-    display: table;
-    position: relative;
-    margin-bottom: 15rem;
-    .category-cloud-img {
-      position: absolute;
-      top: -1rem;
-      width: 45%;
-    }
-    .header-cloud-img {
-      position: absolute;
-      right: 0;
-      top: -2rem;
-      width: 60%;
+    margin-bottom: 2rem;
+    height: 20rem;
+
+    .cloud-img {
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &.category-cloud {
+        width: 45%;
+      }
+      &.header-cloud {
+        background-image: url("/img/clouds/header-cloud.png");
+        width: 60%;
+      }
     }
   }
+
   .category {
     color: $white;
     font-weight: bold;
