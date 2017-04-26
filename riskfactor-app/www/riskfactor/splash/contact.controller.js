@@ -1,4 +1,4 @@
-riskfactorApp.controller('ContactController', function ($scope, $state, $cordovaSocialSharing) {
+riskfactorApp.controller('ContactController', function ($scope, $state, $timeout, $cordovaSocialSharing) {
 
   $scope.feedbackSent = null;
 
@@ -16,12 +16,16 @@ riskfactorApp.controller('ContactController', function ($scope, $state, $cordova
           function (result) {
             // Success!
             console.log("shareViaEmail | result", result);
-            $scope.feedbackSent = "Thanks for the feedback!";
+            $timeout(function () {
+              $scope.feedbackSent = "Thanks for the feedback!";
+            });
           },
           function (err) {
             // An error occurred. Show a message to the user
             console.log("shareViaEmail | err", err);
-            $scope.feedbackSent = "Please install email app and try again";
+            $timeout(function () {
+              $scope.feedbackSent = "Please install email app and try again";
+            });
           }
         )
 
