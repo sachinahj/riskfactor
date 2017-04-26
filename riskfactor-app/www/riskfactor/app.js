@@ -1,4 +1,4 @@
-var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngFitText', 'ngIOS9UIWebViewPatch', 'ngCordova'])
+var riskfactorApp = angular.module('riskfactor', ['ionic', 'ngIOS9UIWebViewPatch', 'ngCordova'])
 
 .run(function ($ionicPlatform, $state, $timeout, authService, $rootScope, $ionicConfig, userService) {
   $rootScope.appVersion = "1.0.1";

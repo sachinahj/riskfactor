@@ -23,24 +23,16 @@
 
   .header-row {
     margin-bottom: 2rem;
-    height: 20rem;
 
     .cloud-img {
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      background-position: center;
+      height: 15rem;
 
       &.category-cloud {
         width: 45%;
-        &.environmental {background-image: url("../img/clouds/environmental-cloud.png")}
-        &.ethical {background-image: url("../img/clouds/ethical-cloud.png")}
-        &.financial {background-image: url("../img/clouds/financial-cloud.png")}
-        &.healthandsafety {background-image: url("../img/clouds/healthandsafety-cloud.png")}
-        &.recreational {background-image: url("../img/clouds/recreational-cloud.png")}
-        &.socialandpolitical {background-image: url("../img/clouds/socialandpolitical-cloud.png")}
+        margin-right: -5%;
+        z-index: 1;
       }
       &.header-cloud {
-        background-image: url("../img/clouds/header-cloud.png");
         width: 60%;
       }
     }
@@ -66,15 +58,15 @@
   .bottom {
     position: absolute;
     width: 100%;
-    bottom: 5rem;
+    bottom: 1rem;
     .answers-row {
       margin-top: 5rem;
       .riskfactor-btn {
         border-radius: 50%;
-        height: 7.5rem;
+        height: 10rem;
         margin: 0 auto;
         padding: 0.5rem;
-        width: 7.5rem;
+        width: 10rem;
         &:first-child {
           margin-right: 2rem;
         }

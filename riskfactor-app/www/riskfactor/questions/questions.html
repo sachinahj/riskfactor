@@ -1,11 +1,15 @@
 <ion-view view-title="Questions" id="questions" animation="slide-right-left">
   <ion-content scroll="false" class="questions-background" ng-class="currentQuestion.category">
     <div class="row header-row">
-      <div
-        class="cloud-img category-cloud {{currentQuestion.category}}"
+      <img
+        class="cloud-img category-cloud"
         ng-show="currentQuestion.id"
-      ></div>
-      <div class="cloud-img header-cloud"></div>
+        ng-src="../img/clouds/{{currentQuestion.category}}-cloud.png"
+      />
+      <img
+        class="cloud-img header-cloud"
+        ng-src="../img/clouds/header-cloud.png"
+      />
     </div>
     <div ng-show="currentQuestion.id">
       <h3 class="category">{{categoryDisplayText[currentQuestion.category]}}</h3>
@@ -13,8 +17,8 @@
       <h4 class="question">{{currentQuestion.question}}</h4>
       <div class="bottom">
         <div class="row answers-row">
-          <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion, 0)"><div data-fittext data-fittext-min="10">{{currentQuestion.answers[0]}}</div></button>
-          <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion, 1)"><div data-fittext data-fittext-min="10">{{currentQuestion.answers[1]}}</div></button>
+          <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion, 0)"><p>{{currentQuestion.answers[0]}}</p></button>
+          <button class="riskfactor-btn" ng-click="answerQuestion(currentQuestion, 1)"><p>{{currentQuestion.answers[1]}}</p></button>
         </div>
         <h2 class="countdown-timer">:{{countdown}}</h2>
       </div>

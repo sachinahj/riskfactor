@@ -9566,28 +9566,14 @@ span {
     background: linear-gradient(to bottom, #ff492c 0%, #cf331e 31%, #8a1f10 52%, #440a05 72%, #090201 92%, #010000 100%); }
 
 #questions .header-row {
-  margin-bottom: 2rem;
-  height: 20rem; }
+  margin-bottom: 2rem; }
   #questions .header-row .cloud-img {
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-position: center; }
+    height: 15rem; }
     #questions .header-row .cloud-img.category-cloud {
-      width: 45%; }
-      #questions .header-row .cloud-img.category-cloud.environmental {
-        background-image: url("../img/clouds/environmental-cloud.png"); }
-      #questions .header-row .cloud-img.category-cloud.ethical {
-        background-image: url("../img/clouds/ethical-cloud.png"); }
-      #questions .header-row .cloud-img.category-cloud.financial {
-        background-image: url("../img/clouds/financial-cloud.png"); }
-      #questions .header-row .cloud-img.category-cloud.healthandsafety {
-        background-image: url("../img/clouds/healthandsafety-cloud.png"); }
-      #questions .header-row .cloud-img.category-cloud.recreational {
-        background-image: url("../img/clouds/recreational-cloud.png"); }
-      #questions .header-row .cloud-img.category-cloud.socialandpolitical {
-        background-image: url("../img/clouds/socialandpolitical-cloud.png"); }
+      width: 45%;
+      margin-right: -5%;
+      z-index: 1; }
     #questions .header-row .cloud-img.header-cloud {
-      background-image: url("../img/clouds/header-cloud.png");
       width: 60%; }
 
 #questions .category {
@@ -9610,15 +9596,15 @@ span {
 #questions .bottom {
   position: absolute;
   width: 100%;
-  bottom: 5rem; }
+  bottom: 1rem; }
   #questions .bottom .answers-row {
     margin-top: 5rem; }
     #questions .bottom .answers-row .riskfactor-btn {
       border-radius: 50%;
-      height: 7.5rem;
+      height: 10rem;
       margin: 0 auto;
       padding: 0.5rem;
-      width: 7.5rem; }
+      width: 10rem; }
       #questions .bottom .answers-row .riskfactor-btn:first-child {
         margin-right: 2rem; }
       #questions .bottom .answers-row .riskfactor-btn:last-child {
