@@ -9574,6 +9574,18 @@ span {
     background-position: center; }
     #questions .header-row .cloud-img.category-cloud {
       width: 45%; }
+      #questions .header-row .cloud-img.category-cloud.environmental {
+        background-image: url("../img/clouds/environmental-cloud.png"); }
+      #questions .header-row .cloud-img.category-cloud.ethical {
+        background-image: url("../img/clouds/ethical-cloud.png"); }
+      #questions .header-row .cloud-img.category-cloud.financial {
+        background-image: url("../img/clouds/financial-cloud.png"); }
+      #questions .header-row .cloud-img.category-cloud.healthandsafety {
+        background-image: url("../img/clouds/healthandsafety-cloud.png"); }
+      #questions .header-row .cloud-img.category-cloud.recreational {
+        background-image: url("../img/clouds/recreational-cloud.png"); }
+      #questions .header-row .cloud-img.category-cloud.socialandpolitical {
+        background-image: url("../img/clouds/socialandpolitical-cloud.png"); }
     #questions .header-row .cloud-img.header-cloud {
       background-image: url("../img/clouds/header-cloud.png");
       width: 60%; }

@@ -32,6 +32,12 @@
 
       &.category-cloud {
         width: 45%;
+        &.environmental {background-image: url("../img/clouds/environmental-cloud.png")}
+        &.ethical {background-image: url("../img/clouds/ethical-cloud.png")}
+        &.financial {background-image: url("../img/clouds/financial-cloud.png")}
+        &.healthandsafety {background-image: url("../img/clouds/healthandsafety-cloud.png")}
+        &.recreational {background-image: url("../img/clouds/recreational-cloud.png")}
+        &.socialandpolitical {background-image: url("../img/clouds/socialandpolitical-cloud.png")}
       }
       &.header-cloud {
         background-image: url("../img/clouds/header-cloud.png");

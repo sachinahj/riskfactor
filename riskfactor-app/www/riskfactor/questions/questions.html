@@ -2,9 +2,8 @@
   <ion-content scroll="false" class="questions-background" ng-class="currentQuestion.category">
     <div class="row header-row">
       <div
-        class="cloud-img category-cloud"
+        class="cloud-img category-cloud {{currentQuestion.category}}"
         ng-show="currentQuestion.id"
-        ng-style="{'background-image': 'url(../img/clouds/'+currentQuestion.category+'-cloud.png)'}"
       ></div>
       <div class="cloud-img header-cloud"></div>
     </div>
