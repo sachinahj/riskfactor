@@ -9300,7 +9300,7 @@ span {
     margin-top: 10%;
     text-align: center; }
   #splash #splash-img {
-    background-image: url("/img/clouds/home-cloud.png");
+    background-image: url("../img/clouds/home-cloud.png");
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: center;
@@ -9575,7 +9575,7 @@ span {
     #questions .header-row .cloud-img.category-cloud {
       width: 45%; }
     #questions .header-row .cloud-img.header-cloud {
-      background-image: url("/img/clouds/header-cloud.png");
+      background-image: url("../img/clouds/header-cloud.png");
       width: 60%; }
 
 #questions .category {
